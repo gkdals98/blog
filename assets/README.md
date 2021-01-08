@@ -1,7 +1,13 @@
 # ASSETS
-
-**This directory is not required, you can delete it if you don't want to use it.**
-
-This directory contains your un-compiled assets such as LESS, SASS, or JavaScript.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#webpacked).
+SASS, Image, font 등등 서버사이드 랜더링과는 관련없는 자료를 놓읍시다.
+```
+https://ko.nuxtjs.org/guides/directory-structure/assets/
+```
+이미지를 가져오고 싶을 때는 아래와 같은 식으로 가져올 수 있음.
+```
+<template>
+  <img src="~/assets/your_image.png" />
+	<img :src="require(`~/assets/img/${image}.jpg`)" />
+</template>
+```
+글로벌로 사용될 스타일은 nuxt.config.js에서 임포트하도록 하자.

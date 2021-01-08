@@ -23,15 +23,20 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+		'~/assets/css/globaltheme.scss',
+		'~/assets/css/globalfonts.scss'
+	],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [],
+
+	// Modules (https://go.nuxtjs.dev/config-modules)
+  modules: [
+    // https://go.nuxtjs.dev/content
+    '@nuxt/content'
+  ],
   /*
    ** Build configuration
    */
