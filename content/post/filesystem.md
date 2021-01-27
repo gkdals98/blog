@@ -1,3 +1,9 @@
+---
+title: Making File System
+tags: ['vue', 'nuxt']
+published: '2021-01-04'
+---
+
 ## PKG 버전 관리 시스템 만들기
 + PKG 파일을 문서서버에 업로드는 할 건데 감춰둘 계획
 + 우린 시간이 없으니 nodejs로 만든다.

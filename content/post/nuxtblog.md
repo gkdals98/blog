@@ -36,11 +36,15 @@ npx create-nuxt-app
 #### 2. Project Directory 구성
 Nuxt 및 nuxt 모듈을 활용하기 위해 알아야하는 지정 directory를 정리한다.
 
-+ **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다.
++ **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다. pages 내의 객체들은 서버사이드 랜더링링이다.
 
-+ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리.
++ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. SSR에 해당하지 않는다.
+```
+// Auto import components (https://go.nuxtjs.dev/config-components)
+components: true,
+```
 
-+ **layouts** : 전체 페이지에서 사용할 레이아웃등을 정의하는 디렉토리. 정의한 레이아웃을 사용하려면 해당 레이아웃을 적용할 페이지의 component에 아래와 같이 정의하면 된다.
++ **layouts** : 전체 페이지에서 사용할 레이아웃등을 정의하는 디렉토리. 정의한 레이아웃을 사용하려면 해당 레이아웃을 적용할 페이지의 component에 아래와 같이 정의하면 된다. SSR에 해당하지 않는다.
 ```
 export default {
 	layout: 'blog',
@@ -54,4 +58,4 @@ export default {
 
 + **static** : 정적 리소스를 위한 디렉토리.
 
-+ **store** : VUEX 컴포넌트를 위한 디렉토리.
++ **store** : VUEX 컴포넌트를 위한 디렉토리. index.js 를 통해 클래식 vuex를 사용할 지, module 타입의 vuex를 사용할 지 선택할 수 있다.

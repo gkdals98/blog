@@ -7,6 +7,8 @@
 			<hr/>
 			<div id="line"/>
 			<Nuxt />
+			<div id='footer'>
+			</div>
 		</div>
 	</div>
 </template>
@@ -41,5 +43,8 @@ export default {
 			border-radius: 0.3em;
 		}
 	}
+}
+#footer {
+		height: 4em;
 }
 </style>

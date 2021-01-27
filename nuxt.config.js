@@ -27,6 +27,9 @@ export default {
 		'~/assets/css/globaltheme.scss',
 		'~/assets/css/globalfonts.scss'
 	],
+
+	// Auto import components (https://go.nuxtjs.dev/config-components)
+	components: true,
   /*
    ** Plugins to load before mounting the App
    */
