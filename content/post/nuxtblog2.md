@@ -13,9 +13,12 @@ slug란 무엇인가.
 
 가령 블로그를 만든다고 쳐보자. 이 때 블로그의 각 포스트들을 보여주는 페이지는 동일한 layout을 사용할 것이며 문서의 내용만 달라질 것이다. 이 때 pages 폴더 내에 각각의 페이지들을 다 정의하는 것은 관리도 힘들고 이상한 일이다.
 
-이와 같이 동일한 레이아웃을 공유하는 정적 문서들이 여러개 있을 경우, 각 정적 리소스의 이름을 통해 동적으로 페이지를 형성할 수 있게 도와주는 것이 슬러그이다.
+이와 같이 동일한 레이아웃을 공유하는 정적 문서들이 여러개 있을 경우, 각 정적 리소스의 이름을 경로로 동적으로 페이지를 형성할 수 있게 도와주는 것이 슬러그이다.
 
-우선 content 모듈이 필요하다. content 모듈은 파일 앞에 _(언더바)가 붙은 파일을 슬러그 파일로 인식할 수 있다. content 라는 디렉터리를 프로젝트 내에 생성해주면 content 모듈이 디렉터리 내의 정적 리소스의 접근을 도와준다. 아래는 공식 문서에 나온 방법으로 content 폴더 내에 **post** 디렉터리를 만들고 슬러그에서 해당 경로를 링크하고자 할 때의 예시이다. slug의 vue 컴포넌트 안에 아래와 같이 작성해준다.
+우선 content 모듈이 필요하다. content 모듈을 사용하기 위해서는 두 가지 준비가 필요하다.
+
+첫 째는 동적 주소에 매핑할 slug 파일이다. content 모듈은 _(언더바)로 시작하는 이름을 가진 js 파일을 슬러그 파일로 인식한다. 이는 page 디렉터리 내에 원하는 곳에 만들어주면 된다.
+또한 **content** 디렉터리가 필요한데 content 모듈이 해당 디렉터리 내의 정적 리소스에 접근한다. 아래는 공식 문서에 나온 방법으로 content 폴더 내에 **post** 디렉터리를 만들고 슬러그에서 해당 경로를 링크하고자 할 때의 예시이다. slug의 vue 컴포넌트 안에 아래와 같이 작성해준다.
 
 ```
 <script>
@@ -36,6 +39,16 @@ export default {
 위와 같이 지정하면 post 디렉터리 내의 정적 문서는 slug 파일이 있는 디렉터리의 url + 파일 명을 통해 접근 가능하게 된다. 가령 slug 파일이 nuxt의 지정 디렉터리중 하나인 pages 내의 article 밑에 있으며 content의 제목이 test.md이면 **/article/test**로 접근 가능하다.
 
 #### 2. Slug의 심화
+아래는 공식문서에서 나온 post간의 이동을 ㅜ이한 prev, next 버튼에 사용할 정보를 가져오는 방법이다. 우선 markdown 문서의 시작부분에 아래와 같은 테그가 들어가야한다.
+```
+---
+title: Making Nuxt Blog 2
+tags: ['vue', 'nuxt']
+published: '2020-11-20'
+---
+```
+위와 같이 작성해주면 content 모듈이 정적 문서를 읽어올 때 title, tags, published 등의 속성을 오브젝트 안에 넣어줘 접근이 가능해진다. 아래는 published 속성순으로 정렬된 title 속성을 가져오되, params.slug의 앞 뒤의 문서만 가져오도록 지정해주는 방법이다.
+
 ```
 export default {
 	//content 모듈을 이용하는 부분. nuxt.config.js에 content 모듈을 선언해야한다.
@@ -45,7 +58,7 @@ export default {
 
 		const [prev, next] = await $content('post')
 		  .only(['title', 'slug'])
-			.sortBy('createdAt', 'asc')
+			.sortBy('published', 'asc')
 			.surround(params.slug)
 			.fetch()
 
@@ -57,3 +70,5 @@ export default {
 	},
 }
 ```
+
+https://codepen.io/erinesullivan/pen/gObozQo

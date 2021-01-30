@@ -1,7 +1,7 @@
 <template>
-  <div class="depth1_component drag-false" v-on:click="selected">
+  <button class="copy drag-false" v-on:click="selected">
     {{item}}
-  </div>
+  </button>
 </template>
 
 <script>

@@ -2,25 +2,74 @@
   <div>
     <div>
 			<div id='menu'>
-				<div id="depth1">
+				<div class="welcom">▼ Welcome ▼</div>
+				<div class="depth multi-button">
 				<Depth1MenuButton
 					v-for="(item, index) in depth1"
           v-bind:key="index"
           v-bind:item="item"
-          @selected="item_selected"
+          @d1selected="item_selected"
 				/>
 				</div>
+				<div class="depth multi-button">
+				<Depth2MenuButton
+					v-for="(item, index) in depth2"
+	        v-bind:key="index"
+	        v-bind:item="item"
+	        @d2selected="d2item_selected"
+				/>
+				</div>
+				<ArticleList :articles="Articles" v-if="show_page"/>
 			</div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import ArticleList from '@/components/ArticleList';
 
 export default {
 	layout : 'blog',
-  components: {
+  component: {
+		ArticleList
+  },
+	data : function (){
+		return {
+			current_depth1 : "",
+			current_depth2 : "",
+			show_page : false
+		}
+	},
+  computed: {
+		depth1 : function(){
+			var li = [];
+			for(var i = 0; i < this.tag.length; i++){
+				if(!li.includes(this.tag[i].tags[0])){
+					li.push(this.tag[i].tags[0]);
+				}
+			}
+			return li;
+		},
+		depth2 : function(){
+			var li = [];
+			for(var i = 0; i < this.tag.length; i++){
+				if(this.current_depth1 == this.tag[i].tags[0] && !li.includes(this.tag[i].tags[1])){
+					li.push(this.tag[i].tags[1]);
+				}
+			}
+			return li;
+		},
+		Articles : function(){
+			var li = [];
+			for(var i = 0; i < this.allArticles.length; i++){
+				if(this.current_depth1 == this.allArticles[i].tags[0] &&
+					this.current_depth2 == this.allArticles[i].tags[1] &&
+					!li.includes(this.allArticles[i])){
+					li.push(this.allArticles[i]);
+				}
+			}
+			return li;
+		}
   },
 	async asyncData({$content, params}){
 		//현재 화면에 표시될 article
@@ -30,16 +79,11 @@ export default {
 		//메뉴바에 표시될 테그들
 		const tag = await $content('post').only(['tags']).fetch();
 
-		var depth1 = [];
-		for(var i = 0; i < tag.length; i++){
-			if(!depth1.includes(tag[i].tags[0])){
-				depth1[i] = tag[i].tags[0];
-			}
-		}
-
+		const allArticles = await $content('post').fetch();
 		return {
 			article,
-			depth1
+			tag,
+			allArticles,
 		}
 	},
 	methods: {
@@ -49,21 +93,43 @@ export default {
       return new Date(date).toLocaleDateString('en', options)
     },
 		item_selected : function (item){
-
+			if(this.current_depth1 == item){
+				this.current_depth1 = "";
+			}else{
+				this.current_depth1 = item;
+			}
+			this.current_depth2 = "";
+			this.show_page = false;
+		},
+		d2item_selected : function (item){
+			if(item == this.current_depth2){
+				this.current_depth2 = "";
+				this.show_page = false;
+			}else {
+				this.current_depth2 = item;
+				this.show_page = true;
+			}
 		}
  }
 }
 </script>
 
 <style scoped lang="scss">
+.welcom{
+	font-family: Heebo-b;
+	text-align: center;
+	font-size: 2.5em;
+	line-height: 1.8em;
+}
 #menu{
 	margin-top: 0.5em;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
-#depth1{
+.depth{
 	display: flex;
-	flex-direction: row;
+  align-items: center;
 	justify-content: center;
 }
 </style>

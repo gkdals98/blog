@@ -24,7 +24,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	#form{
-		width: 80vw;
+		width: 60vw;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -35,11 +35,11 @@ export default {
 		}
 		hr{
 			style: 0.2em solid;
-			width: 80vw;
+			width: 60vw;
 		}
 		#line{
 			border-style: solid;
-			width: 80vw;
+			width: 60vw;
 			border-radius: 0.3em;
 		}
 	}
