@@ -17,7 +17,7 @@ export default{
 </script>
 
 <style scoped lang="scss">
-.depth1_component{
+.depth2_component{
   margin: 0.1em;
 	padding: 0.1em 0.3em 0.1em 0.3em;
 	border-style: solid;

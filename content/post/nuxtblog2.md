@@ -1,5 +1,5 @@
 ---
-title: Making Nuxt Blog 2
+title: Nuxt Blog 만들기 2
 tags: ['vue', 'nuxt']
 published: '2020-11-20'
 ---
@@ -20,7 +20,7 @@ slug란 무엇인가.
 첫 째는 동적 주소에 매핑할 slug 파일이다. content 모듈은 _(언더바)로 시작하는 이름을 가진 js 파일을 슬러그 파일로 인식한다. 이는 page 디렉터리 내에 원하는 곳에 만들어주면 된다.
 또한 **content** 디렉터리가 필요한데 content 모듈이 해당 디렉터리 내의 정적 리소스에 접근한다. 아래는 공식 문서에 나온 방법으로 content 폴더 내에 **post** 디렉터리를 만들고 슬러그에서 해당 경로를 링크하고자 할 때의 예시이다. slug의 vue 컴포넌트 안에 아래와 같이 작성해준다.
 
-```
+```javascript
 <script>
 export default {
 	//content 모듈을 이용하는 부분. nuxt.config.js에 content 모듈을 선언해야한다.
@@ -38,8 +38,10 @@ export default {
 
 위와 같이 지정하면 post 디렉터리 내의 정적 문서는 slug 파일이 있는 디렉터리의 url + 파일 명을 통해 접근 가능하게 된다. 가령 slug 파일이 nuxt의 지정 디렉터리중 하나인 pages 내의 article 밑에 있으며 content의 제목이 test.md이면 **/article/test**로 접근 가능하다.
 
+---
+
 #### 2. Slug의 심화
-아래는 공식문서에서 나온 post간의 이동을 ㅜ이한 prev, next 버튼에 사용할 정보를 가져오는 방법이다. 우선 markdown 문서의 시작부분에 아래와 같은 테그가 들어가야한다.
+예제를 몇 개 보자. 아래는 공식문서에서 나온 post간의 이동을 위한 prev, next 버튼에 사용할 정보를 가져오는 방법이다. 우선 markdown 문서의 시작부분에 아래와 같은 테그가 들어가야한다.
 ```
 ---
 title: Making Nuxt Blog 2
@@ -47,15 +49,12 @@ tags: ['vue', 'nuxt']
 published: '2020-11-20'
 ---
 ```
-위와 같이 작성해주면 content 모듈이 정적 문서를 읽어올 때 title, tags, published 등의 속성을 오브젝트 안에 넣어줘 접근이 가능해진다. 아래는 published 속성순으로 정렬된 title 속성을 가져오되, params.slug의 앞 뒤의 문서만 가져오도록 지정해주는 방법이다.
+위와 같이 작성해주면 content 모듈이 정적 문서를 읽어올 때 title, tags, published 등의 속성을 오브젝트 안에 넣어줘 해당 속성의 접근이 가능해진다. 아래는 published 속성순으로 정렬된 title 속성을 가져오되, params.slug의 앞 뒤의 문서만 가져오도록 지정해주는 방법이다.
 
-```
+```javascript
 export default {
-	//content 모듈을 이용하는 부분. nuxt.config.js에 content 모듈을 선언해야한다.
 	async asyncData({ $content, params }) {
-		const article = await $content('post', params.slug).fetch()
-
-
+		//post로부터 title과 slug만을 읽어오되 published를 기준으로 정렬 후 현재 slug 입력값의 앞 뒤 객체를 가져옴.
 		const [prev, next] = await $content('post')
 		  .only(['title', 'slug'])
 			.sortBy('published', 'asc')
@@ -63,12 +62,10 @@ export default {
 			.fetch()
 
 		return {
-			article,
 			prev,
 			next
 		}
 	},
 }
 ```
-
-https://codepen.io/erinesullivan/pen/gObozQo
+위와 같이 fetch를 받아오기 전, 받아올 값들에 다양한 조건을 걸 수 있으며 완성된 값은 return을 통해 내보내주면 컴포넌트 내에서 일반 data처럼 접근 가능해진다.

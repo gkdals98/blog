@@ -13,7 +13,7 @@ C:\Users\~>npm install -g @vue/cli-service-global
 
 C:\Users\~>npm install -g @vue/cli-init
 ```
-+ 상기 설치가 완료되면 하기 명령어를 통해 project 생성이 가능하다.
++ 상기 설치가 완료되면 하기 명령어를 통해 project 생성이 가능하다. 이는 vue cli 3 기준의 명령어이며 vue create가 먹지 않는다면 가급적 vue cli를 3버전으로 업그레이드 해주자.
 ```
 vue create <프로젝트 명>
 ```

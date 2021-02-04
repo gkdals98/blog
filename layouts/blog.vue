@@ -25,9 +25,9 @@ export default {
 	align-items: center;
 	#form{
 		width: 60vw;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
 		#title-bar{
 			font-family: pinkblue;
@@ -35,11 +35,11 @@ export default {
 		}
 		hr{
 			style: 0.2em solid;
-			width: 60vw;
+			min-width: 50em;
 		}
 		#line{
 			border-style: solid;
-			width: 60vw;
+			min-width: 50em;
 			border-radius: 0.3em;
 		}
 	}
