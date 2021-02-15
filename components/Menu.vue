@@ -68,6 +68,7 @@ export default {
 		item_selected : function(item){
 			if(this.current_depth1 == item){
 				this.current_depth1 = "";
+				this.show_page = false;
 
 			}else{
 				this.current_depth1 = item;
