@@ -172,4 +172,142 @@ UserList도 마찬가지로 아래와 같이 수정한다.
 ```javascript
 export default React.memo(UserList);
 ```
-이렇게 수정하면 더 이상 Input의 값 변화가 UserList를 렌더링하지 않게 된다. 하지만 User 중 하나라도 Toggle에 의해 수정이 되거나 추가되거나 삭제될 경우엔 여전히 UserList 전체와 CreateUser를 리렌더링하는 모습을 볼 수 있다. 이는 users 배열이 바뀔 때 마다 onCreate도, onToggle도, onRemove도 다시 만들어지기 때문이다. useCallback의 deps에 users를 넘겨주었기 때문으로 users의 값이 바뀌었다면 해당 메서드를 다시 생성하는 것은 동작상 당연하다.
+이렇게 수정하면 더 이상 Input의 값 변화가 UserList를 렌더링하지 않게 된다. 하지만 User 중 하나라도 Toggle에 의해 수정이 되거나 추가되거나 삭제될 경우엔 여전히 UserList 전체와 CreateUser를 리렌더링하는 모습을 볼 수 있다. 이는 users 배열이 바뀔 때 마다 onCreate도, onToggle도, onRemove도 다시 만들어지기 때문이다. useCallback의 deps에 users를 넘겨주었기 때문으로 users의 값이 바뀌었다면 해당 메서드를 다시 생성하는 것은 동작상 당연하다. 이를 막기 위해 ***함수형 업데이트*** 를 작성하는 방법을 배워보자. App.js의 onChange를 아래와 같이 고쳐보자.
+```javascript
+//기존코드
+/*
+const onChange = useCallback( (e) => {
+	const {name, value} = e.target;
+
+	setInputs({
+		...inputs,
+		[name] : value
+	})},[inputs]
+);
+*/
+const onChange = useCallback(e => {
+	const { name, value } = e.target;
+	setInputs((inputs) => ({
+		...inputs,
+		[name]: value
+	}));
+}, []);
+
+```
+state의 Setter에 덮어씌울 값을 직접 주는게 아니라 함수 연산의 결과로 주고있다. 그 결과 함수의 인자로 최신 inputs 값을 넘겨줄 수 있게 되었고 useCallback의 deps를 비울 수 있게 되었다. 이러면 deps에서 inputs를 참조하지 않아도 되고 결과적으로 useCallback도 inputs의 변화에 따라 함수를 새로 만들 필요가 없어지고 결과적으로 함수 갱신에 따른 리렌더링도 일어나지 않게 된다. 이제 남은 메서드들도 함수형 업데이트로 고쳐보자.
+```javascript
+const onCreate = useCallback (() => {
+	const newUser = {
+		id : nextId,
+		username : username,
+		email : email,
+		active : false
+	}
+	setUsers( (users) => (
+		users.concat(newUser)
+	));
+
+	setInputs({
+		username : '',
+		email : ''
+	})
+	nextId.current += 1;
+}, [username, email]);
+
+
+const onRemove = useCallback((id) => {
+	setUsers((users) => (
+		users.filter(user => user.id !== id)
+	))
+}, []);
+
+const onToggle = useCallback((id) => {
+	setUsers	( (users) => (
+		users.map(user =>
+			user.id === id ? { ...user, active: !user.active } : user
+		)
+	))
+}, []);
+```
+렌더링 최적화는 본인의 판단으로 설정할 영역이다. 현재 학습 중인 예제에서도 users에 대한 리렌더링을 막은 것이기에 username 및 email은 그대로 남아있는 것을 볼 수 있다. 실제 프로젝트에서는 React devTool을 활성화시켜 어떤 경우에 어떤 컴포넌트가 리렌더링 되어야하는지를 잘 고려하며 코드를 작성하자.
+
+#### Reducer의 개념 및 useReducer Hook.
+이번엔 useReducer라는 Hook을 살펴본다. useReducer Hook을 배우기 전에, Reducer란 개념을 우선 짚고 넘어가자. ***Reducer*** 는 현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해주는 함수이다. 일단 개념을 코드처럼 적어보자면 아래와 같다.
+```javascript
+function reducer(state, action){
+	//무언가의 계산 후 nextState 생성
+	return nextState;
+}
+```
+살펴보자면 인자로 받는 state는 말 그대로 reducer가 계산을 하기 전의 prev_state이다. 함께 받은 action은 업데이트를 위한 정보이다. 전달받은 action을 기준으로 nextState를 반환해주는 것이 Reducer이다. action의 예시는 아래와 같다.
+```javascript
+{
+	type : "INCREMENT"
+}
+{
+	type : "DECREMENT"
+}
+{
+	type : "CHANGE_INPUT",
+	key : "email",
+	value : "tester@react.com"
+}
+{
+	type : "ADD_TODO",
+	todo : {
+		id : 1,
+		text : 'Reduce'
+	}
+}
+```
+여기서 type이란 이름으로 action을 정의하는 점, type의 값은 대문자 및 언더바(_)로 표기하는 점 등은 전부 관습적인 부분으로 이런 관습은 보통 지키는 쪽이 코드를 알아보기 더 쉽다. 그 이외에 action 오브젝트 내의 다른 부분들은 원하는대로 정의해도 된다. 위와 같은 action 예시 중 INCREMENT, DECREMENT를 받아서 작업을 처리하는 Reducer는 아래와 같은 형대가 될 것이다.
+```javascript
+function reducer(state, action) {
+	switch (action.type) {
+		case "INCREMENT" :
+			return state + 1;
+		case "DECREMENT" :
+			return state - 1;
+		default :
+			return state;
+	}
+}
+```
+위 Reducer를 사용하면 한 가지 State에 대한 여러 변화를 한 곳에 정의하기도 쉽고 별도의 js파일로 이를 관리하기도 쉬우며 읽기도 편하다. 이제 위 Reducer를 의미있게 사용하기 위해, Counter.js에서 useReducer Hook을 사용해보자.
+```javascript
+import React, {useReducer} from 'react';
+
+function reducer(state, action) {
+	switch (action.type) {
+		case "INCREMENT" :
+			return state + 1;
+		case "DECREMENT" :
+			return state - 1;
+		default :
+			return state;
+	}
+}
+
+function Counter(){
+	const [state, dispatcher] = useReducer(reducer, 0);
+
+	const onIncrease = () => {
+		dispatcher({ type : "INCREMENT"});
+	}
+
+	const onDecrease = () => {
+		dispatcher({ type : "DECREMENT"});
+	}
+
+	return (
+		<div>
+			<b>{state}</b>
+			<button onClick={onIncrease}>+</button>
+			<button onClick={onDecrease}>-</button>
+		</div>
+	)
+}
+
+export default Counter;
+```
+이제 지금까지 구현했던 UserList 관리를 Reducer를 사용하도록 수정해보자.

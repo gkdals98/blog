@@ -1,6 +1,6 @@
 ---
 title: Trend
-tags: ['front-end', 'etc']
+tags: ['frontend', 'etc']
 published: '2021-01-04'
 ---
 ## 2021년 Front end 트랜드

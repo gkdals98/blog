@@ -1,7 +1,7 @@
 ---
 title: Redux 기초 학습 1
-tags: ['react', 'redux']
-published: '2021-03-04'
+tags: ['react', 'basic']
+published: '2021-03-17'
 ---
 ## Redux 기초 학습 -1-
 React의 상태관리 라이브러리 Redux에 대해 궁금점들을 짚어나가며 기초를 다진다.

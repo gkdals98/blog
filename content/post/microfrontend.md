@@ -1,6 +1,6 @@
 ---
 title: Micro Frontends
-tags: ['front-end', 'etc']
+tags: ['frontend', 'etc']
 published: '2021-01-04'
 ---
 

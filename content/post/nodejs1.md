@@ -1,5 +1,6 @@
 ---
-title: Nuxt Blog 만들기 1
-tags: ['vue', 'nuxt']
-published: '2020-11-11'
+title: Node JS의 기초 -1-
+tags: ['BACKEND', 'NODE']
+published: '2020-03-17'
 ---
+## Node JS란 무엇인가
