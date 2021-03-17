@@ -273,7 +273,7 @@ function reducer(state, action) {
 	}
 }
 ```
-위 Reducer를 사용하면 한 가지 State에 대한 여러 변화를 한 곳에 정의하기도 쉽고 별도의 js파일로 이를 관리하기도 쉬우며 읽기도 편하다. 이제 위 Reducer를 의미있게 사용하기 위해, Counter.js에서 useReducer Hook을 사용해보자.
+위 Reducer를 사용하면 한 가지 State에 대한 여러 변화를 한 곳에 정의하기도 쉽고 별도의 js파일로 이를 관리하기도 쉬우며 읽기도 편하다. 물론 이게 useState의 상위호환이라는 뜻은 아니다. 한 State에 대해 여러 action이 존재할 경우 개발자의 관리가 더 용이하다는 이야기일 뿐. 이제 위 Reducer를 의미있게 사용하기 위해, Counter.js에서 useReducer Hook을 사용해보자.
 ```javascript
 import React, {useReducer} from 'react';
 
@@ -310,4 +310,136 @@ function Counter(){
 
 export default Counter;
 ```
-이제 지금까지 구현했던 UserList 관리를 Reducer를 사용하도록 수정해보자.
+이제 지금까지 구현했던 UserList 관리를 Reducer를 사용하도록 수정해보자. 우선 결과물은 아래와 같다.
+```javascript
+import React, {useRef, useMemo, useCallback, useReducer} from 'react';
+import UserList from './UserList';
+import CreateUser from './CreateUser';
+
+function countActiveUsers(users){
+	return users.filter(user => user.active).length;
+}
+
+const initialState = {
+	inputs : {username : '', email : ''},
+	users : [
+		{
+			id : 1,
+			username : 'CROMESS',
+			email : 'CROMESS@naver.com',
+			active : true
+		},
+		{
+			id : 2,
+			username : 'MMMC',
+			email : 'mmmC@naver.com',
+			active : false
+		},
+		{
+			id:3,
+			username : 'MUUU',
+			email : 'muuu@naver.com',
+			active : false
+		}
+	]
+}
+
+function reducer (state, action){
+	switch (action.type){
+		case "CHANGE_INPUT" :
+			return ({
+				...state,
+				inputs: {
+					...state.inputs,
+					[action.name] : action.value
+				}
+			})
+		case "CREATE_USER" :
+			return {
+				inputs : initialState.inputs,
+				users : state.users.concat(action.user)
+			}
+		case "REMOVE_USER" :
+			return {
+				inputs : state.inputs,
+				users : state.users.filter(user => user.id !== action.id )
+			}
+		case "TOGGLE_USER" :
+			return {
+				inputs : state.inputs,
+				users : state.users.map (
+					user => user.id === action.id ? { ...user, active: !user.active } : user
+				)
+			}
+		default :
+			return state
+	}
+}
+
+function App (){
+	const [state, dispatcher] = useReducer(reducer, initialState);
+	const nextId = useRef(4);
+
+	const { users } = state;
+	const {username, email} = state.inputs;
+
+	const onChange = useCallback( (e) => {
+		const {name, value} = e.target;
+
+		dispatcher({
+			type : "CHANGE_INPUT",
+			name,
+			value
+		})
+	}, []);
+
+	const onCreate = useCallback (() => {
+		const newUser = {
+			id : nextId,
+			username : username,
+			email : email,
+			active : false
+		}
+		dispatcher({
+			type : "CREATE_USER",
+			user : newUser
+		});
+		nextId.current += 1;
+	}, [username, email]);
+
+
+	const onRemove = useCallback((id) => {
+		dispatcher({
+			type : "REMOVE_USER",
+			id
+		});
+	}, []);
+
+	const onToggle = useCallback((id) => {
+		dispatcher	({
+			type : "TOGGLE_USER",
+			id
+		})
+	}, []);
+	//const count = countActiveUsers(users);
+	const count = useMemo(() => countActiveUsers(users), [users]);
+	return (
+		<>
+			<CreateUser
+				username={username}
+				email={email}
+				onChange={onChange}
+				onCreate={onCreate}/>
+			<UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+			<div>활성사용자 수 : {count}</div>
+		</>
+	)
+}
+
+export default App;
+```
+Reducer를 사용하는 방법에 대해서는 예제만 봐도 대충 알 수 있을 것이다. 코드 관리에 대해서 짚어보자.
++ 최초 state는 별도의 변수로 관리한다. 초기화 시 이를 참조하여 덮어씌운다.
++ return으로는 가급적 무명 메서드를 통한 연산 결과보다는 오브젝트를 넘긴다.... 라는건 여기서 한정된 이야기일까. 우선 그렇다고 하자.
++ 위와 같이 Object 단위로 return을 주기 위해. spread 문법을 적극 활용한다.
++ 바뀐 메서드들, 구체적으로 dispatcher를 통해 action을 넘겨주도록 바뀐 메서드들도 useCallback을 통한 관리가 가능하다. 다만 어떤 때에 useCallback이 유의미한지는 직접 Dev Tool을 통해 파악해보자.
