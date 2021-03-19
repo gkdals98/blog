@@ -5,7 +5,10 @@ published: '2021-03-18'
 ---
 
 ## React의 기초 학습 React + SCSS -1-
-React를 SCSS와 함께 사용하는데 단순히  좋은 문법들을 많이 제공한다. 그에 대해 학습해보자.
+velog의 포스팅을 보며 Study를 이어나가보자.
+https://react.vlpt.us/basic/03-first-component.html
+
+React를 SCSS와 함께 사용하는 팁들이 있다. 그에 대해 학습해보자.
 ```
 yarn add node-sass
 ```
