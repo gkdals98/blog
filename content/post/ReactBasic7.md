@@ -1,7 +1,7 @@
 ---
-title: React 기초 학습 6
+title: React 기초 학습 7
 tags: ['react', 'basic']
-published: '2021-03-18'
+published: '2021-03-23'
 ---
 
 ## React의 기초 학습 -7-
