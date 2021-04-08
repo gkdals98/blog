@@ -14,7 +14,7 @@ Redux는 Global State를 관리하기 위한 라이브러리이다. Facebook이 
 1. 복잡한 데이터를
 2. 복잡한 페이지에서
 3. 빈번하게 업데이트할 수록
-구조가 복잡하지만 다양한 미들웨어(redux-saga, redux-thunk, redux-devtools)를 사용해 코드 정리가 가능하고 디버깅 툴을 사용할 수 있는 Redux가 유리해진다. 퍼포먼스적으론 업데이트가 굉장히 자주 일어나는 경우가 아니라면 큰 차이가 없다. 선택은 자유이다. 추가로 Redux는 vue나 anguler에서도 사용 가능하다. 아래와 같이 시작해보자.
+구조가 복잡하지만 다양한 미들웨어(redux-saga, redux-thunk 등)를 사용해 코드 정리가 가능하고 디버깅 툴(Redux-devtools)을 사용할 수 있는 Redux가 유리해진다. 퍼포먼스적으론 업데이트가 굉장히 자주 일어나는 경우가 아니라면 큰 차이가 없다. 선택은 자유이다. 추가로 Redux는 vue나 anguler에서도 사용 가능하다. 우선은 react에서 사용하기 위해 아래와 같이 시작해보자.
 ```
 > npx create-react-app redux-demo
 > cd redux-demo
@@ -166,13 +166,76 @@ serviceWorker.unregister();
 ```
 
 #### Redux 개발자도구
-useContext와 Redux의 가장 중요한 차이점 중 하나로, redux 개발자 도구의 사용 가능 여부를 언급했었다. 
+useContext와 Redux의 가장 중요한 차이점 중 하나로, redux 개발자 도구의 사용 가능 여부를 언급했었다. project에 아래의 의존성을 추가해준다.
+```
+yarn add redux-devtools-extension
+```
+이후 크롬 웹스토어에서 Redux DevTools를 설치하여 사용하도록 하자.
 
-#### Redux tool kit
-https://velog.io/@velopert/using-redux-in-2021
-위 포스트를 읽으며 작업해보자.
+## Redux 미들웨어
+#### 기초
+redux 라이브러리에 기본 내장되어있는 Redux middleware는 Reducer의 순수성을 지켜주기 위한 도구이다. 대표적으론 위에서 언급한 ***redux-thunk, redux-saga*** 등이 있다. ***Reducer의 순수성을 해치는 작업***, 예를 들어 logging, 랜덤 값의 입력, 현재 시각 등을 미들웨어에서 처리하며 구체적으론 ***Redux의 Action dispatch가 일어날 때, action을 중간에서 가로채 중간 처리를 한다.*** middleware는 일반적으로 아래와 같은 템플릿으로 작성된다.
+```javascript
+const middleware = store => next => action => {
+	// 작업 내역
+}
+```
+위 템플릿을 하나하나 뜯어보자.
+* ***store*** - Redux store의 인스턴스를 의미한다. dispatch, getState, subscribe 등을 포함한다.
+* ***next*** - 액션을 다음 미들웨어에게 전달하는 함수. 미들웨어 내에서 next(action)을 호출해주어야한다. 호출하지 않는다면 action은 다음 미들웨어뿐만 아니라 reducer에게도 가지 않는다. 다만 권장되는지는 모르나 이를 활용하여 action을 처리하지 않는 방법도 있겠다.
+* ***action*** - 현재 처리중인 action.
 
-리덕스의 보일러 플레이트에는 액션 타입, 액션 생성 함수, 리듀서 이렇게 세 종류 코드가 들어가야하는데 toolkit은 이를 쉽게쉽게 만들어준다 한다. 포함하는 API 수도 많지 않아서 햇갈릴 일도 많이 없다. 아래 링크 참조.
+위 템플릿을 따라 작성된 velog의 예시 미들웨어는 아래와 같다.
+```javascript
+const myLogger = store => next => action => {
+	console.log(action);
+	const result = next(action); //재귀함수의 형태. 다음 middleware의 수행 결과를 받아온다. 재귀의 끝에는 dispatch가 있다.
+	return result; //최종적으로 dispatch(action)의 결과물을 리턴
+}
 
-#### 참고 link
-https://redux-toolkit.js.org/introduction/getting-started
+export default myLogger;
+```
+주석에 이미 적었지만 위 형태에서 주의깊게 봐야할 것은 아래와 같다.
+1. next(action)을 통해 다음 미들웨어를 호출하며 더 이상 거칠 미들웨어가 없다면 reducer를 호출한다. 즉 재귀함수 구조이다.
+2. 위 코드의 return은 result이다. dispatch에 가야할 action을 중간에 낚아채 처리하는 구조이기에 재귀 함수 끝, dispatch로 부터 받은 state를 넘겨넘겨 밖으로 빼주어야한다. 최종적으론 가장 앞에서 처리되는 미들웨어가 최종 반영되어야 할 state값을 result로 return해줄 것이다.
+
+위 미들웨어를 redux 상에 적용하기 위해선 createStore에 applyMiddleware 를 통해 작성한 미들웨어를 넘겨주어야한다. 주체적인 방법은 아래와 같다.
+***~/index.js***
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './modules';
+import myLogger from './middlewares/myLogger';
+
+const store = createStore(rootReducer, applyMiddleware (myLogger) );
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+예시코드로 Logger를 만들었지만 Redux엔 같은 기능을 하는 Logger 미들웨어가 존재한다. 아래와 같이 의존성을 추가해보자.
+```
+yarn add redux-Logger
+```
+추가했다면 import한 후 store를 생성하는 부분에 아래와 같이 예시로 만든 logger를 대체해주면 된다.
+```javascript
+import logger from 'redux-logger';
+
+const store = createStore(rootReducer, applyMiddleware(logger));
+```
+이제부터는 그 중 대표적인 middleware들을 살펴본다.
