@@ -1,5 +1,5 @@
 ---
-title: React 기초 학습 8 -
+title: React 기초 학습 8
 tags: ['react', 'basic']
 published: '2021-03-25'
 ---

@@ -330,11 +330,12 @@ async function loggingAlarm () {
 	console.log(data);
 }
 ```
-내가 이해하기 쉽게 적기 위해 우선은 ***await*** 를 짚어보자.
+순서가 반대지만 우선은 ***await*** 를 짚어보자.
 + await는 async 메서드 내에서만 사용할 수 있는 키워드이다.
 + await를 붙인 비동기 메서드는 위에서 언급한 Promise를 생성하는 메서드여야 한다. 다시말해 ***return으로 비동기 작업을 수행하는 Promise를 반환하여야한다.***
 + 위 두 조건이 만족되었을 때, await는 ***원래라면 resolve가 then으로 넘겨주었어야할 비동기 작업의 결과 값을 return한다.***
 + await 키워드가 있으면 await가 비동기 작업을 마치고 결과를 return하기 전까지 다음 동작이 실행되지 않는다.
+
 Promise 설명에 사용했던 increase를 들고와 설명해보자. 다시 말해 then을 써서 작성하면 아래와 같을 코드가
 ```javascript
 increase(0).then ( (n) => {

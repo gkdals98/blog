@@ -1,7 +1,8 @@
 <template>
 	<article>
-		<div id="post">
+
 			<Menu :allArticles="allArticles" :tag="tag"/>
+		<div id="post">
 
 			<h1 class="drag-false">{{article.title}}</h1>
     	<p class="date drag-false">{{ formatDate(article.published) }}</p>
@@ -49,47 +50,3 @@ export default {
 	}
 }
 </script>
-<style>
-h1{
-	font-size: 4em;
-	line-height: 1.8em;
-}
-.date{
-	font-size: 1.2em;
-	font-weight: bold;
-}
-.nuxt-content {
-		width: 55vw;
-		min-width: 55em;
-
-}
-.nuxt-content h2{
-	color : #001285;
-	line-height: 2.5em;
-}
-.nuxt-content h4{
-	line-height: 4em;
-	font-size: 1.2em;
-}
-.nuxt-content p{
-	line-height: 2em;
-	font-family: spoqahansanr;
-}
-.nuxt-content li{
-	line-height: 2em;
-	font-family: spoqahansanr;
-	color : #33237D;
-}
-#post{
-		width: 55vw;
-		min-width: 55em;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-}
-.depth{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-</style>
