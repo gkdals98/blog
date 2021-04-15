@@ -1,9 +1,9 @@
 ---
-title: 모던 자바스크립트 -1-
+title: 모던 자바스크립트 요약
 tags: ['frontend', 'basic']
 published: '2021-04-09'
 ---
-## 모던 자바스크립트 학습 -1-
+## 모던 자바스크립트 학습
 https://learnjs.vlpt.us/
 참고 블로그를 보며 모던 자바스크립트에 대해 간단히 정리하고자 한다.
 #### Truthy, Falsy와 단축 평가 논리 계산법

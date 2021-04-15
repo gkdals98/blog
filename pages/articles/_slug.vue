@@ -73,11 +73,11 @@ h1{
 }
 .nuxt-content p{
 	line-height: 2em;
-	font-family: nanumsr;
+	font-family: spoqahansanr;
 }
 .nuxt-content li{
 	line-height: 2em;
-	font-family: nanumsrr;
+	font-family: spoqahansanr;
 	color : #33237D;
 }
 #post{
