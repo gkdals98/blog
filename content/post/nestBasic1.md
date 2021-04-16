@@ -1,5 +1,5 @@
 ---
-title: Nest JS 기초 -1-
+title: Nest JS 기초 - 서론 및 Controller
 tags: ['BACKEND', 'Nest']
 published: '2020-04-15'
 ---
@@ -29,5 +29,20 @@ Nest Cli로 생성된 Nest 프로젝트에는 아래와 같은 파일들이 생�
 | app.service.js | 기본 서비스 |
 | main.ts | Module을 통해 백엔드 어플리케이션을 기동함 |
 
-각각을 살펴보자면 아래와 같다.
-+ ***Controller*** (app.controller.js) -
+Rest 통신에 대해서는 여기서 따로 필기하지 않겠다. 또한 Nest js는 Angular의 구조를 참조한 만큼 데코레이터를 사용한 문법도 많다. 일단 둘 다 안다는 전제로, 이번 포스트에서는 공식 문서의 Controller사용을 Study해보자.
+
+#### Controller
+컨트롤러는 Client의 요청을 처리하고 응답을 반환한다. nest가 컨트롤러 클래스를 인식하기 위해서는 Controller 데코레이터를 사용해야한다. nestcli의 사용 없이 공식문서를 따라 우선 간단한 컨트롤러 클래스를 직접 작성해보자.
+```javascript
+import {Controller, Get} from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+	@Get()
+	findAll(): string {
+		return 'This action returns all cats';
+	}
+}
+```
+찬찬히 살펴보자면 아래와 같다.
++ ***@Controller(cat)*** 데코레이터는 감싼 class를 nest가 컨트롤러로 인식하도록 한다. 여기서 cat은
