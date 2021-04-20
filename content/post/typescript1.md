@@ -1,5 +1,5 @@
 ---
-title: TypeScript 정리 1
+title: TypeScript 정리 1 - 서론
 tags: ['frontend', 'basic']
 published: '2020-04-19'
 ---

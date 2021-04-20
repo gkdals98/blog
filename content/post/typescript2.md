@@ -1,5 +1,5 @@
 ---
-title: TypeScript 정리 2
+title: TypeScript 정리 2 - 타입
 tags: ['frontend', 'basic']
 published: '2020-04-20'
 ---
