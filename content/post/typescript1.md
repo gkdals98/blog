@@ -45,7 +45,7 @@ console.log(4 / []);
 
 이렇게 TypeScript 런타임 상에서 코드를 작성한 후, 최종적으로 컴파일을 마치고 나면 일반 js 파일이 생성된다.
 
-#### TypeScript 모듈 빌드해보기
+#### TypeScript 연습환경 빌드해보기
 연습용 TypeScript 환경을 만드는 방법은 공식문서의 아래 링크에 나와있다.
 https://typescript-kr.github.io/pages/tutorials/typescript-in-5-minutes.html
 이를 typescript를 global에 설치하지 않고(연습 환경이 실 작업 환경에 최대한 영향을 주지 않도록) local에 설치한 후 수행하려면 아래와 같이 진행하면 된다. 우선 cmd 라인에 아래와 같이 진행하면 된다.
@@ -143,4 +143,4 @@ printPoint(rect); // prints "33, 3"
 이처럼 TypeScript의 타입은 휴먼 에러의 검사가 목적이기에 여타 언어의 타입과는 달리 상당히 러프하다. 이러한 타입의 널널함은 추후, any나 유니온 등을 통해 더 잘 드러난다.
 
 
-다음 포스트에선 TypeScript의 타입을 알아보고 인터페이스에 대한 이야기를 해보자.
+다음 포스트에선 TypeScript의 타입에 대한 대한 이야기를 해보자.
