@@ -82,6 +82,50 @@ function buildName(firstName: string, ...restOfName: string[]) {
 	return firstName + " " + restOfName.join(" ");
 }
 
-//위 나머지 매개변수 함수의 타입을 보여주기 위한 예시
+//위 나머지 매개변수 함수의 타입이 fname: string, ...reset: string[]) => string 임을 보여주기 위한 예시.
 function buildName2: (fname: string, ...reset: string[]) => string = buildName;
 ```
+
+#### typescript의 this에 대해
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this
+위 링크의 기반 지식을 나중에 포스팅하며 다시 정리해보자. 공식문서에선 우선 일반 function과 화살표 함수에서의 this의 참조 차이에 대해 설명하고있다. 그 내용을 알았다는 전재하에, 공식문서에서 말하는 this의 타입 문제에 대해 이야기해보자. 우선 문제점은 화살표 함수를 사용해 javascript의 고질적인 this 이슈를 해결했더라도 Typescript에선 ***function에서 this를 호출하면 type은 any가 된다*** 는 점이다. 이에 아래와 같이 function의 첫 째 인자로 this의 타입을 지정해줄 수 있다.
+```typescript
+function f (this : void) {
+	//예시는 this를 void로 줄 경우, this가 void 타입이 되어 this호출이 불가능함을 보여준다. 타입이 지정되었음을 가장 쉽게 보여주는 예제이다.
+}
+```
+
+이제 위와 같은 기법을 이용하여 공식 예제에서 this의 타입을 지정한 예를 보자. 아래와 같이 this는 Deck임을 지정하여 createCardPicker내에서 this를 통해 deck 객체의 배열을 참조할 수 있게 하였다.
+```javascript
+interface Card {
+	suit: string;
+	card: number;
+}
+
+interface Deck {
+	suits: string;
+	cards: number[];
+	createCardPicker(thisL Deck): () => Card;
+}
+
+let deck: Deck = {
+	suit: ["hearts", "spades", "clubs", "diamonds"],
+	cards: Array(52),
+
+	createCardPicker: function(this: Deck) {
+		return () => {
+			let pickedCard = Math.floor(Math.random() * 52);
+			let pickedSuit = Math.floor(pickedCard / 13);
+
+			return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+		}
+	}
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+
+alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+```
+
+다음으로 다루고 있는 것은 callback 메서드에서의 this사용에 대한 예제이다.
