@@ -128,4 +128,28 @@ let pickedCard = cardPicker();
 alert("card: " + pickedCard.card + " of " + pickedCard.suit);
 ```
 
-다음으로 다루고 있는 것은 callback 메서드에서의 this사용에 대한 예제이다.
+다음으로 다루고 있는 것은 callback 메서드에서의 this사용에 대한 예제이다. void를 통해 콜백메서드가 있는 클래스의 this 호출을 막거나, 화살표 함수를 통해 콜백 메서드 내의 this가 콜백이 있는 클래스를 참조하도록 한 것인데, 설명이 난해하기에 우선 이런 것도 있구나, 하고 넘어간다. javascript에선 this를 쓰면 혼란을 야기하는 경우가 많으니 this는 가급적 자주 쓰지 말자.
+
+#### Overloads
+javascript는 동적인 언어이기에, 같은 메서드에서 여러 input 타입이나 return 타입이 있을 수도 있다. 주제 자체가 타입스크립트에서 멀어지는 느낌도 들지만, 이 경우의 구현 방법은 타입스크립트 답게 오버로딩이다, 단, Java에서 보던 오버로딩과는 다르게 아래와 같이 function에 대한 몇 가지 사양을 적는 것으로 input과 return의 any에 제약을 둔다. 아래와 같다.
+```typescript
+let suits = ["hearts", "spades", "clubs", "diamonds"];
+
+function pickCard(x: {suit: string; card: number; }[]): number;
+function pickCard(x: number) : {suit: string; card: number; };
+function pickCard(x): any {
+	if(typeof x == "Object") {
+		let pickedCard = Math.floor(Math.random() * x.length);
+		return pickedCard;
+	}
+	else if (typeof x == "number") {
+		let pickedSuit = Math.floor(x / 13);
+		return { suit: suits[pickedSuit], card: x % 13 };
+	}
+}
+
+let myDeck = [{ suit : "diamonds", card: 2}, { suit: "spades", card: 10}, { suit: "hearts", card: 4}];
+let pickedCard1 = myDeck[pickCard(myDeck)];
+let pickedCard2 = pickCard(15);
+```
+다음 포스트에선 리터럴 타입을 다뤄보자.

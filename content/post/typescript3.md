@@ -50,6 +50,7 @@ printLabel(Obj);
 TypeScript의 인터페이스에서는 더 유연한 검사를 위해 선택적 프로퍼티란 문법을 제공한다. 이는 추후 학습할 option bags 패턴을 구사하는데 유용하다. 선택적 프로퍼티는 ```?``` 를 사용해 정의할 수 있으며 이렇게 정의된 프로퍼티는 어떤 조건에서만 존재하거나 없을 수도 있다. 공식 docs의 아래 예제를 보자.
 ```typescript
 interface SquareConfig {
+	//여기서 타입명시로서의 Object 내에 각 변수의 정의 사이의 구분은 '로 표기하고있음을 유의하자.'
 	color?: string;
 	width?: number;
 }
