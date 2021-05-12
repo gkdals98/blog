@@ -10,7 +10,8 @@ https://react.vlpt.us/basic/03-first-component.html
 
 #### 조건부 렌더링
 React의 조건부 렌더링은 코딩적인 방법으로 구현된다. 가령 isSpecial라는 이름의 props로 Child 컴포넌트 일부를 조건부 랜더링을 한다 치자. 우선 부모 컴포넌트는 아래와 같이 props를 전달할 것이다.
-***App.js***
+
++ ***App.js***
 ```javascript
 import React from 'react';
 import SimpleChild from './SimpleChild';
@@ -25,7 +26,8 @@ function App(){
 export default App;
 ```
 이 때 자식 컴포넌트에서 이를 활용해 조건부 렌더링을 하려면 아래와 같이 하면 된다. 추가적으로 default 값을 설정해 해당 값이 true가 아닐 때에는 부모 컴포넌트에서 값을 내려주지 않도록 하였다.
-***SimpleChild***
+
++ ***SimpleChild***
 ```javascript
 import React from 'react';
 

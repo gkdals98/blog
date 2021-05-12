@@ -6,7 +6,8 @@ published: '2021-03-04'
 
 ## React의 기초 학습 -1-
 Vue와 React가 생각보다 많이 달라 React를 기초부터 차근차근 배워야할 것 같다. 공식 문서와 함께 velog에서 잘 정리된 튜토리얼을 학습하려한다. 튜토리얼 프로젝트를 진행한 후의 목표는 간단한 게임 제작이다. 이하는 아래 Study log에서 사용하려하는 포스트의 주소이다. Study의 복기가 아닌 정확하고 친절한 정보가 필요하다면 아래의 링크를 참조하면 된다.
-https://react.vlpt.us/basic/03-first-component.html
+
++ https://react.vlpt.us/basic/03-first-component.html
 
 #### 프로젝트 생성
 시작하기 위해 우선 별도 환경 없는 튜토리얼 프로젝트를 만들려고 한다. 공식자료를 따라 create-react-app(이하 CRA)를 이용해 아래와 같이 프로젝트를 생성해보자.
@@ -178,7 +179,8 @@ export default App;
 하위 컴포넌트에 상위 컴포넌트의 값을 전달하고자 할 때, props를 통해 값을 받아올 수 있다. 주의할 점은 동적인 값을 전달할 때는 useState 와 함께 React Hook을 사용해야 한다는 점이다. Redux를 사용하는게 더 권장되는 방법일지는 모르겠지만... 아무튼 props는 페이지 초기화 시 받아온 변하지 않는 값을 랜더링할 때 사용된다. 예를 들자면 로그인된 유저의 닉네임 등을 로드할 때이다. 그런 값들은 페이지가 새로 로드되지 않는 한 바뀔 일이 없다. 이럴 때 Hook을 사용하는 것은 자원낭비이다.
 
 아무튼, 아래는 name이란 이름의 Props를 전달할 때의 문법이다.
-***App.js***
+
++ ***App.js***
 ```javascript
 import React from 'react';
 import SimpleChild from './SimpleChild'
@@ -195,7 +197,8 @@ export default App;
 ```
 
 아래는 자식 컴포넌트인 SimpleChild가 name을 전달받기 위한 문법이다. 함수형 컴포넌트의 전달인자로 props를 주고, JSX 내에선 props로 부터 변수 명을 참조한다.
-***SimpleChild.js***
+
++ ***SimpleChild.js***
 ```javascript
 import React from 'react';
 
@@ -211,7 +214,8 @@ export default SimpleChilde;
 ```
 
 props를 여러 개 전달하고자 할 때, 비구조화 할당 문법을 사용하면 위 코드를 조금 더 알기 쉽게 만들 수 있다. 아래는 그 예시이다.
-***App.js***
+
++ ***App.js***
 ```javascript
 import React from 'react';
 import SimpleChild from 'SimpleChild';
@@ -225,7 +229,8 @@ function App(){
 export default App;
 ```
 위와 같이 여러개의 props가 존재할 경우, 비구조화 할당 문법을 사용하면 아래와 같이 받을 수 있다. vue 사용자로서 햇갈리면 안되는건 inline Style 사용할 때 들어간 중괄호 두 개는 더블 머스테시 태그가 아니라는 점. 바닐라 javascript 코딩에서 원래 inline 스타일 지정을 어떻게 했는지, 그리고 react가 JSX상에 코드를 넣을 때 어떻게 했는지를 떠올려보면 왜 저렇게 됐는지 대충 알 것이다.
-***SimpleChild***
+
++ ***SimpleChild***
 ```javascript
 import React from 'react';
 
@@ -256,7 +261,8 @@ function SimpleChild (props){
 export default SimpleChild;
 ```
 props에 default 값을 지정해줄 수도 있다. 아래와 같이 컴포넌트의 속성으로 defaultProps를 정의하면 된다. 해당 컴포넌트에 name을 전달하지 않으면 default 값이 출력된다.
-***SimpleChild***
+
++ ***SimpleChild***
 ```javascript
 import React from 'react';
 

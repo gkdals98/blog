@@ -169,7 +169,8 @@ export default Users;
 
 #### 커스텀 Hook을 만들어 위 Reducer 사용부를 재사용하기
 위 통신 과정을 하나의 Hook으로 관리하기 위해 아래와 같은 코드를 구현하였다는데...
-***useAsync.js***
+
++ ***useAsync.js***
 ```javascript
 import {useReducer, useEffect} from 'react';
 
@@ -232,7 +233,8 @@ function useAsync (callback, deps=[], skip=false) {
 export default useAsync;
 ```
 위와 같은 Hook을 써 구현한 Users의 코드는 아래와 같다.
-***Users.js***
+
++ ***Users.js***
 ```javascript
 import React from 'react';
 import axios from 'axios';
@@ -277,7 +279,8 @@ export default Users;
 상기 커스텀 Hook을 사용해 개별 유저를 부르는 코드를 작성해보자. 현재 테스트에 사용하고 있는 서버는 아래와 같이 요청하면 해당 id의 User를 반환한다.
 + https://jsonplaceholder.typicode.com/users/1
 이를 호출하는 예제 구현을 위해 새로 User 컴포넌트를 만든다.
-***User.js***
+
++ ***User.js***
 ```javascript
 import React from 'react';
 import axios from 'axios';
@@ -311,7 +314,8 @@ function User ({id}) {
 export default User;
 ```
 우선 짚고 넘어갈 주의 사항은 ***getUsers 내의 URL을 감쌀 때 `(GRAVE)를 사용한 점이다.*** Grave로 처리된 String는 큰 따옴표, 작은 따옴표와 달리 ```${}```를 사용한 변수 참조 등이 가능하다. vue에서도 꽤 자주 썼던 것 같은데. 아무튼 위 User를 포함하는 Users의 코드는 아래와 같다.
-***Users.js***
+
++ ***Users.js***
 ```javascript
 import React, {useState} from 'react';
 import axios from 'axios';
@@ -362,7 +366,8 @@ yarn add react-async
 
 #### ContextAPI의 적용
 아래는 Velog의 예시 Code의 1단계이다. Velog Study의 2단계에서 getData를 수행하는 부분에서 비슷한 코드가 반복되는 점을 지적하며 이를 리펙토링한 코드를 다루지만 리펙토링 코드는 우선 학습만 하고 Study 기록은 하지 않고 넘어가자. 아래는 기본 코드에서 Context를 어떻게 구성하는지 예시이다.
-***UserContext***
+
++ ***UserContext***
 ```javascript
 import React, {createContext, useReducer, useContext} from 'react';
 import axios from 'axios';
@@ -504,7 +509,8 @@ export function useUsersDispatch() {
 4. 3을 이용해 커스텀 Hook을 두 개 정의해 state 및 dispatch 함수를 쉽게 참조할 수 있도록 했다.
 
 위 Context를 이용해 Users 컴포넌트의 데이터를 받아와보자. 우선 App.js에서 위 Context의 Porvider를 불러와 Users를 감싸준다.
-***App.js***
+
++ ***App.js***
 ```javascript
 import './App.css';
 import Users from './Users';
@@ -521,7 +527,8 @@ function App() {
 export default App;
 ```
 이후 Users 컴포넌트에서는 Context에 정의된 커스텀 Hook을 들고와서 Provider 및 데이터 fetch 메서드를 참조하면 된다.
-***Users.js***
+
++ ***Users.js***
 ```javascript
 import React, {useState} from 'react';
 import {useUsersState, useUsersDispatch, getUsers} from './UsersContext';
@@ -563,7 +570,8 @@ function Users () {
 export default Users;
 ```
 User 또한 비슷하다.
-***User.js***
+
++ ***User.js***
 ```javascript
 import React, {useEffect} from 'react';
 import {useUsersState, useUsersDispatch, getUser} from './UsersContext';

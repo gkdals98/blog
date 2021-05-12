@@ -92,7 +92,8 @@ function reducer (state, action){
 }
 ```
 여기까지 반영된 코드 전문은 아래와 같다.
-***App.js***
+
++ ***App.js***
 ```javascript
 import React, {useMemo, useReducer} from 'react';
 import UserList from './UserList';
@@ -167,7 +168,7 @@ function App (){
 
 export default App;
 ```
-***UserList.js***
++ ***UserList.js***
 ```javascript
 import React, {useEffect, useContext} from 'react';
 import { UserDispatch } from './App';
@@ -225,7 +226,7 @@ function UserList ({users}){
 
 export default React.memo ( UserList );
 ```
-***CreateUser.js***
++ ***CreateUser.js***
 ```javascript
 import React, {useRef, useContext} from 'react';
 import useInputs from './hooks/useInputs';

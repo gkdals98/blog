@@ -76,7 +76,8 @@ function App () {
 
 #### 랜더링 되는 배열의 CRUD
 지금까지 배운 내용들을 활용해 랜더링 되는 배열의 CRUD 코드를 살펴보자. 우선 코드 전문이다. UserList부터 살펴보자.
-***UserList.js***
+
++ ***UserList.js***
 ```javascript
 import React from 'react';
 
@@ -127,7 +128,8 @@ export default UserList;
 
 UserList를 보면, props를 통해 users 이외에도 onRemove, onToggle을 받아온 것을 볼 수 있다. 여기만 봐도 대충 감이 오겠지만 이는 Callback 함수이다. 즉, 리엑트에서는 자식이 부모의 값을 수정할 때, 콜백 메서드를 통해 이를 수행한다. 따지고보면 vue에서도 event와 함께 값을 전달했으니 구현 방법은 어느정도 동일하다 볼 수 있겠다. 다만 리엑트가 코드에 좀 더 직접적으로 관여할 수 있다는 느낌이 들 뿐. 이제 Callback을 생각하며 마찬가지로 Callback을 통해 Create를 수행할 CreateUser 컴포넌트를 보자.
 
-***CreateUser***
+
++ ***CreateUser***
 ```javascript
 import React from 'react';
 
@@ -144,7 +146,7 @@ export default CreateUser;
 ```
 마찬가지로 Callback을 통해 onChange, onCreate를 수행해 부모인 App의 값을 바꾸는 형태이다. 값을 저장하는 부분은 부모 컴포넌트인 App에서 볼 예정이다. 이제 App.js를 보자.
 
-***App.js***
++ ***App.js***
 ```javascript
 import React, {useRef, useState} from 'react';
 import UserList from './UserList';
