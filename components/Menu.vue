@@ -63,7 +63,7 @@ export default {
 					li.push(this.postdata[i]);
 				}
 			}
-			li.sort((a,b) => (a.published > b.published) ? -1 : 1)
+			li.sort((a,b) => (a.published > b.published) ? 1 : -1)
 			return li;
 		}
   },

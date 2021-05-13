@@ -17,7 +17,7 @@ export default {
 		const article = await $content('post', params.slug).fetch()
 
 		//데이터 표시를 위해 사용할 값들
-		const postdata = await $content('post').only(['tags', 'title', 'hidden', 'slug']).fetch();
+		const postdata = await $content('post').only(['tags', 'title', 'published', 'hidden', 'slug']).fetch();
 
 		return {
 			article,
