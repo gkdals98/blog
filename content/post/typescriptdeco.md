@@ -1,6 +1,6 @@
 ---
 title: TypeScript 정리 - Decorator
-tags: ['frontend', 'basic']
+tags: ['Frontend', 'basic']
 published: '2021-04-16'
 ---
 ## javascript의 데코레이터
