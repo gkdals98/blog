@@ -1,7 +1,7 @@
 ---
 title: TypeScript 정리 6 - 클래스
 tags: ['Frontend', 'Basic']
-published: '2020-05-04'
+published: '2021-05-04'
 hidden: 'true'
 ---
 ## TypeScript의 Class

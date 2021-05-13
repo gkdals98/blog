@@ -1,7 +1,7 @@
 ---
 title: TypeScript 정리 4 - 함수
 tags: ['Frontend', 'Basic']
-published: '2020-04-23'
+published: '2021-04-23'
 hidden: 'false'
 ---
 ## TypeScript의 함수

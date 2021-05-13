@@ -1,7 +1,7 @@
 ---
 title: TypeScript 정리 1 - 서론
 tags: ['Frontend', 'Basic']
-published: '2020-04-19'
+published: '2021-04-18'
 hidden: 'false'
 ---
 ## TypeScript 개요

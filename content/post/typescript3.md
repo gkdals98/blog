@@ -1,7 +1,7 @@
 ---
 title: TypeScript 정리 3 - 인터페이스
 tags: ['Frontend', 'Basic']
-published: '2020-04-20'
+published: '2021-04-20'
 hidden: 'false'
 ---
 ## TypeScript의 인터페이스

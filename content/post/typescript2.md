@@ -1,7 +1,7 @@
 ---
 title: TypeScript 정리 2 - 타입
 tags: ['Frontend', 'Basic']
-published: '2020-04-20'
+published: '2021-04-19'
 hidden: 'false'
 ---
 ## TypeScript의 타입
