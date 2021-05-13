@@ -2,6 +2,7 @@
 title: MySQL Tip 모음 1
 tags: ['Infra', 'Database']
 published: '2021-03-03'
+hidden: 'true'
 ---
 
 #### MYSQL 테이블 및 데이터 베이스 크기 보기

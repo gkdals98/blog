@@ -2,6 +2,7 @@
 title: TypeScript 정리 - Decorator
 tags: ['Frontend', 'basic']
 published: '2021-04-16'
+hidden: 'true'
 ---
 ## javascript의 데코레이터
 Decorator는 javascript의 정규 문법은 아니지만 Typescript에서 사용 가능하며 javascript에선 현재 표준화가 진행중이라고 한다. 정확히는 디자인 패턴의 데코레이터 패턴에서 말하는 데코레이터 함수를 의미하며 javascript의 특성 상, 그 원리를 한 번은 짚고 넘어가는 것이 좋다. 아래 링크를 중점으로 살펴보자.

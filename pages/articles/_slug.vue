@@ -1,7 +1,7 @@
 <template>
 	<article>
 
-			<Menu :allArticles="allArticles" :tag="tag"/>
+			<Menu :postdata="postdata"/>
 		<div id="post">
 
 			<h1 class="drag-false">{{article.title}}</h1>
@@ -26,18 +26,16 @@ export default {
 
 	async asyncData({$content, params}){
 		//현재 화면에 표시될 article
-		//params.slug를 통해 현재 경로를 입력받아 post 디렉터리에서 article을 read
+		//params.slug를 통해 현재 참조중 인 경로를 알아낸다.
+		//이후 post 디렉터리에서 article을 read
 		const article = await $content('post', params.slug).fetch()
 
-		//메뉴바에 표시될 테그들
-		const tag = await $content('post').only(['tags']).fetch();
-
-		const allArticles = await $content('post').fetch();
+		//데이터 표시를 위해 사용할 값들
+		const postdata = await $content('post').only(['tags', 'title', 'hidden', 'slug']).fetch();
 
 		return {
 			article,
-			tag,
-			allArticles,
+			postdata,
 		}
 	},
 

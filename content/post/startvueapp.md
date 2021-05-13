@@ -2,6 +2,7 @@
 title: Starting Vue Project
 tags: ['Frontend', 'Vue']
 published: '2021-01-04'
+hidden: 'true'
 ---
 
 ## Vue App 초기화하기

@@ -2,6 +2,7 @@
 title: TypeScript 정리 4 - 함수
 tags: ['Frontend', 'Basic']
 published: '2020-04-23'
+hidden: 'false'
 ---
 ## TypeScript의 함수
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.

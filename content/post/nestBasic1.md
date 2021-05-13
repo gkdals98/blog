@@ -2,6 +2,7 @@
 title: Nest JS 기초 - 서론 및 Controller
 tags: ['Backend', 'Node']
 published: '2020-04-15'
+hidden: 'true'
 ---
 ## Nest Js 기초
 nest.js를 통해 Backend를 구축하는 법을 알아보려한다.

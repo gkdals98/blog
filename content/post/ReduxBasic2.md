@@ -2,6 +2,7 @@
 title: React 기초 학습 - Redux 2
 tags: ['Frontend', 'React']
 published: '2021-04-15'
+hidden: 'true'
 ---
 ## Redux 기초 학습 -2-
 https://react.vlpt.us/redux-middleware/04-redux-thunk.html

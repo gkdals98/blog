@@ -2,6 +2,7 @@
 title: React 기초 학습 - Class 컴포넌트
 tags: ['Frontend', 'React']
 published: '2021-04-30'
+hidden: 'true'
 ---
 
 ## React의 기초 학습

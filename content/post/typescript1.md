@@ -2,6 +2,7 @@
 title: TypeScript 정리 1 - 서론
 tags: ['Frontend', 'Basic']
 published: '2020-04-19'
+hidden: 'false'
 ---
 ## TypeScript 개요
 TypeScript의 수많은 장점들을 생각하지 않더라도, 프론트엔드와 노드의 생태계가 점점 TypeScript 친화적으로 변하고있기에 TypeScript는 필수가 되었다. 이에 기존에는 러프하게만 알고있던 TypeScript를 보다 정확하게 알아야할 필요가 있다고 느껴 TypeScript의 스터디를 시작하고자 한다. 참고할 자료는 공식 Docs이다.

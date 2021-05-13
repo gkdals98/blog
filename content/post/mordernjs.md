@@ -2,6 +2,7 @@
 title: 모던 자바스크립트 요약
 tags: ['Frontend', 'Basic']
 published: '2021-04-09'
+hidden: 'false'
 ---
 ## 모던 자바스크립트 학습
 https://learnjs.vlpt.us/

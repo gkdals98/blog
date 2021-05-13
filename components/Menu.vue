@@ -24,7 +24,7 @@
 
 export default {
   name : 'Menu',
-	props : ['tag', 'allArticles'],
+	props : ['postdata'],
 	data : function (){
 		return {
 			current_depth1 : "",
@@ -35,29 +35,32 @@ export default {
   computed : {
 		depth1 : function(){
 			var li = [];
-			for(var i = 0; i < this.tag.length; i++){
-				if(!li.includes(this.tag[i].tags[0])){
-					li.push(this.tag[i].tags[0]);
+			for(var i = 0; i < this.postdata.length; i++){
+				if(!li.includes(this.postdata[i].tags[0]) && this.postdata[i].hidden !== "true"){
+					li.push(this.postdata[i].tags[0]);
 				}
 			}
 			return li.sort();
 		},
 		depth2 : function(){
 			var li = [];
-			for(var i = 0; i < this.tag.length; i++){
-				if(this.current_depth1 == this.tag[i].tags[0] && !li.includes(this.tag[i].tags[1])){
-					li.push(this.tag[i].tags[1]);
+			for(var i = 0; i < this.postdata.length; i++){
+				if(this.current_depth1 == this.postdata[i].tags[0] &&
+					!li.includes(this.postdata[i].tags[1]) &&
+				 	this.postdata[i].hidden !== "true"){
+					li.push(this.postdata[i].tags[1]);
 				}
 			}
 			return li.sort();
 		},
 		Articles : function(){
 			var li = [];
-			for(var i = 0; i < this.allArticles.length; i++){
-				if(this.current_depth1 == this.allArticles[i].tags[0] &&
-					this.current_depth2 == this.allArticles[i].tags[1] &&
-					!li.includes(this.allArticles[i])){
-					li.push(this.allArticles[i]);
+			for(var i = 0; i < this.postdata.length; i++){
+				if(this.current_depth1 == this.postdata[i].tags[0] &&
+					this.current_depth2 == this.postdata[i].tags[1] &&
+					!li.includes(this.postdata[i])){
+						console.log(this.postdata[i]);
+					li.push(this.postdata[i]);
 				}
 			}
 			li.sort((a,b) => (a.published > b.published) ? -1 : 1)

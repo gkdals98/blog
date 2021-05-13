@@ -11,7 +11,7 @@
           class="link"
         >
 	        <div>
-	          <h2 class="article-title" v-if="!article.hidden">
+	          <h2 class="article-title" v-if="article.hidden !== 'true'">
 	            <p>{{ article.title }}</p>
 							<p>{{ article.published}}</p>
 	          </h2>

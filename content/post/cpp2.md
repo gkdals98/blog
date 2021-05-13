@@ -2,6 +2,7 @@
 title: C++ 요약 - 2
 tags: ['Language', 'C']
 published: '2021-04-28'
+hidden: 'true'
 ---
 
 ## C++의 문법 일부 요약
