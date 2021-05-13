@@ -1,5 +1,5 @@
 ---
 title: MongoDB Basic
-tags: ['Environment', 'Database']
+tags: ['Infra', 'Database']
 published: '2021-02-02'
 ---

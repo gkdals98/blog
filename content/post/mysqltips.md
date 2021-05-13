@@ -1,6 +1,6 @@
 ---
 title: MySQL Tip 모음 1
-tags: ['vue', 'nuxt']
+tags: ['Infra', 'Database']
 published: '2021-03-03'
 ---
 

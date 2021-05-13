@@ -1,6 +1,6 @@
 ---
 title: TypeScript 정리 5 - 리터럴 타입, 유니언, 교차 타입
-tags: ['frontend', 'basic']
+tags: ['Frontend', 'Basic']
 published: '2020-05-03'
 ---
 ## TypeScript의 리터럴, 유니언, 교차타입

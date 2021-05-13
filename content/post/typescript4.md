@@ -1,6 +1,6 @@
 ---
 title: TypeScript 정리 4 - 함수
-tags: ['frontend', 'basic']
+tags: ['Frontend', 'Basic']
 published: '2020-04-23'
 ---
 ## TypeScript의 함수

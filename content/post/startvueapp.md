@@ -1,6 +1,6 @@
 ---
 title: Starting Vue Project
-tags: ['vue', 'basic']
+tags: ['Frontend', 'Vue']
 published: '2021-01-04'
 ---
 

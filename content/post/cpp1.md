@@ -1,6 +1,6 @@
 ---
 title: C++ 요약 - 1
-tags: ['C++', 'basic']
+tags: ['Language', 'C']
 published: '2021-04-26'
 ---
 
@@ -100,11 +100,11 @@ class TextMgr
 {
 	public:
 		TextMgr();
-		virtual ~TextMgr();
+		virtual ~TextMgr(); //virtual은 바로 다음에 설명할 예정
 		int someInt;
 };
 ```
-위와 같이 Class를 정의해둔 header 파일이 있다 치고, 그에 대한 구체적인 생성자 및 소멸자의
+위와 같이 Class를 정의해둔 header 파일이 있다 치고, 그에 대한 생성자 및 소멸자의 구현 예시는 아래와 같다.
 ***cpp 파일***
 ```cpp
 TextMgr::TextMgr()
@@ -117,11 +117,13 @@ TextMgr::~TextMgr()
 	delete someInt;
 };
 ```
+여기서 사용된 delete는 cpp의 키워드로 개체에 할당된 메모리를 해제한다. 즉, 예문의 소멸자 내에서 사용한 ```delete someInt```는 TextMgr에 할당된 someInt라는 변수를 할당 해제하기 위한 것이다.
 
 #### virtual
+virtual 키워드는 가상 함수를 선언하기 위해 사용된다. ***virtual로 선언된 함수는 실행시간에 그 값이 결정된다.*** 구체적으로, 부모클래스안에 virtual 함수를 선언하고 이를 상속하는 자식클래스들 내에서 virtual 함수를 구현한 뒤, 프로그램 실행 중 자식에 구현된 함수를 호출하기 위함이다.
+
+
 
 #### static
-
-#### delete
 
 #### 화살표 (->)

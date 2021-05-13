@@ -1,6 +1,6 @@
 ---
 title: 모던 자바스크립트 요약
-tags: ['frontend', 'basic']
+tags: ['Frontend', 'Basic']
 published: '2021-04-09'
 ---
 ## 모던 자바스크립트 학습

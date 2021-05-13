@@ -1,6 +1,6 @@
 ---
 title: React 기초 학습 - Redux 1
-tags: ['react', 'basic']
+tags: ['Frontend', 'React']
 published: '2021-03-30'
 ---
 ## Redux 기초 학습 -1-

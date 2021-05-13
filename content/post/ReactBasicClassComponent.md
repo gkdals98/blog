@@ -1,6 +1,6 @@
 ---
 title: React 기초 학습 - Class 컴포넌트
-tags: ['react', 'basic']
+tags: ['Frontend', 'React']
 published: '2021-04-30'
 ---
 

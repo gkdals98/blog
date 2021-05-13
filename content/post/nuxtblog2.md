@@ -1,6 +1,6 @@
 ---
 title: Nuxt Blog 만들기 2
-tags: ['vue', 'nuxt']
+tags: ['Frontend', 'Vue']
 published: '2020-11-20'
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 참조용 링크들
-tags: ['common', 'basic']
+tags: ['Etc', 'Article']
 published: '2021-04-13'
 ---
 ## 참조할 링크들
@@ -63,3 +63,9 @@ node 15버전에서의 sass-loader와 node-sass 호환. 아래 버전으로 무�
 
 ##### Javascript에서의 strict 모드와 sloppy 모드의 차이.
 + https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode
+
+##### Elastic Search에 대한 Naver Blog 가이드
+https://d2.naver.com/helloworld/273788
+
+##### GraphQL 개념에 대한 카카오 테크 블로그
+https://tech.kakao.com/2019/08/01/graphql-basic/
