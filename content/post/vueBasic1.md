@@ -1,7 +1,7 @@
 ---
 title: Vue의 컴포넌트 기능들
 tags: ['Frontend', 'Vue']
-published: '2020-05-12'
+published: '2021-05-12'
 hidden: 'true'
 ---
 ## Vue 컴포넌트의 지원 기능들

@@ -1,7 +1,7 @@
 ---
 title: Nest JS 기초 - 서론 및 Controller
 tags: ['Backend', 'Node']
-published: '2020-04-15'
+published: '2021-04-15'
 hidden: 'true'
 ---
 ## Nest Js 기초
