@@ -68,9 +68,9 @@ let user = "TypeScript";
 
 document.body.textContent = greeter(user);
 ```
-이를 js로 컴파일하기 위해서는 cmd에서 tsdemo 디렉터리로 이동한 후 아래와 같이 하면 된다.
+이를 js로 컴파일하기 위해서는 cmd에서 프로젝트 디렉터리의 src로 이동한 후 아래와 같이 하면 된다.
 ```
-./node_modules/.bin/tsc src/index.ts
+npx tsc index.ts
 ```
 문제가 없다면 src 디렉터리 내에 index.js 파일이 생긴 것을 확인할 수 있을 것이다. 이후 아래 코드를 그대로 복사해서 붙여넣은 후 src 디렉터리 내에 index.html란 이름으로 저장한다.
 ```html

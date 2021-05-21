@@ -70,3 +70,6 @@ https://d2.naver.com/helloworld/273788
 
 ##### GraphQL 개념에 대한 카카오 테크 블로그
 https://tech.kakao.com/2019/08/01/graphql-basic/
+
+##### 아직 브라우저 미지원이지만 향후 사용하게될 webp 이미지
+https://namu.wiki/w/WebP
