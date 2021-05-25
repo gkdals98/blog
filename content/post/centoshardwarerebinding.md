@@ -9,15 +9,15 @@ hidden: 'true'
 현재 사용 중인 Linux 서버에서 kvm 이미지 등의 저장을 위해 파티션을 새로 지정해야할 일이 생겼다. 이에
 
 #### Hardware의 현재 파티션 확인
-아래 위치를 확인해보자. 해당 파일은 파일 시스템 정보를 담고있다.
+우선 아래 명령어를 이용해 실제 hdd 정보를 확인한다.
 ```
-root]$ cat /etc/fstab
-/dev/mapper/centos-root /                       									xfs     defaults        0 0
-UUID=5a6ee5d1-66a9-4b1c-8c6e-e4db2a95b574 /boot                   xfs     defaults        0 0
-/dev/mapper/centos-home /home                   									xfs     defaults        0 0
-/dev/mapper/centos-swap swap                    									swap    defaults        0 0
+root]$ lsblk -d -o name,type,size        
+NAME TYPE   SIZE
+sda  disk 279.4G
+sdb  disk 279.4G
+sr0  rom   1024M
 ```
-각 탭은 순서대로 파일 시스템 장치명, 마운트 포인트, 파일 시스템 종류, 옵션, dump설정, 파일 점검 옵션이다. 이제 어디서 파티션을 할당받을지 정하기 위해 아래 명령어로 각 마운트 별 용량을 채크해보자.
+이제 어디서 파티션을 할당받을지 정하기 위해 아래 명령어로 각 마운트 별 용량을 채크해보자.
 ```
 root]$ df -hl
 Filesystem               Size  Used Avail Use% Mounted on
@@ -32,5 +32,6 @@ tmpfs                    6.3G     0  6.3G   0% /run/user/1007
 tmpfs                    6.3G   32K  6.3G   1% /run/user/1001
 tmpfs                    6.3G     0  6.3G   0% /run/user/1012
 ```
+여기서 tmpfs는 임시 파일 스토리지로 ***휘발성 메모리에 저장된다.*** 즉 hdd의 용량을 차지하진 않는다. 당장은 home에 여유공간이 있는 것으로 보인다.
 
 #### Hardware Remount
