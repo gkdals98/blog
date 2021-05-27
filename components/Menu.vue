@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div id='menu'>
+		<div class='menu'>
 			<div class="depth multi-button">
 				<button class="copy drag-false"
 					v-for="(item, index) in depth1"
@@ -18,6 +18,7 @@
 		</div>
 
 		<ArticleList :articles="Articles" v-if="show_page"/>
+		<div ref="pageBottom"></div>
 	</div>
 </template>
 <script>
@@ -50,6 +51,9 @@ export default {
 				 	this.postdata[i].hidden !== "true"){
 					li.push(this.postdata[i].tags[1]);
 				}
+			}
+			if(this.isFooter){
+				this.scrollToEnd();
 			}
 			return li.sort();
 		},
@@ -87,14 +91,14 @@ export default {
 				this.current_depth2 = item;
 				this.show_page = true;
 			}
-	  }
+	  },
 	},
 
 }
 </script>
 
 <style scoped lang="scss">
-#menu{
+menu{
 	margin-top: 0.5em;
 	display: flex;
 	flex-direction: column;

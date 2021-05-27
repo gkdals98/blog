@@ -24,7 +24,7 @@ root 유저의 home 디렉터리.
 
 #### etc
 etc 디렉터리는 주로 시스템의 부팅 내지는 셧다운 시 수행되어야하는 작업 스크립트 내지는 설정 파일들이 위치한다. mysql을 설치할 때 mysqld 파일과 cnf 파일을 이 밑에 놓는 이유도 etc가 그런 용도의 디렉터리이기 때문이다. docker, httpd, firewalld, libvirt, cron.d, ntp, vsftpd 등등 익숙한 이름들이 많이 보이지만 그것들은 전부 해당 툴에 종속적인 설명이 될 것이다. 따라서 운영에 관련된 디렉터리만 몇 가지 살펴보고자 한다.
-+ ***/etc/sysconfig/network-scripts*** : rhel 기반 os의 ip 설정 스크립트가 존재하는 디렉터리. 기동시 해당 디렉터리를 읽어 각 포트의 IP를 할당한ㄷ.
++ ***/etc/sysconfig/network-scripts*** : rhel 기반 os의 ip 설정 스크립트가 존재하는 디렉터리. 기동시 해당 디렉터리를 읽어 각 포트의 IP를 할당한다.
 + ***/etc/init.d*** : System V init tools 또는 그에 준하는 프로세스가 사용하는 스크립트를 담고있다. init tool은 아래 설명에서 서술할 systemd 로 거의 대체되었지만, 오래된 서버에서는 여전히 살아있다. 내가 사용할 때에는 시스템 기동 시에 실행될 서비스의 시작 스크립트를 이 곳에 넣어놨다. 대표적으론 mysqld 파일이 이 위치에 있었다. 여기 올라간 service 파일은 systemctl 명령어 또는 service 명령어를 통해 관리 가능하다.
 + ***/etc/systemd/system*** : 위에 언급한 systemd 가 사용하는 정식 디렉터리. 위 디렉터리와 마찬가지로 해당 디렉터리의 스크립트는 systemd 프로세스를 이용해 서비스로 등록할 수 있다.
 

@@ -1,45 +1,54 @@
 
 @font-face {
   font-family: 'Heebo';
+  font-display: fallback;
   src: local('Heebo'), url(../fonts/Heebo-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Heebo-b';
+  font-display: fallback;
   src: local('Heebo-b'), url(../fonts/Heebo-Bold.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Lato';
+  font-display: fallback;
   src: local('Lato-Regular'), url(../fonts/Lato-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Lato-b';
+  font-display: fallback;
   src: local('Lato-Bold'), url(../fonts/Lato-Bold.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: "pinkblue";
+  font-display: fallback;
 	src: local('PinkBlue'), url(../fonts/PinkBlue.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: "iropke";
+  font-display: fallback;
 	src: local('IropkeBatangM'), url(../fonts/IropkeBatangM.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: "nanumsr";
+  font-display: fallback;
 	src: local('NanumSquareR'), url(../fonts/NanumSquareR.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: "nanumsrr";
+  font-display: fallback;
 	src: local('NanumSquareRoundR'), url(../fonts/NanumSquareRoundR.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: "spoqahansanr";
+  font-display: fallback;
 	src: local('SpoqaHanSanNeoR'), url(../fonts/SpoqaHanSansNeo-Regular.ttf) format('truetype');
 }

@@ -2,13 +2,15 @@
 	<article>
 
 			<Menu :postdata="postdata"/>
-		<div id="post">
+			<div id="post">
 
-			<h1 class="drag-false">{{article.title}}</h1>
-    	<p class="date drag-false">{{ formatDate(article.published) }}</p>
-			<nuxt-content class="post-area" :document="article"/>
+				<h1 class="drag-false">{{article.title}}</h1>
+    		<p class="date drag-false">{{ formatDate(article.published) }}</p>
+				<nuxt-content class="post-area" :document="article"/>
 
-		</div>
+			</div>
+
+			<Menu :postdata="postdata"/>
 	</article>
 </template>
 
