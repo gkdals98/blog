@@ -132,8 +132,15 @@ virbr0          8000.5254005a9937       yes             virbr0-nic
 ```
 이제 bridge network 설정이 완료되었다.
 
-#### KVM Image의 백업 (작성 중)
-우선 정식 절차를 알아보기 전에, 설정 xml과 kvm 이미지 파일은 아래의 위치에 있다. 이걸로 백업하라는 소리는 ***절대*** 아니지만 내 경우엔 virsh가 에러를 일으킨 경우라 혹시몰라 알아봐야했다.
+#### KVM Image 생성
+우선 필요한 iso 파일을 아래 디렉터리(고정은 아니지만 일반적으로 사용됨)에 가져다 놓는다.
+```
+root]# cd /var/lib/libvirt/boot
+root]# wget https://mirrors.kernel.org/centos/7.4.1708/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
+```
+
+#### KVM Image의 백업
+설정 xml과 kvm 이미지 파일은 아래의 위치에 있다. 의외로 이 파일 두 개를 통째로 옮겨서 백업하는 것 같다. ***이렇게 백업할 땐 백업 전에 반드시 kvm을 정지시켜야한다.*** 이런 방법 이외에도 툴을 이용해 백업하는 방법이 있는 것 같지만 툴 사용에 비용을 지불해야한다.
 + ***Image의 위치***
 ```
 root]# cd /var/lib/libvirt/images/
@@ -161,3 +168,5 @@ drwx------. 3 root root   40 Nov 17 01:30 networks/
 
 #### Image 리사이징
 https://computingforgeeks.com/how-to-extend-increase-kvm-virtual-machine-disk-size/
+https://www.cyberciti.biz/faq/create-vm-using-the-qcow2-image-file-in-kvm/
+https://serverfault.com/questions/438083/how-to-decrease-the-size-of-a-kvm-virtual-machine-disk-image
