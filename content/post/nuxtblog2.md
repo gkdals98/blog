@@ -75,3 +75,5 @@ export default {
 }
 ```
 위와 같이 fetch를 받아오기 전, 받아올 값들에 다양한 조건을 걸 수 있으며 완성된 값은 return을 통해 내보내주면 컴포넌트 내에서 일반 data처럼 접근 가능해진다.
+
+http://ccambo.github.io/Dev/Nuxt/6.how-to-use-axios-in-nuxt/

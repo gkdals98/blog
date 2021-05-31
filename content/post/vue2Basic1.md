@@ -28,9 +28,41 @@ vue create <프로젝트 명>
 ```
 yarn create vite-app <프로젝트 명>
 ```
-vite라는 새로운 빌드 툴을 데려왔다던데 그를 활용한 방법이다. 이에 대한 깊은 학습은 필요해졌을 때 하자. (https://github.com/vitejs/vite)
+vite라는 새로운 빌드 툴을 데려왔다던데 그를 활용한 방법이다. 이에 대한 깊은 학습은 필요해졌을 때 하자. (https://github.com/vitejs/vite) 우선은 기존대로 vue-cli를 통해 프로젝트를 진행한다. default 옵션과 manually select features로 나뉘는데 나중엔 vuex, vue-router, typescript, 유닛 테스트 등도 함께 초기화하기 위해 후자가 권장되지만 이번엔 기초를 짚고 넘어가는 것이기에 default로 프로젝트를 생성한다.
 
-#### vue.config.js
+#### vue 프로잭트 구성요소의 간략한 설명
+시작해보면 src와 public, 두 개의 디렉터리가 있다.이 중 public에 들어가보면 webpack 빌드의 엔트리 포인트인 index.html이 있다.
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>vue2basic</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but vue2basic doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+```
+그리고 src의 main.js를 보면 아래와 같이 되어있다.
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+아래의 new Vue로 시작하는 부분은 위 index.js의 app div에 App.vue의 컴포넌트를 마운트하겠다는 뜻이다. 즉, 코드는 App.vue로 부터 시작해서 작성하면 된다. 단,
 
 #### this.el
 https://medium.com/witinweb/vue-js-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-7780cdd97dd4
