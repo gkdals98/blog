@@ -62,7 +62,7 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 ```
-아래의 new Vue로 시작하는 부분은 위 index.js의 app div에 App.vue의 컴포넌트를 마운트하겠다는 뜻이다. 즉, 코드는 App.vue로 부터 시작해서 작성하면 된다. 단,
+아래의 new Vue로 시작하는 부분은 위 index.js의 app div에 App.vue의 컴포넌트를 마운트하겠다는 뜻이다. 즉, 코드는 App.vue로 부터 시작해서 작성하면 된다. 이렇게 생성된 프로젝트에 없는게 하나 있는데 ***vue.config.js*** 파일이다. vue 프로젝트의 자체적인 설정들을 지정하기 위한 파일인데, 이후 설명 중 가장 첫 번째로 사용하게 되는 단락에서 생성할 예정이다.
 
 #### this.el
 https://medium.com/witinweb/vue-js-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-7780cdd97dd4
