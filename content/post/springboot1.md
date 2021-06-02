@@ -9,7 +9,7 @@ hidden: 'true'
 
 + https://start.spring.io/
 
-#### Controller
+#### # Controller
 개념 설명 전에 우선 형태를 보자. Controller Class를 작성하기 위해선 Controller 어노테이션을 사용한다. 아주 심플한 Controller Class의 예시는 아래와 같다.
 ```java
 import org.springframework.stereotype.Controller;

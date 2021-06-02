@@ -6,9 +6,9 @@ hidden: 'false'
 ---
 ## TypeScript의 인터페이스
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.
-https://typescript-kr.github.io/pages/interfaces.html
++ 참고 - https://typescript-kr.github.io/pages/interfaces.html
 
-#### 인터페이스란
+#### # 인터페이스란
 우선 첫 번째 포스트에서 언급했듯, TypeScript의 타입은 코드 검사를 위한 것으로 그렇게 타이트하지 않다는 것을 알아야한다. 이는 interface또한 마찬가지로, interface에서 중점적으로 다루는 것은 형태이다. 이를 기억하며, 일단 인터페이스가 왜 필요한지를 알아보기 위해 인터페이스를 사용하지 않은 아래의 예제를 보자.
 ```typescript
 function printLabel(labeledObj: { label: string }) {
@@ -47,7 +47,7 @@ printLabel(Obj);
 ```
 이제 인터페이스의 추가적인 문법들을 둘러보자.
 
-#### 선택적 프로퍼티
+#### # 선택적 프로퍼티
 TypeScript의 인터페이스에서는 더 유연한 검사를 위해 선택적 프로퍼티란 문법을 제공한다. 이는 추후 학습할 option bags 패턴을 구사하는데 유용하다. 선택적 프로퍼티는 ```?``` 를 사용해 정의할 수 있으며 이렇게 정의된 프로퍼티는 어떤 조건에서만 존재하거나 없을 수도 있다. 공식 docs의 아래 예제를 보자.
 ```typescript
 interface SquareConfig {
@@ -89,7 +89,7 @@ let mySquare = createSquare({color: "black"});
 ```
 위와 같이 코드를 작성하고 어떤 식으로든 mySquare.width를 찍어보면 일단 undefined(정의되지 않은 값)가 출력되긴 한다. 결과적으로 width가 없는 square가 생겼으니 똑같아 보일 수 있겠지만, 보통의 경우엔 이게 의도한 코드는 아닐 것이다.
 
-#### 읽기전용 프로퍼티
+#### # 읽기전용 프로퍼티
 객체를 생성할 때에만 값을 할당할 수 있는 읽기전용 프로퍼티를 만들 수 있다. 프로퍼티의 이름 앞에 readonly를 넣어 이를 지정할 수 있다.
 ```typescript
 interface Point {
@@ -116,7 +116,7 @@ a = read as number[];
 ```
 이러한 특성때문에, 일단 변수용인 const와는 달리 readonly는 참조 또한 엄격히 해야하는 프로퍼티를 정의할 때 사용되곤 한다.
 
-#### 초과 프로퍼티 검사
+#### # 초과 프로퍼티 검사
 앞에서 interface는 러프한 조건과도 같아 정의된 조건을 통과하기만 하면 된다했으나, 위 예제에서 이어지는 아래의 예제는 오류이다.
 ```javascript
 interface SquareConfig {
@@ -175,7 +175,7 @@ let mySquare = createSquare(squareOptions);
 ```
 물론 공식문서에도 나와있듯, 마지막 케이스같이 단순한 코드에서의 초과 프로퍼티는 대부분 오류이므로, 정말 필요하다 싶을 때에 이렇게 검사를 피해주면 되겠다.
 
-#### 함수 타입의 인터페이스
+#### # 함수 타입의 인터페이스
 인터페이스는 객체 이외에도 함수의 형태 또한 기술할 수 있다. 인터페이스로 함수를 정의하기 위해서는 호출 서명(Call signature)이라는 문법을 사용한다. 아래와 같은 형태인데 매개변수 목록과 반환 타입만 주어진 함수와 비슷하게 생각하면 된다.
 ```typescript
 interface SearchFunc {
@@ -207,7 +207,7 @@ mySearch = function(src, sub) {
 }
 ```
 
-#### 인덱서블 타입 (색인 가능 타입)
+#### # 인덱서블 타입 (색인 가능 타입)
 https://ahnheejong.gitbook.io/ts-for-jsdev/04-interface-and-class/indexable-types
 공식 문서와 위 링크를 함께 봐야 이해가 더 잘간다. Object에 ```Computer[cpu]```와 같은 식으로 속성접근을 하는 경우가 있다. 그리고 종종 이를 이용해 키값으로 value를 색인하는 인덱서블 객체를 만든다. 예를 들어 유저의 이름을 키값으로 포스트 수를 보여준다거나, 하는 경우 아래와 같이 표현하는 식이다.
 ```typescript
@@ -260,7 +260,7 @@ interface ReadonlyStringArray {
 }
 ```
 
-#### 클래스의 인터페이스
+#### # 클래스의 인터페이스
 Class의 인터페이스란, Class가 특정 규약을 지키도록 강제하는 것을 의미한다. 주로 Java나 C#에서 사용하던 문법이다. 이는 TypeScript에서도 가능하며 가장 단순한 예제부터 살펴보자면 아래와 같다.
 ```typescript
 interface ClockInterface {
@@ -279,7 +279,7 @@ class Clock implements ClockInterface {
 }
 ```
 
-#### 구성 시그니쳐 (Construct Signature)
+#### # 구성 시그니쳐 (Construct Signature)
 기본적인 interface의 구현은 위 문단에서와 같지만, 인터페이스로 함수의 인자를 정의하려하면 문제가 발생한다.
 ```typescript
 interface Labeled {
@@ -350,7 +350,7 @@ window.onload = function() {
 }
 ```
 
-#### 인터페이스의 확장
+#### # 인터페이스의 확장
 클래스와 마찬가지로, 인터페이스는 다른 인터페이스를 extends 할 수 있다. 적절한 수준의 인터페이스를 extends하는 것으로 코드의 유연함을 만들어낼 수 있다.
 ```typescript
 interface Shape {
@@ -371,7 +371,7 @@ square.sideLength = 10;
 square.penWidth = 5.0;
 ```
 
-#### 하이브리드 타입
+#### # 하이브리드 타입
 인터페이스를 활용해 Javascript의 동적이고 유연한 타입들을 기술하는 경우가 있다. 주로 서드파티 Javascript와 상호작용할 때 이런 인터페이스 정의를 사용해야할 필요가 있다. 우선 공식 문서에는 함수의 interface에 추가적인 프로퍼티와 추가 메서드를 정의하는 예제를 보여주고있다.
 ```typescript
 interface Counter {
@@ -396,7 +396,7 @@ let c = getCounter();
 ```
 ***의문점 :*** 다만 실제 수행해보면서, getCounter 내의 counter는 Counter로 타입단언이 되어있기에 interval, reset 등을 정의하지 않아도 에러가 발생하질 않는다. 그렇다고 타입단언을 없애자니 counter가 ```(start:number) => void ``` 타입으로 타입추론이 되어버린지라 interval, reset등을 정의하려하면 에러가 발생한다. 그렇다면 타입의 검사가 중요한 타입스크립트에서 이 문법을 사용하는 의미가 무엇일까? 이 부분에 대해서는 추후 Study를 하며 답을 찾게 되면 다시 기술해보겠다.
 
-#### 클래스를 확장하는 인터페이스
+#### # 클래스를 확장하는 인터페이스
 인터페이스가 클래스를 extends하면, 클래스의 맴버는 상속받으나 구현은 상속받지 않는다. 이를 뒀다 어디다 쓰는가, 아래 예제는 공식 문서의 예제이다.
 ```javascript
 class Control {

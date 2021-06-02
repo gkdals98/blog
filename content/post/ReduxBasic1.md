@@ -6,7 +6,7 @@ hidden: 'false'
 ---
 ## Redux 기초 학습 -1-
 React의 상태관리 라이브러리 Redux에 대해 공부해보자.
-#### Redux란?
+#### # Redux란?
 Redux는 Global State를 관리하기 위한 라이브러리이다. Facebook이 고안한 Flux 패턴의 구현체로 useContext Hook을 기반으로 작성되었다. 많은 UI들이 동시에 참조하고 있는 값이 있을 때, 이를 부모 컴포넌트에 정의하고 Porps를 타고 타고 자식들에게 전달하는 것은 비효율 적이다. 이렇게 다같이 참조해야하는 global한 값이 있을 때 Redux를 이용해 global state를 관리할 수 있다. Redux의 모체인 useContext 또한 같은 기능을 제공하지만
 1. 적은 데이터를
 2. 단순한 페이지에서  
@@ -22,7 +22,7 @@ Redux는 Global State를 관리하기 위한 라이브러리이다. Facebook이 
 > yarn add redux
 ```
 
-#### Redux의 핵심 키워드와 주의사항.
+#### # Redux의 핵심 키워드와 주의사항.
 우선 Redux의 핵심 키워드들을 살펴보자.
 
 1. ***Store*** : 어플리케이션에 단 하나뿐이며 Redux의 핵심인 global state를 관리하는 객체이다. Store에는 global state 이외에도 내부적으로 Reducer 및 몇 가지 내장 함수를 정의하곤 한다. useState 때와 마찬가지로 state는 읽기 전용이며 갱신할 때에는 절대 state를 직접 수정해선 안되고 새로운 객체로 state를 교채해 주어야한다. 이는 여러 이유가 있지만 특히 React의 변화 감지와 관련있다.
@@ -47,15 +47,19 @@ Redux는 Global State를 관리하기 위한 라이브러리이다. Facebook이 
 
 7. ***subscribe*** : Store의 내장 함수로 브로드캐스터의 역할을 한다. subscriber에 함수 형태의 인자를 넘겨주면 action이 dicpatch되었을 때 subscribe가 전달받은 함수를 실행시켜준다. 일종의 옵져버 패턴인 셈이다.
 
-#### Redux, React Redux의 차이
+#### # Redux, React Redux의 차이
 https://stackoverflow.com/questions/38405571/what-are-differences-between-redux-react-redux-redux-thunk/38405713
+
+
 redux는 React만의 종속 라이브러리가 아니다. 그 사실을 생각해보면 yarn add redux와 yarn add react-redux의 차이에 대해 감이 온다. 위 링크에 따르면 redux는 바닐라 js에서도 사용가능한 redux이고 react-redux는 react 특화로 제공되는 추가적인 Hook들을 제공해 React에서 Redux를 사용할 수 있게 해준다고 한다. 일단 ***React 프로젝트라면 둘 다 add 하여 사용*** 해야 한다. 아래의 의존성을 추가하자.
 ```
 yarn add react-redux
 ```
 
-#### Redux 구현체의 관리
-https://react.vlpt.us/redux/04-make-modules.html
+#### # Redux 구현체의 관리
++ 참고 - https://react.vlpt.us/redux/04-make-modules.html
+
+
 이번에도 Velog를 참조하며 정리해보자.
 
 1. Redux 모듈 - 액션 타입, 액션 생성 함수, 리듀서를 포함하는 자바스크립트. 액션 생성 함수와 리듀서를 export하여 밖에서 ```reducer(stateChange())``` 의 형태로 사용할 수 있도록 구현한다. ***Store는 Redux 모듈 내에 정의되지 않는다.*** 종합적으로 아래와 같은 구조이다.
@@ -166,7 +170,7 @@ ReactDOM.render(
 serviceWorker.unregister();
 ```
 
-#### Redux 개발자도구
+#### # Redux 개발자도구
 useContext와 Redux의 가장 중요한 차이점 중 하나로, redux 개발자 도구의 사용 가능 여부를 언급했었다. project에 아래의 의존성을 추가해준다.
 ```
 yarn add redux-devtools-extension
@@ -174,7 +178,7 @@ yarn add redux-devtools-extension
 이후 크롬 웹스토어에서 Redux DevTools를 설치하여 사용하도록 하자.
 
 ## Redux 미들웨어
-#### 기초
+#### # 기초
 redux 라이브러리에 기본 내장되어있는 Redux middleware는 Reducer의 순수성을 지켜주기 위한 도구이다. 대표적으론 위에서 언급한 ***redux-thunk, redux-saga*** 등이 있다. ***Reducer의 순수성을 해치는 작업***, 예를 들어 logging, 랜덤 값의 입력, 현재 시각 등을 미들웨어에서 처리하며 구체적으론 ***Redux의 Action dispatch가 일어날 때, action을 중간에서 가로채 중간 처리를 한다.*** middleware는 일반적으로 아래와 같은 템플릿으로 작성된다.
 ```javascript
 const middleware = store => next => action => {

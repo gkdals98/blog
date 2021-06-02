@@ -6,9 +6,9 @@ hidden: 'false'
 ---
 ## TypeScript의 타입
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.
-https://typescript-kr.github.io/pages/tutorials/ts-for-the-new-programmer.html
++ 참고 - https://typescript-kr.github.io/pages/tutorials/ts-for-the-new-programmer.html
 
-#### TypeScript의 기본 타입들
+#### # TypeScript의 기본 타입들
 TypeScript에서 제공하는 기본 타입들을 알아볼 것이다. 다른 언어에서 이미 한 번 본 내용이라도 끈기있게 다시 보자.
 
 + ***Boolean***
@@ -156,7 +156,7 @@ create(undefined);
 ```
 간단히 설명하고 넘어가자면, 원시타입 값 그 자체를 object 취급하려하면 오류이고 우리가 이해하고있는 object를 대입하면 성공하는 것을 볼 수 있다.
 
-#### 타입 단언
+#### # 타입 단언
 타입 단언은 다른 언어의 형변환과 비슷한 개념이다. java에서 abstract나 interface 등으로 객체를 받아온 후 그를 상속받는 클래스로 형변환을 해 보다 구체적인 값을 처리하듯, TypeScript에선 대부분 any 등의 막연한 타입으로 받아온 값을 토대로 더 확실한 처리를 하기 위해 사용된다. 아래 예시의 경우, any로 받아온 값을 string으로 치환하지 않으면 length를 쓸 수 없을 것이다. 타입 단언은 아래의 두 가지 문법으로 가능하다.
 ```typescript
 let someValue: any = "this is a string";

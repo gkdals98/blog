@@ -6,9 +6,9 @@ hidden: 'false'
 ---
 ## TypeScript 개요
 TypeScript의 수많은 장점들을 생각하지 않더라도, 프론트엔드와 노드의 생태계가 점점 TypeScript 친화적으로 변하고있기에 TypeScript는 필수가 되었다. 이에 기존에는 러프하게만 알고있던 TypeScript를 보다 정확하게 알아야할 필요가 있다고 느껴 TypeScript의 스터디를 시작하고자 한다. 참고할 자료는 공식 Docs이다.
-https://typescript-kr.github.io/pages/tutorials/ts-for-the-new-programmer.html
++ 참고 - https://typescript-kr.github.io/pages/tutorials/ts-for-the-new-programmer.html
 
-#### TypeScript의 등장 계기
+#### # TypeScript의 등장 계기
 javascript의 시작은 브라우저에서 간단한 코드 몇 줄을 사용하기 위함이였다. 이에 javascript는 그 자신의 특성으로 인해 몇 가지 예기치 않은 동작을 하게 되었으며 공식 Docs 상에는 아래와 같은 케이스를 소개하고있다.
 + 동일 연산자의 강제 변환으로 인한 동작 결과 예측의 모호함. 아래의 예문은 둘 다 참이다.
 ```javascript
@@ -27,7 +27,7 @@ console.log(area);
 ```
 그리고 위와 같은 javascript의 모호함으로 인해 발생하는 작업 효율 저하를 위해 TypeScript가 등장한다.
 
-#### TypeScript란
+#### # TypeScript란
 Type 스크립트는 러프하게 설명하자면 정적 타입 검사자를 포함하는 javascript의 개발용 런타임이다. 정적 타입 검사란 버그가 있는 프로그램을 실행시키지 않으며 오류를 검출하는 것을 의미한다. 대표적으로 아래 두 가지를 검사한다.
 
 + ***구문***
@@ -46,7 +46,7 @@ console.log(4 / []);
 
 이렇게 TypeScript 런타임 상에서 코드를 작성한 후, 최종적으로 컴파일을 마치고 나면 일반 js 파일이 생성된다.
 
-#### TypeScript 연습환경 빌드해보기
+#### # TypeScript 연습환경 빌드해보기
 연습용 TypeScript 환경을 만드는 방법은 공식문서의 아래 링크에 나와있다.
 https://typescript-kr.github.io/pages/tutorials/typescript-in-5-minutes.html
 이를 typescript를 global에 설치하지 않고(연습 환경이 실 작업 환경에 최대한 영향을 주지 않도록) local에 설치한 후 수행하려면 아래와 같이 진행하면 된다. 우선 cmd 라인에 아래와 같이 진행하면 된다.
@@ -87,13 +87,13 @@ npx tsc index.ts
 ## TypeScript의 타입 시스템
 위의 타입에서 확장되는 이야기이다. TypeScript의 타입 검사기는 사용자의 실수로 작성된 코드들이 javascript 상에서 에러를 뱉지 않고 의도치않은 동작을 하는 경우, 디버깅이 굉장히 힘들어지는 문제를 타입을 통해 해결하고자 한다. 다음은 공식 문서의 타입 시스템에 대한 개요들을 내 나름의 순서로 적어본 것이다.
 
-#### 타입 추론
+#### # 타입 추론
 아래와 같이 변수를 생성하며 값을 할당하는 경우, TypeScript는 그 값을 해당 변수 타입으로 사용한다. 아래 예제에서 TypeScript는 변수를 string 타입으로 인식될 것이다.
 ```typescript
 let hello = "Hello";
 ```
 
-#### TypeScript에서의 타입이란
+#### # TypeScript에서의 타입이란
 타입의 종류에 대해 설명하기 전에 짚고 넘어가야할 부분으로, ***TypeScript에서의 타입은 Java, C#과 달리 값의 형태를 정의한 집합개념이다.*** TypeScript의 타입은 앞에 언급한 언어들과 달리 공통의 규약을 정의한 집합과도 같으며 따라서 아래와 같은 예제 또한 정상 동작한다.
 ```javascript
 class Car {

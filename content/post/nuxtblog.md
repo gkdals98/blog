@@ -22,7 +22,7 @@ Nuxt를 이용해서 간단한 학습 결과 저장용 Blog를 만들고자 한�
 
 이후부터는 Blog를 만들기위해 Nuxt를 학습한 내용이다.
 
-#### 1. Node 모듈 설치
+#### # 1. Node 모듈 설치
 설치된 모듈의 용도를 적는다. 히스토리 기록 및 관리이슈도 겸한 단락으로 추가설치 있을 시 업데이트할 것. 프로젝트 초기화는 아래 명령어를 통해서 했다.
 ```
 npx create-nuxt-app
@@ -33,7 +33,7 @@ cmd 라인에 위와 같이 입력해주고 프로젝트 이름, 기타 설정 �
 + **node-sass** : node가 sass 스타일 시트를 해석할 수 있게 해줌.
 + **sass-loader** : sass 로더.
 
-#### 2. Project Directory 구성
+#### # 2. Project Directory 구성 살피기
 Nuxt 및 nuxt 모듈을 활용하기 위해 알아야하는 지정 directory를 정리한다.
 
 + **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다. pages 내의 객체들은 서버사이드 랜더링링이다.

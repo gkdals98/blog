@@ -7,9 +7,9 @@ hidden: 'false'
 
 ## React의 기초 학습 -5-
 velog의 포스팅을 보며 Study를 이어나가보자.
-https://react.vlpt.us/basic/03-first-component.html
++ 참고 - https://react.vlpt.us/basic/03-first-component.html
 
-#### 커스텀 Hooks
+#### # 커스텀 Hooks
 반복되는 로직을 쉽게 재사용하기 위해, Hook을 직접 정의하여 사용한다. 우선 설명 전에 Hooks를 관리하는 관습적 룰을 적어보자면 아래와 같다.
 + src 디렉터리 밑에 hooks 디렉터리를 만들어 파일을 관리한다.
 + 리엑트 제공의 Hooks와 마찬가지로 useInputs.js 와 같은 작명을 한다.
@@ -195,7 +195,7 @@ case 'RESET':
 	}, {});
 ```
 
-#### ContextAPI
+#### # ContextAPI
 ContextAPI는 왜 필요한가. 위 예제에서 UserList는 onRemove, onToggle을 User에 전달해주지만 직접 사용하지는 않는다. 지금처럼 한 단계 거쳐가는 정도라면 문제없는 코드지만 여러 컴포넌트가 중첩되며 이 전달과정이 길어지면 길어질수록 코드의 관리가 힘들어지는 것은 당연하다. 이렇게 두 단계, 세 단계 컴포넌트를 거쳐 값이 전달되는 상황에서 컴포넌트를 거치지 않고 Grobal하게 참조할 수 있게 해주는게 ContextAPI이다. 나중에 Redux를 배우겠지만 상황에 따라서는 여전히 Redux보다도 유용한 방법이기도 하다. 우선 Context를 만드는 방법은 아래와 같다.
 
 ```javascript

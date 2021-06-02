@@ -7,7 +7,7 @@ hidden: 'false'
 ## 모던 자바스크립트 학습
 https://learnjs.vlpt.us/
 참고 블로그를 보며 모던 자바스크립트에 대해 간단히 정리하고자 한다.
-#### Truthy, Falsy와 단축 평가 논리 계산법
+#### # Truthy, Falsy와 단축 평가 논리 계산법
 Javascript에는 undefine, null, 0, '' NaN 등 다양한 부정의 값이 존재한다. 이는 ```===```를 통해 처리하면 정확한 대상을 지정해야하지만 논리 연산자로 다음과 같이 다루면 전부 false 처리 된다.
 ```javascript
 console.log(!undefine);
@@ -28,7 +28,7 @@ function getName (item) {
 	return item || 'No item';
 }
 ```
-#### 비구조화 할당
+#### # 비구조화 할당
 비구조화 할당 문법은 Object 비구조화 할당과 배열 비구조화 할당으로 나뉜다. 우선 Object 비구조화 할당은 아래와 같이 Object의 각각의 요소를 참조하는 변수를 만들 때, Object 내에 해당 이름을 가진 속성이 있을 경우 자동으로 이를 매핑시켜주는 문법이다. 바닐라 자바스크립트보다는 주로 프레임워크쪽에서 오브젝트의 값을 참조할 때 가독성을 위해 사용한다.
 ```Javascript
 const item = {
@@ -47,7 +47,7 @@ console.log(price)
 const current_user = "Julia"
 const [name, skillFunction] = getSkill (currentUser);
 ```
-#### object-shorthand
+#### # object-shorthand
 Object에 속성을 줄 때, 같은 이름의 변수가 존재한다면 아래와 같이 코드를 줄일 수 있다. 어떤 원리로 동작한다기보다는 편의를 위한 문법이므로 암기해야한다.
 ```javascript
 const currentUser = "Julia"
@@ -65,7 +65,7 @@ const skillObject = {
 	skillFunction : skillFunction
 }
 ```
-#### 배열 내장 함수
+#### # 배열 내장 함수
 배열에서 제공되는 내장 함수들을 정리해보자.
 + ***forEach*** - 각각의 요소에 인자로 넘겨준 function을 수행한다. 값의 변화보다는 각각의 값에 대한 연산이 필요할 때 사용한다.
 ```javascript
@@ -166,7 +166,7 @@ console.log(sum)
 ```
 reduce는 첫 인자로 함수를, 둘 째 인자로 초기 값을 넘겨준다. 둘 쨰 인자의 초기값은 배열을 통해 가공할 값을 의미한다. 함수를 보면 accumulator, current, index, array 총 네 개의 변수를 넘겨주는데, accumulator에는 현재 가공 중인 값으로 최초엔 넘겨준 초기값이고 이후로는 함수의 return값이 넘어온다. current는 배열의 현재 요소를 의미한다. index는 배열에서의 현재 위치를, array는 계산에 참조 중인 배열을 의미한다.
 
-#### spread 문법
+#### # spread 문법
 기존의 Object, 또는 배열을 그대로 참고하고자 할 때 아래와 같이 ```...``` 키워드를 사용하는 spread 문법을 사용할 수 있다. 아래 예시는 spread를 사용하는 대표적인 경우로, 기존 Object나 배열을 그대로 복사해와 원하는 요소만 추가, 변경하는 예시이다. spread는 편의를 위한 문법이므로 암기대상이다.
 ```javascript
 const koreaApple = {
@@ -184,7 +184,7 @@ const fruits = ['사과', '파인애플', '배'];
 const moreFruits = [...fruits, '포도'];
 ```
 
-#### rest 문법
+#### # rest 문법
 위 spread와 형태는 비슷하나 아래와 같이 Object 내의 특정 요소를 추출하여 해당 요소 및 해당 요소를 제외한 Object를 할당받아오는 것을 rest 문법이라고 부른다. 아래와 같이 작성한다.
 ```javascript
 const koreaApple = {
@@ -201,7 +201,7 @@ const fruits = ['사과', '파인애플', '배'];
 const [first, ...lessFruits] = fruits;
 ```
 
-#### Promise
+#### # Promise
 async, await를 적기 전에 우선 Promiss를 적어야 할 필요가 있다. 또한 Promiss를 적기 전에, 우선 Promise의 탄생을 말하기 위해 전통적인 비동기 작업의 처리방식을 말해보자. 우선, 비동기 작업이란 요청의 응답이 요청과 동시에 일어나지 않는 것을 의미한다. 가령 서버에 데이터를 요청한 후, 받아온 데이터를 화면에 뿌려주는 작업을 할 때, 아래와 같이 처리한다면 data가 온전히 값을 받아온 후에 동작이 수행된다는 보장이 없다.
 ```javascript
 const data = loading ('/data/alarm');
@@ -310,7 +310,7 @@ increase(0)
 ```
 하지만 이것만으론 각 분기에 대한 처리를 정의하기가 어렵다. 가령 세 번째 즈음의 promise에서 분기처리를 하고 싶다거나 다섯 번째 즈음에서 다른 처리를 추가로 하고싶은 경우, then 안쪽이 굉장히 더러워 질 수 있다. 이런 이유 뿐만 아니라 여기서는 다 적기 힘든 다양한 이유로, 아직은 코드의 가독성이 부족하기에 ES8에선 async, await가 등장한다.
 
-#### async/await
+#### # async/await
 async, await는 위의 Promise를 더 쉽게 사용하도록 도와주는 문법이다. 다시 위의 고전적인 방법을 살펴보자.
 ```javascript
 const callbackLogging = (data) => {

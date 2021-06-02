@@ -117,7 +117,7 @@ $measurement: 0.125em;
 }
 
 h1{
-	font-size: 4em;
+	font-size: 3.5em;
 	line-height: 1.8em;
 }
 
@@ -125,11 +125,11 @@ h1{
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-left: 1.5em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.3em;
 }
 
 #post{
-		width: 55vw;
+		width: 45vw;
 		min-width: 55em;
 		display: flex;
 		flex-direction: column;
@@ -146,21 +146,27 @@ h1{
 			font-size: 1.7em;
 		}
 		h4{
-			line-height: 2em;
+			line-height: 1.5em;
 			font-size: 1.5em;
-			margin: 2em 0.5em 0.4em 0.3em;
+			margin: 1em 0.5em 0 0.3em;
 			text-decoration: underline;
 		}
 		p{
-			line-height: 2em;
+			line-height: 1.7em;
 			font-family: spoqahansanr;
+			margin: 1em 0 1em 0;
+			+ p{
+				margin-top: 1.2em;
+			}
 		}
 		ul{
-			padding: 1.5em;
+			padding: 0.7em;
 		}
 		li{
-			margin-top: 0.5em;
-			margin-bottom: 1em;
+			margin-top: 0.7em;
+			+ li{
+				margin-top: 1.2em;
+			}
 			line-height: 1.6em;
 			font-family: spoqahansanr;
 		}
@@ -170,7 +176,7 @@ h1{
 		}
 
 
-		code{
+		.code{
 			font-family: Lato;
 		}
 }

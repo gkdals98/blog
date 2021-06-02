@@ -8,7 +8,7 @@ hidden: 'true'
 Decorator는 javascript의 정규 문법은 아니지만 Typescript에서 사용 가능하며 javascript에선 현재 표준화가 진행중이라고 한다. 정확히는 디자인 패턴의 데코레이터 패턴에서 말하는 데코레이터 함수를 의미하며 javascript의 특성 상, 그 원리를 한 번은 짚고 넘어가는 것이 좋다. 아래 링크를 중점으로 살펴보자.
 https://typescript-kr.github.io/pages/decorators.html
 
-#### Decorator의 기본
+#### # Decorator의 기본
 우선 javascript의 데코레이터를 정의하는 법을 살펴보면 아래와 같다.
 ```javascript
 function HelloFirstDeco (helloWord : string){	//Decorator Factory
@@ -24,7 +24,7 @@ function HelloFirstDeco (helloWord : string){	//Decorator Factory
 
 
 
-#### Property Descriptor
+#### # Property Descriptor
 끝으로, 데코레이터를 설명하며 이야기한 Descriptor를 잠시 이야기하겠다. javascript의 객체에는 사용자가 정의한 속성 이외에도 숨겨진 속성들이 존재한다. 눈에 보여야 설명하기도 쉬우니 직접 이 값을 보려면 Object.getOwnPropertyDescriptor 메서드를 사용하면 된다. 우선 num이라는 속성 하나만 정의된 Object를 만들고, 속성 num의 Descriptor를 살펴보자.
 ```javascript
 const test = {

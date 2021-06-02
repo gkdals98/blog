@@ -7,9 +7,9 @@ hidden: 'false'
 
 ## React의 기초 학습 - API 연동
 velog의 포스팅을 보며 통신 예제를 살펴보자.
-https://react.vlpt.us/integrate-api/01-basic.html
++ 참고 - https://react.vlpt.us/integrate-api/01-basic.html
 
-#### axois 호출
+#### # axois 호출
 우선 새로운 프로젝트를 생성하고 axios 모듈을 아래와 같이 추가한다.
 ```javascript
 yarn add axios
@@ -26,7 +26,7 @@ axios.post('/toComment', {
 })
 ```
 
-#### Data 로딩
+#### # Data 로딩
 학습 중인 블로그 포스트에선 Redux를 사용하지 않을 때 기준, ***Data 로딩 타이밍 설정에는 useEffect*** 를, ***Data를 관리하는데에는 State*** 를 사용하는 것을 권장했다. 우선 아래 URL로 부터 Get Data를 받아보자.
 + https://jsonplaceholder.typicode.com/users
 위 URL을 통해 json data를 받을 수 있다. 우선 아래의 코드를 수행해보자.
@@ -84,7 +84,7 @@ export default Users;
 2. ***useEffect 내에선 async 메서드를 사용할 수 없기에*** 내부에 async 메서드를 정의해 호출하는 부분.
 3. if조건으로 페이지 상태를 정의한 state가 null이 아니라면 그를 통해 랜더링을 달리 하는 부분.
 
-#### useReducer를 이용한 구현
+#### # useReducer를 이용한 구현
 위의 코드를 UseReducer를 사용하도록 바꿔보면 아래와 같다.
 ```javascript
 import React, {useEffect, useState, useReducer} from 'react';
@@ -168,7 +168,7 @@ export default Users;
 ```
 전체 State를 하나로 묶고 Reducer를 사용하여 각 상태에 대한 Data 처리를 정의하였다.
 
-#### 커스텀 Hook을 만들어 위 Reducer 사용부를 재사용하기
+#### # 커스텀 Hook을 만들어 위 Reducer 사용부를 재사용하기
 위 통신 과정을 하나의 Hook으로 관리하기 위해 아래와 같은 코드를 구현하였다는데...
 
 + ***useAsync.js***
@@ -358,14 +358,14 @@ function Users () {
 export default Users;
 ```
 
-#### react-async
+#### # react-async
 react-async는 위에서 따라 만든 커스텀 Hook의 라이브러리 버전이다. 기능이 많이 내장되어있다고 한다. 아래와 같이 설치하면 되겠다.
 ```
 yarn add react-async
 ```
 사용법은 나중에 별도 포스트로 다룬다. 현재는 가급적 커스텀 Hook을 구현해 해당 동작을 처리하고자 한다.
 
-#### ContextAPI의 적용
+#### # ContextAPI의 적용
 아래는 Velog의 예시 Code의 1단계이다. Velog Study의 2단계에서 getData를 수행하는 부분에서 비슷한 코드가 반복되는 점을 지적하며 이를 리펙토링한 코드를 다루지만 리펙토링 코드는 우선 학습만 하고 Study 기록은 하지 않고 넘어가자. 아래는 기본 코드에서 Context를 어떻게 구성하는지 예시이다.
 
 + ***UserContext***

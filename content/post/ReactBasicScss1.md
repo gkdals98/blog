@@ -7,14 +7,14 @@ hidden: 'false'
 
 ## React의 기초 학습 React + SCSS -1-
 velog의 포스팅을 보며 Study를 이어나가보자.
-https://react.vlpt.us/basic/03-first-component.html
++ 참고 - https://react.vlpt.us/basic/03-first-component.html
 
 React를 SCSS와 함께 사용하는 팁들이 있다. 그에 대해 학습해보자.
 ```
 yarn add node-sass
 ```
 
-#### 최초 예제 코드
+#### # 최초 예제 코드
 우선 최초 예제의 코드는 블로그의 것을 그대로 가져온다. Button과 App, 그리고 그를 위한 각각의 scss파일을 아래와 같이 생성하자.
 ***Button.js***
 ```javascript
@@ -86,7 +86,7 @@ export default App;
 }
 ```
 
-#### sub class 주기
+#### # sub class 주기
 아래와 같은 두 클래스의 중첩에 따른 SCSS 문법을 쓸 일이 자주 있다.
 ```css
 .Button {
@@ -128,7 +128,7 @@ Button.defaultProps = {
 export default Button
 ```
 
-#### plus 선택자
+#### # plus 선택자
 CSS 선택자 기본 포스팅에서 다루겠지만 아래와 같은 + 선택자가 있다. scss에서 저렇게 작성하면 컴파일된 CSS는 ```.Button + .Button```가 된다.
 ```css
 .Button {
@@ -138,7 +138,7 @@ CSS 선택자 기본 포스팅에서 다루겠지만 아래와 같은 + 선택�
 }
 ```
 
-#### scss mixin
+#### # scss mixin
 아래와 같은 mixin에 대한 이야기. 별도 scss 포스트에서 정리할 예정이지만 여기서도 한 번 적는다.
 ```css
 $blue: #228be6;
