@@ -1,5 +1,5 @@
 ---
-title: Nuxt Blog 만들기 1
+title: Nuxt Blog 만들기 1 - 시작하기
 tags: ['Frontend', 'Vue']
 published: '2020-11-11'
 hidden: 'false'
@@ -9,9 +9,8 @@ hidden: 'false'
 ## Nuxt Blog 만들기 -1-
 Nuxt를 이용해서 간단한 학습 결과 저장용 Blog를 만들고자 한다. 목표로 하는 기능은 아래와 같다.
 
-+ Markdown 문서를 이용한 포스팅
-+ 포스팅 문서관리는 심플하게 git에 commit하는 방식
-+ **Tag**를 이용한 카테고리 분류
++ Markdown 문서를 이용한 포스팅 ( 포스트는 심플하게 git에 commit하는 방식 )
++ 포스트 내의 Tag 를 이용해 메뉴 구현
 + 특정 테그 선택 시 해당 테그의 Markdown 문서를 5개 단위로 확인할 수 있는 Pagination 기능 제공.
 
 이에 아래 환경으로 프로젝트를 진행하려 한다.
@@ -25,7 +24,7 @@ Nuxt를 이용해서 간단한 학습 결과 저장용 Blog를 만들고자 한�
 #### # 1. Node 모듈 설치
 설치된 모듈의 용도를 적는다. 히스토리 기록 및 관리이슈도 겸한 단락으로 추가설치 있을 시 업데이트할 것. 프로젝트 초기화는 아래 명령어를 통해서 했다.
 ```
-npx create-nuxt-app
+npx create-nuxt-app blog
 ```
 cmd 라인에 위와 같이 입력해주고 프로젝트 이름, 기타 설정 등을 적어주면 알아서 준비를 척척해준다. 이후 하기와 같은 모듈을 추가로 설치(yarn add)했다. content 모듈의 경우 블로그 목적이라면 반쯤 필수로 보이며 scss같은 경우는 개인적인 선호로 설치했다.
 + **@nuxt/content** : content 디렉터리를 path로 정적 리소스를 관리하기 쉽도록 도와준다.
@@ -61,3 +60,15 @@ export default {
 + **store** : VUEX 컴포넌트를 위한 디렉토리. index.js 를 통해 클래식 vuex를 사용할 지, module 타입의 vuex를 사용할 지 선택할 수 있다. 블로그에선 vuex를 사용할 일이 아직 없기에 비워뒀다.
 
 + **utils** : 보조기능을 담당할 js 파일들을 넣을 디렉토리이다. nuxt에서 관리하는 디렉터리는 아닌듯 하지만 관습을 따라서 나쁠 것은 없다.
+
+#### # 5.  nuxt.config.js
+순수 vue에 프로젝트 세팅을 위한 vue.config.js가 있듯, nuxt에는 nuxt.config.js가 있다. 아래 공식 문서에 설정할 수 있는 값들을 자세하게 나와있다.
+
++ https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-alias - configuration glossary 항목의 첫 문서, alias
+
+디테일한 내용은 최신 공식문서를 읽는게 가장 정확하다. 다만, 간략하게 몇 가지만 짚고 적고 넘어가려한다.
+
++ ***alias*** -
++ ***css*** -
++ ***header*** -
++ ***vue.config*** -
