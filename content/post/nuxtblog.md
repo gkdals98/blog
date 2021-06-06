@@ -62,13 +62,87 @@ export default {
 + **utils** : 보조기능을 담당할 js 파일들을 넣을 디렉토리이다. nuxt에서 관리하는 디렉터리는 아닌듯 하지만 관습을 따라서 나쁠 것은 없다.
 
 #### # 5.  nuxt.config.js
-순수 vue에 프로젝트 세팅을 위한 vue.config.js가 있듯, nuxt에는 nuxt.config.js가 있다. 아래 공식 문서에 설정할 수 있는 값들을 자세하게 나와있다.
+순수 vue에 프로젝트 세팅을 위한 vue.config.js가 있듯, nuxt에는 nuxt.config.js가 있다. 내부는 아래와 같이 생겼다.
+```javascript
+export default {
+	ssr: true,
+	target: 'static',
+	header: {
+		title: "page title"
+	}
+	
+	{중략}
+}
+```
+export되는 object의 속성으로 nuxt 프로젝트의 설정 하나하나를 지정해주면 된다. 여기서 설정 가능한 값들은 아래 공식 문서에 자세하게 나와있다.
 
-+ https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-alias - configuration glossary 항목의 첫 문서, alias
++ https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-alias
 
 디테일한 내용은 최신 공식문서를 읽는게 가장 정확하다. 다만, 간략하게 몇 가지만 짚고 적고 넘어가려한다.
 
-+ ***alias*** -
-+ ***css*** -
-+ ***header*** -
-+ ***vue.config*** -
+#### # alias
+
+alias는 특정 경로를 alias로 단축해 지정할 수 있는 설정이다. 공통으로 쓰는 component 디렉터리 등에 접근할 떄 '../../../../component' 와 같은 코드가 반복되면 읽기도 힘들고 리펙토링 시에 디렉터리 구조를 바꾸게 되면 수정사항 또한 많아진다. 아래와 같이 path 모듈로부터 resolve를 import 받아와 alias 속성을 정의하자.
+```javascript
+import { resolve } from 'path'
+exrpot default {
+	alias : {
+    	'images': resolve(__dirname, './assets/images'),
+    	'style': resolve(__dirname, './assets/style'),
+    	'data': resolve(__dirname, './assets/other/data')
+	}
+}
+```
+이제 nuxt component 파일에서 위 디렉터리에 아래와 같이 접근할 수 있다.
+```javascript
+<template>
+  <img src="~images/main-bg.jpg">
+</template>
+
+<script>
+import data from 'data/test.json'
+
+// etc.
+</script>
+
+<style>
+@import '~style/variables.scss';
+@import '~style/utils.scss';
+@import '~style/base.scss';
+
+body {
+  background-image: url('~images/main-bg.jpg');
+}
+</style>
+```
+
+#### # css
+프로젝트 전체에 적용될 global css를 설정한다. 아래와 같이 배열 안에 경로를 설정해주면 해당 css 파일은 프로젝트 전체에 적용되게 된다. 아래와 같이 선언한 이후엔 해당 파일에 적용된 font, class등은 프로젝트 어디에서나 사용할 수 있다.
+```javascript
+export default {
+  css: [
+		'~/assets/css/globaltheme.scss',
+		'~/assets/css/globalfonts.scss'
+	]
+}
+```
+
+#### # header  
+html head 테그 안에 적용되는 속성들을 여기서 정의할 수 있다. 아래와 같은 형태인데 보다 자세한 이야기는 공식 문서를 읽도록 하자.
+```javascript
+export default {
+	head: {
+    	title: "CROMESS's Blog",
+    	meta: [
+      		{ charset: 'utf-8' },
+      		{ name: 'viewport', content: 'width=device-width, 			initial-scale=1' },
+      		{
+        		hid: 'description',
+        		name: 'description',
+        		content: process.env.npm_package_description || '',
+      		},
+    	],
+    	link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  	},
+}
+```

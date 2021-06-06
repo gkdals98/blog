@@ -4,6 +4,7 @@
 			<div class="depth multi-button">
 				<button class="copy drag-false"
 					v-for="(item, index) in depth1"
+					v-bind:key=index
 					v-on:click="item_selected(item)">
 					{{item}}
 				</button>
@@ -11,6 +12,7 @@
 			<div class="depth multi-button">
 	  		<button class="cut drag-false"
 					v-for="(item, index) in depth2"
+					v-bind:key=index
 					v-on:click="d2item_selected(item)">
 					{{item}}
 				</button>
@@ -63,7 +65,6 @@ export default {
 				if(this.current_depth1 == this.postdata[i].tags[0] &&
 					this.current_depth2 == this.postdata[i].tags[1] &&
 					!li.includes(this.postdata[i])){
-						console.log(this.postdata[i]);
 					li.push(this.postdata[i]);
 				}
 			}

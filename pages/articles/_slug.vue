@@ -5,7 +5,7 @@
 			<div id="post">
 
 				<h1 class="drag-false">{{article.title}}</h1>
-    		<p class="date drag-false">{{ formatDate(article.published) }}</p>
+    			<p class="date drag-false">{{ formatDate(article.published) }}</p>
 				<nuxt-content class="post-area" :document="article"/>
 
 			</div>

@@ -117,7 +117,7 @@ const fruits = [
 	}
 ]
 
-const lowPrice = fruits.map ( item => item.price < 3500);
+const lowPrice = fruits.filter ( item => item.price < 3500);
 ```
 + ***splice, slice*** - 배열에서 index 지점의 요소를 제거한다. 숫자를 두 개 넘겨주면 앞의 숫자로는 index를, 둘 째 숫자로는 몇 개 자를 지를 지정할 수 있다. splice는 원래 배열을 가공하며 slice는 새 배열을 리턴한다.
 ```javascript

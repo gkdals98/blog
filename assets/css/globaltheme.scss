@@ -128,6 +128,27 @@ h1{
 	margin-bottom: 0.3em;
 }
 
+
+.form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.title-bar{
+		font-family: pinkblue;
+		font-size: 6em;
+	}
+	hr{
+		style: 0.2em solid;
+		min-width: 50em;
+	}
+	.layout-line{
+		border-style: solid;
+		min-width: 50em;
+		border-radius: 0.3em;
+	}
+}
+
 #post{
 		width: 45vw;
 		min-width: 55em;
@@ -154,12 +175,13 @@ h1{
 		p{
 			line-height: 1.7em;
 			font-family: spoqahansanr;
-			margin: 1em 0 1em 0;
+			margin: 1em 0.2em 1em 0.2em;
 			+ p{
 				margin-top: 1.2em;
 			}
 		}
 		ul{
+			margin-left: 1em;
 			padding: 0.7em;
 		}
 		li{
@@ -180,6 +202,10 @@ h1{
 			font-family: Lato;
 		}
 }
+
+@media (max-width: 767px){
+
+}
 .depth{
 	display: flex;
 	flex-direction: row;
@@ -188,7 +214,7 @@ h1{
 table {
 	padding: 1em;
 	border-style: solid;
-  border-collapse: collapse;
+  	border-collapse: collapse;
 	margin: 1em 0em 1em 0.8em;
 	th{
 		border-bottom: 2px solid;

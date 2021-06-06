@@ -2,7 +2,7 @@
   <div>
     <ul class="article-ul">
       <li
-        v-for="article of articles"
+        v-for="article of shwonArticle"
         :key="article.slug"
         class="article-li"
       >
@@ -10,11 +10,9 @@
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="link"
         >
-	        <div>
-	          <h2 class="article-title" v-if="article.hidden === 'false'">
+	        <div class="article-title">
 	            <p>{{ article.title }}</p>
 							<p>{{ article.published}}</p>
-	          </h2>
 	        </div>
         </NuxtLink>
       </li>
@@ -31,6 +29,11 @@ export default {
       default: Array,
     }
   },
+  computed: {
+    shwonArticle : function ()  {
+      return this.articles.filter(article => article.hidden=='false')
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -39,15 +42,20 @@ export default {
 	border-style: solid;
 	border-width: 0.1em 0 0.1em 0;
 	margin: 1em;
-	padding: 1em;
-	.article-title{
-  	text-decoration: none;
-		font-size: 1em;
-		width: 35em;
-		padding: 0.1em;
-		border-width: 0 0 0.05em 0;
-		display: flex;
-		justify-content: space-between;
+  padding: 0 0 1em 0.5em;
+	  .article-title{
+      margin-bottom: 0.5em;
+      height: 1.3em;
+    	text-decoration: none;
+  		font-size: 1em;
+  		width: 35em;
+  		display: flex;
+  		justify-content: space-between;
+		  font-family: spoqahansanr;
+      font-weight: bold;
+      p {
+        color : #001285;
+      }
 		}
 }
 </style>
