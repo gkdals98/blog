@@ -8,7 +8,7 @@ hidden: 'true'
 ## CentOS에서 Hardware의 파티션의 재지정
 현재 사용 중인 Linux 서버에서 kvm 이미지 등의 저장을 위해 파티션을 새로 지정해야할 일이 생겼다. 이에
 
-#### # Hardware의 현재 파티션 확인
+#### Hardware의 현재 파티션 확인
 우선 아래 명령어를 이용해 실제 hdd 정보를 확인한다.
 ```
 root]$ lsblk -d -o name,type,size        
@@ -34,4 +34,4 @@ tmpfs                    6.3G     0  6.3G   0% /run/user/1012
 ```
 여기서 tmpfs는 임시 파일 스토리지로 ***휘발성 메모리에 저장된다.*** 즉 hdd의 용량을 차지하진 않는다. 당장은 home에 여유공간이 있는 것으로 보인다.
 
-#### # Hardware Remount
+#### Hardware Remount

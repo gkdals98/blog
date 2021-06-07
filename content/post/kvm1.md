@@ -10,7 +10,7 @@ hidden: 'true'
 
 + 참고 - https://www.cyberciti.biz/faq/how-to-install-kvm-on-centos-7-rhel-7-headless-server/
 
-#### # 시작하기
+#### 시작하기
 우선, kvm 관리를 위한 라이브러리를 설치해보자. 설치 전에, 아래 명령어를 내려 무언가 출력이 나온다면 libvirt는 이미 설치된 상태다.
 ```
 // 설치 파일 확인
@@ -38,7 +38,7 @@ root]$ systemctl enable libvirtd
 root]$ systemctl start libvirtd
 ```
 
-#### # KVM Image의 생성 전, kvm이 네트워크에 접속하기 위한 브리치 네트워크 준비
+#### KVM Image의 생성 전, kvm이 네트워크에 접속하기 위한 브리치 네트워크 준비
 
 kvm이 서버의 물리 lan포트를 타고 네트워크에 접속하기 위해서는 서버의 물리포트에 브릿지된 브릿지 네트워크를 구성해야 한다. 조금 더 내 상황에 맞게 설명하자면, eno1이라는 이름의 물리포트에 10.11.0.0/16 망이 연결되어있으며 kvm이 이를 통해 10 망에 접속하게 하고싶다면, 10망의 연결을 브릿지로 바꾸어줘야한다. 들어가기 앞서, kvm은 기본적으로 libvirtd에 의해 구성된 dhcpd (동적 호스트 구성 프로토콜 데몬) 기반 네트워크 브리지를 사용한다. 하지만 나는 내 환경에 맞게 static route로 구성된 망에 접속하는 법을 서술하고자 한다. 우선 브릿지 네트워크의 구성은 아래의 명령으로 확인한다. (현재는 아무것도 없는 상태)
 ```
@@ -132,14 +132,14 @@ virbr0          8000.5254005a9937       yes             virbr0-nic
 ```
 이제 bridge network 설정이 완료되었다.
 
-#### # KVM Image 생성
+#### KVM Image 생성
 우선 필요한 iso 파일을 아래 디렉터리(고정은 아니지만 일반적으로 사용됨)에 가져다 놓는다.
 ```
 root]# cd /var/lib/libvirt/boot
 root]# wget https://mirrors.kernel.org/centos/7.4.1708/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
 ```
 
-#### # KVM Image의 백업
+#### KVM Image의 백업
 설정 xml과 kvm 이미지 파일은 아래의 위치에 있다. 의외로 이 파일 두 개를 통째로 옮겨서 백업하는 것 같다. ***이렇게 백업할 땐 백업 전에 반드시 kvm을 정지시켜야한다.*** 이런 방법 이외에도 툴을 이용해 백업하는 방법이 있는 것 같지만 툴 사용에 비용을 지불해야한다.
 + ***Image의 위치***
 ```
@@ -166,7 +166,7 @@ drwx------. 3 root root   40 Nov 17 01:30 networks/
 -rw-------  1 root root 4607 May 24  2019 rhel7.1-xxxx.xml
 ```
 
-#### # Image 리사이징
+#### Image 리사이징
 https://computingforgeeks.com/how-to-extend-increase-kvm-virtual-machine-disk-size/
 https://www.cyberciti.biz/faq/create-vm-using-the-qcow2-image-file-in-kvm/
 https://serverfault.com/questions/438083/how-to-decrease-the-size-of-a-kvm-virtual-machine-disk-image

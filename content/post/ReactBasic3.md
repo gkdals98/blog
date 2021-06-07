@@ -9,7 +9,7 @@ hidden: 'false'
 velog의 포스팅을 보며 Study를 이어나가보자.
 + 참고 - https://react.vlpt.us/basic/03-first-component.html
 
-#### # 배열 랜더링
+#### 배열 랜더링
 vue에 v-for가 있다면 react에는 javascript의 map 함수를 사용하는 프로그래밍적 배열 랜더링이 존재한다. 아래와 같은 식이다.
 ```javascript
 import React from 'react';
@@ -58,7 +58,7 @@ function SimpleChild (){
 export default SimpleChild;
 ```
 
-#### # useRef를 이용한 컴포넌트 안의 변수 만들기
+#### useRef를 이용한 컴포넌트 안의 변수 만들기
 useRef또한 useState와 마찬가지로 .current의 초기 값을 setting할 수 있다.
 ```javascript
 import React, {useRef} from 'react';
@@ -75,7 +75,7 @@ function App () {
 + setTimeout, setInterval을 통해 만들어진 id
 + 기타, 위 조건에 해당 안되지만 원래 용도인 외부 라이브러리를 사용하여 생성된 인스턴스
 
-#### # 랜더링 되는 배열의 CRUD
+#### 랜더링 되는 배열의 CRUD
 지금까지 배운 내용들을 활용해 랜더링 되는 배열의 CRUD 코드를 살펴보자. 우선 코드 전문이다. UserList부터 살펴보자.
 
 + ***UserList.js***
@@ -278,7 +278,7 @@ const onToggle = (id) => {
 }
 ```
 
-#### # 마운트, 언마운트, 업데이트의 수명주기 메서드.
+#### 마운트, 언마운트, 업데이트의 수명주기 메서드.
 useEffect를 사용하면 특정 컴포넌트가 화면상에 마운트/언마운트 될 때의 추가 동작을 관리할 수 있다. 구체적으로는 아래와 같은 구조를 가지고 있다. 다만, 두 번에 나눠서 단계적으로 살펴보려 한다. 위에 CRUD에서 사용한 UserList 컴포넌트 내의 User에 넣어보자.
 ```javascript
 import React, {useEffect} from 'react';

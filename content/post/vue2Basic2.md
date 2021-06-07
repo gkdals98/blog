@@ -14,7 +14,7 @@ hidden: 'true'
 </template>
 ```
 
-#### # name
+#### name
 HelloWorld.vue의 script tag 안쪽은 아래와 같이 object 형태로 생겼다. 이 object 안에 컴포넌트의 동작과 관련된 정의를 한다.
 ```javascript
 export default {
@@ -26,13 +26,13 @@ export default {
 ```
 여기서 name 속성은 export한
 
-#### # data, 가장 기본적인 data 리턴 속성
+#### data, 가장 기본적인 data 리턴 속성
 
-#### # double mustache, 가장 기본적인 data 표현 문법
+#### double mustache, 가장 기본적인 data 표현 문법
 
-#### # computed, data를 가공 후 보여주기 위한 리턴 속성
+#### computed, data를 가공 후 보여주기 위한 리턴 속성
 
-#### # methods,
+#### methods,
 
 #### this.el
 https://medium.com/witinweb/vue-js-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-7780cdd97dd4

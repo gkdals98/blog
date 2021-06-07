@@ -8,6 +8,6 @@ hidden: 'true'
 ## Spring Boot
 앞의 포스트에 이어서 data를 다루기 위한
 
-#### # hibernate
-#### # lombok
-#### # Autowired
+#### hibernate
+#### lombok
+#### Autowired

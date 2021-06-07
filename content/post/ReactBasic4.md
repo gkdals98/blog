@@ -9,7 +9,7 @@ hidden: 'false'
 velog의 포스팅을 보며 Study를 이어나가보자.
 + 참고 - https://react.vlpt.us/basic/03-first-component.html
 
-#### # useMemo를 이용한 연산결과값의 재사용
+#### useMemo를 이용한 연산결과값의 재사용
 이번엔 최적화를 위한 기능이다. useMemo Hook을 사용하면 기존 연산값을 재사용 할 수 있다, 라는게 핵심인데 우선 useMemo를 사용하지 않는 아래 예제를 보자. 전 포스트에서 다루던 App.js를 아래와 같이 수정한다.
 ```javascript
 import React, {useRef, useState, useMemo} from 'react';
@@ -117,7 +117,7 @@ export default App;
 ```
 useEffect 때와 마찬가지로, 첫 번째 인자로는 function을, 두 번째 인자로 배열을 넘긴다. 첫 인자인 function이 수행할 메서드이고 함께 넘기는 deps 배열은 값의 변화를 감지할 대상이다. 동작 원리는 ***두 번째 인자의 값이 바뀌지 않았다면 기존 값을 그대로 사용*** 하는 것이다. 좀 더 큰 프로젝트를 진행하다보면 어떤 경우에 사용하는 Hook인지 감이 더 올 것이다.
 
-#### # userCallback을 사용한 함수의 재사용
+#### userCallback을 사용한 함수의 재사용
 위의 useMemo가 특정 메서드의 결과값을 재사용한다면 useCallback은 함수를 새로 만들지 않고 재사용하고자 할 때 사용한다. 가령 위의 App.js에서 onCreate, onRemove, onToggle은 컴포넌트 리렌더링 시마다 새로 생성된다. 이 쯤 되어서 짚어보자면 리랜더링 시에 전체 함수 컴포넌트가 다시 수행되는게 함서 컴포넌트의 특징인 것 같다. 아무튼, 함수를 새로 만드는 작업이 엄청난 부하를 일으키는건 아니지만 추후 학습할 최적화 기법을 위해 useCallback의 학습은 중요하다. 위 App.js를 예시로, useCallback은 아래와 같이 사용한다.
 ```javascript
 //중략
@@ -164,7 +164,7 @@ const onToggle = useCallback((id) => {
 ```
 여기서 주의할 점은 뒤의 deps 배열에 해당 함수가 사용하는 State, 혹은 props 값들을 전부 넘겨야한다는 점이다. 넘기지 않는다면 useCallback의 동작 상, 해당 값이 최신임을 보장할 수 없게된다. 함수도 하나의 객체인 만큼 useMemo로도 같은 기능을 구현할 수 있는데, 실제로 useCallback은 useMemo를 통해 구현된 Hook이다. 단지 사용을 더 편하게 했을 뿐. 아무튼, useCallback만 사용해서 얻어지는 최적화 성능은 미미하다. 하지만 이를 사용한 기법을 통해 얻어지는 최적화는 상당하며 이를 확인하기 위해 우선 Chrome 확장 프로그램의 ***React DevTools*** 를 설치해 리랜더링 되는 컴포넌트 표시 및 사용 중인 Hook 표시 기능을 활성화해놓자. 이는 단순 도구 사용이므로 현재 포스트에선 별도로 다루지 않겠다. 아무튼, React DevTools를 설치해 확인해보면 일부 값만 바뀌어도 아래의 UserList 또한 리렌더링되는 모습을 확인할 수 있다. 이를 막아보자.
 
-#### # React.memo를 사용하는 리랜더링 방지
+#### React.memo를 사용하는 리랜더링 방지
 우선 React.memo를 통해 export되는 개별 컴포넌트의 리렌더링을 막는다. 위의 예제에서 사용하던 CreateUser, UserList를 예로 들면 아래와 같이 export 하는 부분만 변경해주면 된다. React 안의 기능이므로 React를 import했다면 별도 import도 필요없다.
 ```javascript
 export default React.memo(CreateUser);
@@ -232,7 +232,7 @@ const onToggle = useCallback((id) => {
 ```
 렌더링 최적화는 본인의 판단으로 설정할 영역이다. 현재 학습 중인 예제에서도 users에 대한 리렌더링을 막은 것이기에 username 및 email은 그대로 남아있는 것을 볼 수 있다. 실제 프로젝트에서는 React devTool을 활성화시켜 어떤 경우에 어떤 컴포넌트가 리렌더링 되어야하는지를 잘 고려하며 코드를 작성하자.
 
-#### # Reducer의 개념 및 useReducer Hook.
+#### Reducer의 개념 및 useReducer Hook.
 이번엔 useReducer라는 Hook을 살펴본다. useReducer Hook을 배우기 전에, Reducer란 개념을 우선 짚고 넘어가자. ***Reducer*** 는 현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해주는 함수이다. 일단 개념을 코드처럼 적어보자면 아래와 같다.
 ```javascript
 function reducer(state, action){

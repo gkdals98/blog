@@ -8,7 +8,7 @@ hidden: 'false'
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.
 + 참고 - https://typescript-kr.github.io/pages/literal-types.html
 
-#### # 리터럴 타입
+#### 리터럴 타입
 리터럴 타입이란 string, number 타입에 구체적인 하위 타입을 지정하는 것이다. 예시를 들어보자면 string, number에 가능한 값의 범위를 설정하여 enum 비슷하게 사용하는 경우가 해당한다. const 타입의 경우, let과는 달리 값의 변경이 불가능하기에 아래와 같이 const 변수를 선언할 경우, type이 string이 아닌 "Hello World" 가 된다. 다만 여전히 string의 하위 타입이기에 function에 string으로 넘겨줄 수는 있다.
 ```typescript
 const text = "Hello";
@@ -43,7 +43,7 @@ interface TextConfig {
 }
 ```
 
-#### # 유니언 타입
+#### 유니언 타입
 앞서 살펴본 any 타입의 경우, 정말 모든 type이 대입 가능하기에 문제가 발생하곤 한다. 가령 string, number만 가능한 입력값을 any로 받을 경우, 생각지못한 이유로 다른 타입이 들어가며 런타임 에러를 일으킬 가능성이 있다. 이에 typescript에선 몇 가지 가능한 타입을 지정할 수 있는 유니언 타입이란 기능을 지원한다. 사실 위에서 본 몇 가지 값이 가능한 리터럴도 유니언을 이용해 구현한 것이다. 유니언은 아래와 같이 작성한다.
 ```typescript
 //padding이 union 타입이다.
@@ -79,7 +79,7 @@ pet.fly();
 ```
 공식 docs엔 위 유니언을 통해 통신 state 객체를 정의하여 사용하는 예제가 있다. 현재는 꽤 권장되는 방법이니 추후 필요할 때 공식 docs를 읽고 적용해보자.
 
-#### # 교차 타입
+#### 교차 타입
 교차 타입은 유니언타입과 반대로, 해당 타입의 인자들을 전부 가진 새로운 타입을 정의한다. 작성 방법은 유니언에서 |를 사용했듯, &를 사용해주면 된다. 그를 통한 믹스인 패턴 예제를 아래와 같이 설명하고 있는데, 오브젝트를 상속하는 제네릭 에외에도 Partial이라는 새로운 문법이 보인다. 추후 상세히 다룰지 모르겠어 여기서 짧게 설명해보자면, Partial은 해당 오브젝트의 모든 속성을 optional 하게 만들어준다.
 ```typescript
 class Person {

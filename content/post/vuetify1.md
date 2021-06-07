@@ -9,8 +9,8 @@ hidden: 'true'
 ## Vuetify 적용 프로젝트 만들기
 
 
-#### # Components
+#### Components
 
 
-#### # mdi icon
+#### mdi icon
 https://materialdesignicons.com/

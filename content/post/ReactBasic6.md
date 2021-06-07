@@ -9,7 +9,7 @@ hidden: 'false'
 velog의 포스팅을 보며 Study를 이어나가보자.
 + 참고 - https://react.vlpt.us/basic/03-first-component.html
 
-#### # Immer
+#### Immer
 React에서의 불변성 유지란 state 등을 업데이트할 때, 기존의 객체를 수정해서는 안된다는 개념이다. 그래서 우리는 항상 Hook을 통한 업데이트를 할 때 기존 값을 덮어씌울 새로운 값을 넘겨주곤 했다. 다만, Object가 복잡해질 수록 이 과정은 어려워질 수 밖에 없다. 블로그 예시대로 아래와 같은 Object가 있다 쳐보자.
 ```javascript
 const initialState = {

@@ -13,7 +13,7 @@ hidden: 'false'
 
  잡설은 이 즈음 하고 정리를 시작해보자.
 
-#### # vue 프로젝트의 생성
+#### vue 프로젝트의 생성
 vue 프로젝트를 생성하는데엔 대표적으로 내가 익숙한 vue cli를 통한 생성방법이 있고, 3.0 언저리 즈음 해서 나온 vite를 사용하는 방법이 있다.
 + 우선 과거에는 vue cli를 이용해 아래의 순서로 프로젝트를 생성했다.
 
@@ -33,7 +33,7 @@ yarn create vite-app <프로젝트 명>
 ```
 vite에 대한 깊은 학습은 필요해졌을 때 하자. (https://github.com/vitejs/vite) 우선은 기존대로 vue-cli를 통해 프로젝트를 진행한다. default 옵션과 manually select features로 나뉘는데 나중엔 vuex, vue-router, typescript, 유닛 테스트 등도 함께 초기화하기 위해 후자가 권장되지만 이번엔 기초를 짚고 넘어가는 것이기에 default로 프로젝트를 생성한다. 이제부턴 다른 프레임 워크 경험은 있으나 vue는 처음인 사람이 읽는 포스트라는 생각으로 포스트를 작성하려 한다.
 
-#### # vue 프로잭트 구성요소의 간략한 설명
+#### vue 프로잭트 구성요소의 간략한 설명
 시작해보면 src와 public, 두 개의 디렉터리가 있다. 이 중 public 디렉터리는 webpack의 처리를 받지 않고 퍼블리싱되는 정적 리소스가 들어가있다. 생성 직후의 public에 들어가보면 브라우저 탭 아이콘인 favicon.ico와 함께 webpack 빌드의 엔트리 포인트인 index.html이 있다.
 ```html
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ new Vue({
 ```
 아래의 new Vue로 시작하는 부분은 위 index.js의 app div에 App.vue의 컴포넌트를 마운트하겠다는 뜻이다. 즉, 코드는 App.vue로 부터 시작해서 작성하면 된다. 이렇게 생성된 프로젝트에 없는게 하나 있는데 ***vue.config.js*** 파일이다. vue 프로젝트의 자체적인 설정들을 지정하기 위한 파일인데, 이후 설명 중 가장 첫 번째로 사용하게 되는 단락에서 생성할 예정이다.
 
-#### # vue component의 구조
+#### vue component의 구조
 vue를 처음 시작하는 사람이라면 인터넷 가이드에 나오는 여러 vue 컴포넌트 정의법 때문에 혼란을 느끼곤 한다. 특히 기초를 다루는 문서에서는 아래와 같은 형태로 vue 컴포넌트를 만든다.
 ```javascript
 var vm = new Vue({
@@ -117,7 +117,7 @@ export default {
 ```
 이 .vue 파일의 script 부분을 작성하는 방법은 vue 2.x 문법 이외에도 대표적으로 typescript를 기반으로 작성되는 class형 컴포넌트, 새로 생긴 composition 컴포넌트 등이 있으나, 이는 우선 vue2.x 문법을 다룬 다음에 다뤄보려한다. vue2.x 파일 내용이 위에서부터 template, script, style의 세 구획으로 나뉜 것을 볼 수 있다. 하나씩 간략하게 설명해보자.
 
-#### # template
+#### template
 ```html
 <template>
   <div id="app">
@@ -144,7 +144,7 @@ export default {
 ```
 `<script></script>` 태그로 감싸지는 영역으로 해당 vue 컴포넌트의 동작을 정의한다. export default 부분은 기타 webpack 프로젝트에서 보아온대로, 최종 생성된 결과물을 파일 밖으로 export하는 부분으로 script 내에서 최종 정의된 component를 밖으로 내보낸다. 컴포넌트 안의 속성들은 다음 포스트에서 순차적으로 살펴볼 예정이다. 추가로 import 부분은 다른 파일에서 export한 vue 컴포넌트 내지는 기타 요소들을 받아오는 부분이다.
 
-#### # style
+#### style
 `<style></style>` 태그로 감싸지는 영역으로 해당 컴포넌트에 적용될 css 스타일을 정의하는 부분이다. 여기서, class 단위의 스타일을 지정할 경우 하위 컴포넌트에게도 스타일이 영향을 끼칠 수가 있다. 이것을 막기위해 App.vue를 제외한 직접 작성하는 컴포넌트들의 style 태그엔 <style scoped> 와 같이 ***scoped를 붙여*** 적용 범위를 해당 컴포넌트로 한정해야한다. 아래는 초기 생성 시 함께 있는 HelloWorld.vue에 정의된 style로 style 태그에 scoped라고 작성된 것을 볼 수 있다.
 ```
 <style scoped>

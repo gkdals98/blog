@@ -8,7 +8,7 @@ hidden: 'true'
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.
 + 참고 - https://typescript-kr.github.io/pages/classes.html
 
-#### # 클래스의 기본 작성법
+#### 클래스의 기본 작성법
 타입 스크립트에서 가장 기본적으로 맴버 변수 하나, 생성자, 맴버 함수 하나를 가진 클래스를 작성하기 위해선 아래와 같은 문법을 사용한다. 앞의 포스팅에선 이야기가 복잡해져 대충 넘어갔지만, 여기서의 this는 Class의 맴버를 참조하기 위한 용도로 사용된다. 정의된 class의 생성은 ***new*** 키워드를 통해 가능하다.
 ```typescript
 class Greeter {
@@ -24,7 +24,7 @@ class Greeter {
 let greeter = new Greeter("world");
 ```
 
-#### # 상속
+#### 상속
 typescript에서 이미 존재하는 Class를 상속해 새로운 Class를 만들 때엔 아래와 같이 ***extends*** 키워드를 사용한다. 한 가지 더 살펴보자면, 상속한 class의 생성자를 재정의할 경우 super 키워드를 통해 기초 클래스의 생성자를 실행해야한다.
 ```typescript
 class Animal {
@@ -51,7 +51,7 @@ let yeppie: Animal = new Dog("Yeppie the pomeranian");
 yeppie.move();
 ```
 
-#### # public, private, protected
+#### public, private, protected
 typescript에서 class 맴버변수는 기본적으론 ***public*** 으로 선언된다. 이에 public 키워드는 별도로 사용할 필요가 없지만 명시적으로 public을 붙일 수는 있다. 또한 해당 class 내부에서만 보이는 ***private*** , 해당 class와 그를 상속하는 class의 내부에서만 보이는 ***protected*** 를 사용할 땐 아래와 같이 해당 키워드로 변수를 선언하면된다.
 ```typeScript
 class Employee {
@@ -74,7 +74,7 @@ class Programer extends Employee {
 }
 ```
 
-#### # Readonly
+#### Readonly
 readonly 키워드 또한 class 내의 맴버변수에 적용 가능하다. 아래와 같은 방식으로 작성하면 된다.
 ```typescript
 class Octopus {
@@ -97,7 +97,7 @@ let octo = new Octopus("Octodad");
 console.log(octo.name);
 ```
 
-#### # 접근자 (getter, setter)
+#### 접근자 (getter, setter)
 typescript에선 getter와 setter의 용도를 단순 접근 제어로 생각하지 않고 특정 프로퍼티에 접근할 때 추가적인 처리를 하는 용도에 포커스를 두고있다. 예를 들어 변수를 set할 때 set되는 값이 유효범위 내의 값인지 검사하는 경우라거나, 값이 get될 때 추가적인 값의 가공을 하는 경우 등이다. 여기서 한 가지, ***접근자는 ECMAScript 5 이상에서만 제공한다.*** 그럼 ECMAScript 버전은 어떻게 맞추느냐. tsc로 파일을 빌드할 때 아래와 같이 타겟 옵션을 주면 된다.
 ```
 npx tsc -t es5 index.ts
@@ -130,7 +130,7 @@ employee.fullName = "Name is Too Long so this make Error";
 ```
 또 한 가지 주의할 사항인데, 공식문서에 따르면 ***get, set이 없는 접근자는 자동으로 readonly로 간주된다고 한다.*** 이에 대해 간단한 테스트를 해보았으나 어떤 경우를 말하는 건지는 알기 힘들었다. 우선 이런 경우가 있다는 것을 알아두고 나중에 문제가 생겼을 때 당황하지 않는 정도면 되겠다.
 
-#### # 전역 프로퍼티
+#### 전역 프로퍼티
 typescript 또한 class 내에 static 맴버를 제공한다. 익히 알고있는 대로, class가 객체화 된 시점에 정해지는 값이 아닌 빌드 시에 class의 정의에 함께 포함되는 맴버이다. 예제는 아래와 같다.
 ```typescript
 const fullNameMaxLength = 10;
