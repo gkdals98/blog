@@ -96,7 +96,7 @@ exrpot default {
 이제 nuxt component 파일에서 위 디렉터리에 아래와 같이 접근할 수 있다.
 ```javascript
 <template>
-  <img src="~images/main-bg.jpg">
+  <img src="~images/main-bg.jpg"/>
 </template>
 
 <script>

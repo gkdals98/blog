@@ -48,6 +48,7 @@ npx @nestjs/cli generate service <service name>
 + https://firebase.google.com/?gclid=Cj0KCQjwgtWDBhDZARIsADEKwgOtGU75s-Nc1Ze3liYiwmxcRO9VkZK0Z-j2Eilo2vA7egNxvNZp3UYaAmjiEALw_wcB&gclsrc=aw.ds
 
 ##### 애니메이션 처리를 위한 tweenmax
++ https://ko.nuxtjs.org/docs/2.x/deployment/nginx-proxy/
 + https://www.google.com/search?q=tweenmax&oq=twinmax&aqs=chrome.1.69i57j0i10l9.5327j0j7&sourceid=chrome&ie=UTF-8
 
 node 15버전에서의 sass-loader와 node-sass 호환. 아래 버전으로 무조건 맞출 것. 안그러면 온갖 에러 다 뱉는다.
@@ -73,3 +74,29 @@ https://tech.kakao.com/2019/08/01/graphql-basic/
 
 ##### 아직 브라우저 미지원이지만 향후 사용하게될 webp 이미지
 https://namu.wiki/w/WebP
+
+##### 10만 접속자에 대해
+https://dev.to/jorge_rockr/everything-you-need-to-know-about-node-js-lnc
+http://www.kegel.com/c10k.html
+
+##### 서비스 분리를 위한 revers proxy 구조
+https://d2.naver.com/helloworld/2177909
+
+##### css3 vs webkit
+http://www.web-plus-plus.com/Articles/css-transition-moz-and-webkit-vs-css3
+
+##### MQ
+https://wakestand.tistory.com/471
+
+##### nuxt의 reverse proxy 설정에 대해 나와있는 글
+https://frontalnh.github.io/2019/03/16/nuxt-js-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/
++ ***nuxt.config.js***
+```
+const serverUrl = "localhost:3002";
+
+module.exports = {
+  proxy: {
+    '/api/': serverUrl
+  },
+}
+```
