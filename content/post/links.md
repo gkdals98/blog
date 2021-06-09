@@ -115,3 +115,9 @@ module.exports = {
 
 ##### DevOps
 + https://aws.amazon.com/ko/devops/what-is-devops/
+
+##### DB 쿼리 최적화에 대한 간단한 팁들
++ https://mangkyu.tistory.com/52
+
+##### Splash Screen
++ https://hearit.tistory.com/21

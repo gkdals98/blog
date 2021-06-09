@@ -21,7 +21,7 @@ Nuxt를 이용해서 간단한 학습 결과 저장용 Blog를 만들고자 한�
 
 이후부터는 Blog를 만들기위해 Nuxt를 학습한 내용이다.
 
-#### # 1. Node 모듈 설치
+#### 1. Node 모듈 설치
 설치된 모듈의 용도를 적는다. 히스토리 기록 및 관리이슈도 겸한 단락으로 추가설치 있을 시 업데이트할 것. 프로젝트 초기화는 아래 명령어를 통해서 했다.
 ```
 npx create-nuxt-app blog
@@ -32,7 +32,7 @@ cmd 라인에 위와 같이 입력해주고 프로젝트 이름, 기타 설정 �
 + **node-sass** : node가 sass 스타일 시트를 해석할 수 있게 해줌.
 + **sass-loader** : sass 로더.
 
-#### # 2. Project Directory 구성 살피기
+#### 2. Project Directory 구성 살피기
 Nuxt 및 nuxt 모듈을 활용하기 위해 알아야하는 지정 directory를 정리한다.
 
 + **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다. pages 내의 객체들은 서버사이드 랜더링링이다.
@@ -61,7 +61,7 @@ export default {
 
 + **utils** : 보조기능을 담당할 js 파일들을 넣을 디렉토리이다. nuxt에서 관리하는 디렉터리는 아닌듯 하지만 관습을 따라서 나쁠 것은 없다.
 
-#### # 5.  nuxt.config.js
+#### 5.  nuxt.config.js
 순수 vue에 프로젝트 세팅을 위한 vue.config.js가 있듯, nuxt에는 nuxt.config.js가 있다. 내부는 아래와 같이 생겼다.
 ```javascript
 export default {
@@ -80,7 +80,7 @@ export되는 object의 속성으로 nuxt 프로젝트의 설정 하나하나를 
 
 디테일한 내용은 최신 공식문서를 읽는게 가장 정확하다. 다만, 간략하게 몇 가지만 짚고 적고 넘어가려한다.
 
-#### # alias
+#### alias
 
 alias는 특정 경로를 alias로 단축해 지정할 수 있는 설정이다. 공통으로 쓰는 component 디렉터리 등에 접근할 떄 '../../../../component' 와 같은 코드가 반복되면 읽기도 힘들고 리펙토링 시에 디렉터리 구조를 바꾸게 되면 수정사항 또한 많아진다. 아래와 같이 path 모듈로부터 resolve를 import 받아와 alias 속성을 정의하자.
 ```javascript
@@ -116,7 +116,7 @@ body {
 </style>
 ```
 
-#### # css
+#### css
 프로젝트 전체에 적용될 global css를 설정한다. 아래와 같이 배열 안에 경로를 설정해주면 해당 css 파일은 프로젝트 전체에 적용되게 된다. 아래와 같이 선언한 이후엔 해당 파일에 적용된 font, class등은 프로젝트 어디에서나 사용할 수 있다.
 ```javascript
 export default {
@@ -127,7 +127,7 @@ export default {
 }
 ```
 
-#### # header  
+#### header  
 html head 테그 안에 적용되는 속성들을 여기서 정의할 수 있다. 아래와 같은 형태인데 보다 자세한 이야기는 공식 문서를 읽도록 하자.
 ```javascript
 export default {

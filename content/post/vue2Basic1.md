@@ -146,7 +146,7 @@ export default {
 
 #### style
 `<style></style>` 태그로 감싸지는 영역으로 해당 컴포넌트에 적용될 css 스타일을 정의하는 부분이다. 여기서, class 단위의 스타일을 지정할 경우 하위 컴포넌트에게도 스타일이 영향을 끼칠 수가 있다. 이것을 막기위해 App.vue를 제외한 직접 작성하는 컴포넌트들의 style 태그엔 <style scoped> 와 같이 ***scoped를 붙여*** 적용 범위를 해당 컴포넌트로 한정해야한다. 아래는 초기 생성 시 함께 있는 HelloWorld.vue에 정의된 style로 style 태그에 scoped라고 작성된 것을 볼 수 있다.
-```
+```html
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -165,9 +165,18 @@ a {
 </style>
 ```
 
-또 scss 모듈을 설치하였다면 아래와 같이 lang을 적어주어야한다.
-```
+또 scss 모듈을 설치하였다면 style 태그에 아래와 같이 lang을 적어주어야한다.
+```html
 <style scoped lang="scss">
 </style>
 ```
-node-sass 및 sass-loader 설치한 후에 위와 같이 작성하면 버전 불일치 문제 등으로 오류를 뱉어내는 경우가 많다. 아니 사실상 거의 무조건 에러를 뱉는다. 당황하지 말고 호환되는 버전을 인터넷에서 열심히 찾아(...) 적용해주면 된다. 포스트는 scss 기준으로 작성된다.
+node-sass 및 sass-loader 설치한 후에 위와 같이 작성하면 버전 불일치 문제 등으로 오류를 뱉어내는 경우가 많다. 아니 사실상 거의 무조건 에러를 뱉는다. 버전에 따라 다르겠지만 요즘은 주로 아래와 같이 생겼다. 
+```
+Syntax Error: TypeError: this.getoptions is not a function
+```
+당황하지 말고 호환되는 버전을 인터넷에서 열심히 찾아(...) 적용해주면 된다. 21년 5월 기준, vue환경에서 node 버전 15와 사용하도록 권장되는 조합은 아래와 같다.
+```
+"node-sass": "^5.0.0",
+"sass-loader": "10.1.0",
+```
+이후 포스트는 scss 기준으로 작성된다.
