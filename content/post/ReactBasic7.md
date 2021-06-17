@@ -152,7 +152,7 @@ function SimpleChild(){
 + ***map*** : ***배열 값 수정***. 기존 배열 인자 하나하나에 함수를 수행한 결과를 return한다.
 + ***concat*** : ***배열 값 추가***. 기존 배열에 넘겨준 인자를 추가한 배열을 return한다.
 
-#### # props를 통한 Callback 함수 전달
+#### props를 통한 Callback 함수 전달
 + 아래와 같이 props를 통해 함수를 전달할 수 있다.
 ```javascript
 function ChildItem({onClick}){
