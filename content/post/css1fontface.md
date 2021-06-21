@@ -2,7 +2,7 @@
 title: CSS 심화 1 - font-face의 최적화
 tags: ['Frontend', 'css']
 published: '2021-05-24'
-hidden: 'true'
+hidden: 'false'
 ---
 
 ## CSS의 font loading 최적화
@@ -56,7 +56,7 @@ font-display 옵션을 통해 위 폰트 로드 문제를 해결하기 위해 �
 ```
 
 #### 폰트 다운로드 최적화를 위한 src의 local 속성
-font-face는 기본 적용 시, 시스템 폰트를 채크하지 않고 네트워크로부터 폰트를 다운로드 받는다. 이미 한 번 다운로드된 폰트라면 그를 참조해 폰트를 적용할 수 있도록 src 속성에 local을 지정해줄 수 있다. 위에 블로그에 최종 적용된 예제와 같은 예제지만 local 부분을 자세히 보면 되겠다.
+font-face는 기본 적용 시, 시스템 폰트를 채크하지 않고 네트워크로부터 폰트를 다운로드 받는다. 이미 한 번 다운로드된 폰트라면 그를 참조해 폰트를 적용할 수 있도록 src 속성에 local을 지정해줄 수 있다. 위에 블로그에 최종 적용된 예제와 같은 예제지만 local 부분을 한 번 더 보면 되겠다.
 ```css
 @font-face {
 	font-family: "spoqahansanr";
