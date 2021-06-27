@@ -1,7 +1,7 @@
 <template>
 	<div class="form">
 		<div class="title-bar drag-false">
-			CROMESS
+			CHM's Study Posts
 		</div>
 		<hr/>
 		<div class="layout-line"/>
