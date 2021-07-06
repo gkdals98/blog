@@ -7,38 +7,24 @@ hidden: 'false'
 
 
 ## Nuxt Blog 만들기 1 - 시작하기
-Nuxt는 Vue의 SSR 프레임워크이다. backend 서버와 api 통신을 하는 웹페이지 제작에도 유용하지만 vercel 등의 호스팅 서비스를 활용해 간단한 정적 페이지를 배포하는 데에도 제격이다. 이에 Nuxt를 이용해서 간단한 학습용 Blog를 만들며 배운 것들을 정리해보고자 한다. 목표로 하는 기능은 아래와 같다.
+Nuxt는 Vuejs 프로젝트 관리를 보다 체계적으로 할 수 있게 설계된 프레임워크이다. 동시에 SSR(Server Side Rendering)을 위한 준비도 다 갖추어져있어 ssr 페이지를 빠르게 제작할 수 있다. Nuxt의 활용법은 굉장히 다양하며 vercel 등의 호스팅 서비스를 활용해 간단한 정적 페이지를 배포하는 데에도 제격이다. 이번엔 Nuxt를 이용해 간단한 학습용 Blog를 만들며 배운 것들을 정리해보고자 한다. Blog에서 목표로 했던 기능은 아래와 같다.
 
 + Markdown 문서를 이용한 포스팅 ( 포스트는 심플하게 github에 push하는 방식. )
 + 포스트 내의 Tag 를 이용해 메뉴 구현
 + 특정 테그 선택 시 해당 테그의 Markdown 문서를 5개 단위로 확인할 수 있는 Pagination 기능 제공.
 
-또 아래 환경으로 프로젝트를 진행하려 한다.
-
-+ SSR 프레임워크 - Nuxt
-+ 코드 관리 - Github
-+ 배포툴 - Vercel
-
-이후부터는 Blog를 만들기위해 Nuxt를 학습한 내용이다. vercel은 가이드가 잘되어있으므로 vercel에 대한 것은 생략한다.
+배포에는 vercel을 사용했으며 vercel은 가이드가 잘되어있으므로 vercel에 대한 것은 생략한다. 추가로 Dev 서버를 사용한다 가정하고 nuxt로의 요청은 전부 localhost:3000 을 기준으로 작성하려한다.
 
 #### 1. 프로젝트 초기 설정
-nuxt app을 생성하기 위해서는 create-nuxt-app 을 사용하면 된다. 공식 문서에는 현재 npx를 사용해 project를 생성하는 것을 권장하고 있다. cmd를 열어 아래와 같이 입력해주자. 현재는 nuxt에만 집중할 것이기에 모든 설정은 default 값으로 가져가면 된다.
+nuxt app을 생성하기 위해서는 create-nuxt-app 을 사용하면 된다. 공식 문서에는 현재 npx를 사용해 project를 생성하는 것을 권장하고 있다. cmd를 열어 아래와 같이 입력해주자. 연습이므로 설정은 Deploy target만 Static으로 설정하고 나머지는 전부 enter를 눌러 기본값으로 설정한다.
 ```
 npx create-nuxt-app blog
 ```
-추가로 나는 하기와 같은 모듈을 설치(yarn add)했다. content 모듈은 우리가 목표로 하는 markdown 문서를 이용한 포스팅에 굉장히 많은 도움을 주기에 이번 예제에선 필수이다. scss는 개인적으로 선호하기에 설치했다.
-+ **@nuxt/content**
-+ **node-sass**
-+ **sass-loader**
-
-기타 나는 사용하지 않았지만 상황에 따라 유용할지도 모르는 모듈은 아래와 같다. 이는 이번 포스트에선 생략하고 나중에 기회가 되면 다루자.
-
-+ **@nuxtjs/feed** : 피드를 사용한다면 필요한 모듈이다. 뉴스 피드 개념 및 RSS(Rich Site Summary), ATOM 1.0, JSON 1.0 등에 대해 알아볼 것.
 
 #### 2. Project Directory 구성 살피기
-Nuxt는 framework인 만큼 고정 경로 몇 가지를 지정해 해당 디렉터리에 지정된 파일을 넣어주는 것 만으로도 관련 구성을 전부 알아서 준비해준다. 이를 활용하기 위해서는 Nuxt가 어떤 디렉터리에 무엇을 넣었을 때 이를 자동으로 읽고 동작을 처리하는 지를 알아야할 것이다.
+Nuxt는 vuejs 프로젝트에서 하나하나 설정해줘야했던 layout, page routing 등등을 지정된 디렉터리에 지정된 파일을 넣어주는 것 만으로 전부 알아서 준비해준다. 이를 백분 활용하기 위해서는 우선 Nuxt엔 어떤 지정 디렉터리가 있고 이 디렉터리들에 어떤 파일을 생성하도록 되어있으며 Nuxt가 이를 어떻게 처리하는 지를 알아야할 것이다. 
 
-+ **pages** : url의 경로로 사용되는 디렉토리. url 뒤에 입력하는 경로는 pages 디렉터리에 매칭된다. 자세한 내용은 다음 포스트에서 다시 다룬다.
++ **pages** : Nuxt가 routing 경로로 사용되는 디렉토리. Nuxt는 pages 디렉터리 밑의 폴더 및 파일 명을 routing 경로로 사용한다. 예를 들어 pages 밑에 user 디렉터리를 만들고 info.vue 파일을 생성했다면 그것만으로 ```localhost:3000/user/info``` 경로를 통해 info.vue 로 접근할 수 있게 된다.
 
 + **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. 해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
 ```javascript
@@ -49,7 +35,15 @@ export default {
 }
 ```
 
-+ **layouts** : 각 페이지에서 사용할 레이아웃을 정의하는 디렉토리. 설정에 따라 프로젝트 초기화 시에 없어 직접 만들어줘야할 수도 있다. 예제로 layouts 디렉터리 아래에 ```blog.vue``` 레이아웃을 아래와 같이 작성하자.
++ **assets** : css, 이미지, 폰트 등을 놓는 디렉토리. global로 적용될 css 테마는 이 디렉터리에 생성한 후 nuxt.config.js에서 css 옵션을 통해 읽어오는 것이 관리하기 편하다. 이 방법에 대해선 이 포스트의 아래쪽에서 다시 설명한다.
+
++ **static** : 지정된 이름의 정적 리소스를 위한 디렉토리. 대표적으로 적용될 favicon이 해당 디렉터리에 있다.
+
+
+아래부터는 프로젝트 초기화 시 생성되지 않으며 필요에 따라 직접 생성해주어야 하는 디렉터리이다.
+
+
++ **layouts** : 각 페이지에서 사용할 레이아웃을 정의하는 디렉토리. 예제로 layouts 디렉터리 아래에 ```blog.vue``` 레이아웃을 아래와 같이 작성하자.
 
  + **blog.vue**
 ```html
@@ -95,11 +89,13 @@ export default {
 해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
 
 
-+ **assets** : css, 이미지, 폰트 등을 놓는 디렉토리. global로 적용될 css 테마는 이 디렉터리에 생성한 후 nuxt.config.js에서 css 옵션을 통해 읽어오는 것이 관리하기 편하다. 이 방법에 대해선 이 포스트의 아래쪽에서 다시 설명한다.
-
-+ **static** : 정적 리소스를 위한 디렉토리. 대표적으로 적용될 favicon이 해당 디렉터리에 있다.
-
 + **store** : VUEX 컴포넌트를 위한 디렉토리. index.js 를 통해 클래식 vuex를 사용할 지, module 타입의 vuex를 사용할 지 선택할 수 있다. 블로그에선 vuex를 사용할 일이 아직 없기에 비워뒀다.
+
++ **middleware** : 페이지, 레이아웃이 렌더링 되기 전에 실행될 middleware를 정의한다.
+
++ **module** : Nuxt 모듈과 관련된 디렉터리. 추후 학습을 통해 다시 다루어본다.
+
++ **plugin** : 우선은 링크로 대체하고 다른 포스트에서 다루어본다. - https://okky.kr/article/386124
 
 + **utils** : 보조기능을 담당할 js 파일들을 넣을 디렉토리이다. nuxt의 규격이 아닌 관습적으로 만드는 디렉터리이다.
 
