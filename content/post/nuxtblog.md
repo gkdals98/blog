@@ -19,17 +19,17 @@ Nuxt는 Vue의 SSR 프레임워크이다. backend 서버와 api 통신을 하는
 + 코드 관리 - Github
 + 배포툴 - Vercel
 
-이후부터는 Blog를 만들기위해 Nuxt를 학습한 내용이다. vercel은 가이드가 잘되어있으므로 vercel 이야기는 생략하자.
+이후부터는 Blog를 만들기위해 Nuxt를 학습한 내용이다. vercel은 가이드가 잘되어있으므로 vercel에 대한 것은 생략한다.
 
 #### 1. 프로젝트 초기 설정
-nuxt app을 생성하기 위해서는 create-nuxt-app 을 사용하면 된다. 공식 문서에는 현재 기준으로 npx를 사용해 project를 생성하는 것을 권장하고 있다. cmd를 열어 아래와 같이 입력해주자. 현재는 nuxt에만 집중할 것이기에 모든 설정은 default 값으로 가져가면 된다.
+nuxt app을 생성하기 위해서는 create-nuxt-app 을 사용하면 된다. 공식 문서에는 현재 npx를 사용해 project를 생성하는 것을 권장하고 있다. cmd를 열어 아래와 같이 입력해주자. 현재는 nuxt에만 집중할 것이기에 모든 설정은 default 값으로 가져가면 된다.
 ```
 npx create-nuxt-app blog
 ```
 추가로 나는 하기와 같은 모듈을 설치(yarn add)했다. content 모듈은 우리가 목표로 하는 markdown 문서를 이용한 포스팅에 굉장히 많은 도움을 주기에 이번 예제에선 필수이다. scss는 개인적으로 선호하기에 설치했다.
-+ **@nuxt/content** : content 디렉터리를 path로 정적 리소스를 관리하기 쉽도록 도와준다.
-+ **node-sass** : node가 sass 스타일 시트를 해석할 수 있게 해줌.
-+ **sass-loader** : sass 로더.
++ **@nuxt/content**
++ **node-sass**
++ **sass-loader**
 
 기타 나는 사용하지 않았지만 상황에 따라 유용할지도 모르는 모듈은 아래와 같다. 이는 이번 포스트에선 생략하고 나중에 기회가 되면 다루자.
 
@@ -40,7 +40,7 @@ Nuxt는 framework인 만큼 고정 경로 몇 가지를 지정해 해당 디렉�
 
 + **pages** : url의 경로로 사용되는 디렉토리. url 뒤에 입력하는 경로는 pages 디렉터리에 매칭된다. 자세한 내용은 다음 포스트에서 다시 다룬다.
 
-+ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. 해당 객체들은 SSR에 해당하지 않는다. 즉 nuxt 서버측 데이터에 접근할 수 없다.
++ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. 해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
 ```javascript
 export default {
 	//중략 
@@ -91,8 +91,8 @@ export default {
 	},
 }
 </script>
-```
-참고로 layout 디렉터리의 컴포넌트들은 SSR에 해당하지 않는다. 즉 nuxt 서버측 데이터에 접근할 수 없다.
+``` 
+해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
 
 
 + **assets** : css, 이미지, 폰트 등을 놓는 디렉토리. global로 적용될 css 테마는 이 디렉터리에 생성한 후 nuxt.config.js에서 css 옵션을 통해 읽어오는 것이 관리하기 편하다. 이 방법에 대해선 이 포스트의 아래쪽에서 다시 설명한다.
