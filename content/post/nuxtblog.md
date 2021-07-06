@@ -9,7 +9,7 @@ hidden: 'false'
 ## Nuxt Blog 만들기 -1-
 Nuxt를 이용해서 간단한 학습 결과 저장용 Blog를 만들고자 한다. 목표로 하는 기능은 아래와 같다.
 
-+ Markdown 문서를 이용한 포스팅 ( 포스트는 심플하게 git에 commit하는 방식 )
++ Markdown 문서를 이용한 포스팅 ( 포스트는 심플하게 git에 commit하는 방식. server를 따로 만들어 api 통신해 포스트를 가져오는건 나중으로. )
 + 포스트 내의 Tag 를 이용해 메뉴 구현
 + 특정 테그 선택 시 해당 테그의 Markdown 문서를 5개 단위로 확인할 수 있는 Pagination 기능 제공.
 
@@ -28,22 +28,22 @@ npx create-nuxt-app blog
 ```
 cmd 라인에 위와 같이 입력해주고 프로젝트 이름, 기타 설정 등을 적어주면 알아서 준비를 척척해준다. 하기와 같은 모듈을 프로젝트 초기화와 함께 설정, 또는 추가로 설치(yarn add)했다. content 모듈의 경우 블로그 목적이라면 반쯤 필수로 보이며 scss같은 경우는 개인적인 선호로 설치했다.
 + **@nuxt/content** : content 디렉터리를 path로 정적 리소스를 관리하기 쉽도록 도와준다.
-+ **@nuxtjs/feed** : 아직은 잘 모르겠음. 일단 대기.
 + **node-sass** : node가 sass 스타일 시트를 해석할 수 있게 해줌.
 + **sass-loader** : sass 로더.
++ **@nuxtjs/feed** : 내 블로그에선 사용하지 않지만 피드를 사용한다면 필요한 모듈이다. 뉴스 피드 개념 및 RSS(Rich Site Summary), ATOM 1.0, JSON 1.0 등에 대해 알아볼 것.
 
 #### 2. Project Directory 구성 살피기
 Nuxt 및 nuxt 모듈을 활용하기 위해 알아야하는 지정 directory를 정리한다.
 
-+ **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다. pages 내의 객체들은 서버사이드 랜더링링이다.
++ **pages** : url로 사용되는 디렉토리. 각각의 페이지를 지정한다.
 
-+ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. SSR에 해당하지 않는다.
++ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. SSR에 해당하지 않는다. 즉 서버의 정보 객체에 접근할 수 없다.
 ```
 // Auto import components (https://go.nuxtjs.dev/config-components)
 components: true,
 ```
 
-+ **layouts** : 전체 페이지에서 사용할 레이아웃등을 정의하는 디렉토리. 정의한 레이아웃을 사용하려면 해당 레이아웃을 적용할 페이지의 component에 아래와 같이 정의하면 된다. SSR에 해당하지 않는다.
++ **layouts** : 전체 페이지에서 사용할 레이아웃등을 정의하는 디렉토리. 정의한 레이아웃을 사용하려면 해당 레이아웃을 적용할 페이지의 component에 아래와 같이 정의하면 된다. SSR에 해당하지 않는다. 즉 서버의 정보 객체에 접근할 수 없다.
 ```
 export default {
 	layout: 'blog',
@@ -55,7 +55,7 @@ export default {
 
 + **assets** : css, 이미지, 폰트 등을 놓는 디렉토리. 관리 측면에서, global로 사용될 css 테마는 이 디렉터리에 생성한 후 nuxt.config.js에서 css 옵션을 통해 읽어오는 것이 좋다.
 
-+ **static** : 정적 리소스를 위한 디렉토리. favicon 등을 지정할 때 쓰이는 것으로 보이며 nuxt config 파일에서 별도 설정없이 읽어오는듯.다.
++ **static** : 정적 리소스를 위한 디렉토리. favicon 등을 지정할 때 쓰이는 것으로 보이며 nuxt config 파일에서 별도 설정없이 읽어오는듯 하다.
 
 + **store** : VUEX 컴포넌트를 위한 디렉토리. index.js 를 통해 클래식 vuex를 사용할 지, module 타입의 vuex를 사용할 지 선택할 수 있다. 블로그에선 vuex를 사용할 일이 아직 없기에 비워뒀다.
 

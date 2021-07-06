@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 export default {
   ssr: true,
 	target: 'static',
@@ -25,8 +27,8 @@ export default {
    ** Global CSS
    */
   css: [
-		'~/assets/css/globaltheme.scss',
-		'~/assets/css/globalfonts.scss'
+		'~/assets/style/globaltheme.scss',
+		'~/assets/style/globalfonts.scss'
 	],
 
 	// Auto import components (https://go.nuxtjs.dev/config-components)
@@ -49,5 +51,9 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+  },
+  alias: {
+    'images': resolve(__dirname, './assets/images'),
+    'style': resolve(__dirname, './assets/style'),
   },
 };
