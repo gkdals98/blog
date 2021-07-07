@@ -2,7 +2,7 @@
 title: Jam Stack 구조
 tags: ['Frontend', 'Basic']
 published: '2020-11-11'
-hidden: 'false'
+hidden: 'true'
 ---
 
 ## JAM Stack이란

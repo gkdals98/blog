@@ -2,7 +2,7 @@
 title: SSR, SPA, Static 배포
 tags: ['Frontend', 'Nust']
 published: '2021-07-07'
-hidden: 'true'
+hidden: 'false'
 ---
 
 ## Nuxt에 대해 잘못 알고 있던 것.
