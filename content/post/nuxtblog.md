@@ -15,18 +15,18 @@ Nuxt는 Vuejs 프로젝트 관리를 보다 체계적으로 할 수 있게 설�
 
 배포에는 vercel을 사용했으며 vercel은 가이드가 잘되어있으므로 vercel에 대한 것은 생략한다. 추가로 Dev 서버를 사용한다 가정하고 nuxt로의 요청은 전부 localhost:3000 을 기준으로 작성하려한다.
 
-#### 1. 프로젝트 초기 설정
+#### 1. 프로젝트 생성
 nuxt app을 생성하기 위해서는 create-nuxt-app 을 사용하면 된다. 공식 문서에는 현재 npx를 사용해 project를 생성하는 것을 권장하고 있다. cmd를 열어 아래와 같이 입력해주자. 연습이므로 설정은 Deploy target만 Static으로 설정하고 나머지는 전부 enter를 눌러 기본값으로 설정한다.
 ```
 npx create-nuxt-app blog
 ```
 
 #### 2. Project Directory 구성 살피기
-Nuxt는 vuejs 프로젝트에서 하나하나 설정해줘야했던 layout, page routing 등등을 지정된 디렉터리에 지정된 파일을 넣어주는 것 만으로 전부 알아서 준비해준다. 이를 백분 활용하기 위해서는 우선 Nuxt엔 어떤 지정 디렉터리가 있고 이 디렉터리들에 어떤 파일을 생성하도록 되어있으며 Nuxt가 이를 어떻게 처리하는 지를 알아야할 것이다. 
+Nuxt는 vuejs 프로젝트에서 하나하나 설정해줘야했던 layout, page routing 등을 지정된 디렉터리에 지정된 파일을 넣어주는 것 만으로 전부 알아서 준비해준다. 이를 백분 활용하기 위해서는 우선 Nuxt엔 어떤 지정 디렉터리가 있고 이 디렉터리들에 어떤 파일을 생성하도록 되어있으며 Nuxt가 이를 어떻게 처리하는 지를 알아야할 것이다. 
 
-+ **pages** : Nuxt가 routing 경로로 사용되는 디렉토리. Nuxt는 pages 디렉터리 밑의 폴더 및 파일 명을 routing 경로로 사용한다. 예를 들어 pages 밑에 user 디렉터리를 만들고 info.vue 파일을 생성했다면 그것만으로 ```localhost:3000/user/info``` 경로를 통해 info.vue 로 접근할 수 있게 된다.
++ **pages** : Nuxt가 routing 경로로 사용되는 디렉토리. Nuxt는 pages 디렉터리 밑의 폴더 및 파일 명을 routing 경로로 사용한다. 예를 들어 pages 밑에 user 디렉터리를 만들고 info.vue 파일을 생성했다면 그것만으로 ```localhost:3000/user/info``` 경로를 통해 info.vue 페이지로 접근할 수 있게 된다. 또한 pages 디렉터리의 컴포넌트들은 SSR 구성요소에 해당하기에 asyncData 메서드를 사용해 서버 자원에 접근할 수 있다. 이에 대해선 공식문서를 참조하자.
 
-+ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다. 해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
++ **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다.
 ```javascript
 export default {
 	//중략 
@@ -37,7 +37,7 @@ export default {
 
 + **assets** : css, 이미지, 폰트 등을 놓는 디렉토리. global로 적용될 css 테마는 이 디렉터리에 생성한 후 nuxt.config.js에서 css 옵션을 통해 읽어오는 것이 관리하기 편하다. 이 방법에 대해선 이 포스트의 아래쪽에서 다시 설명한다.
 
-+ **static** : 지정된 이름의 정적 리소스를 위한 디렉토리. 대표적으로 적용될 favicon이 해당 디렉터리에 있다.
++ **static** : 지정된 이름의 정적 리소스를 위한 디렉토리. 대표적으로 적용될 favicon과 robots.txt가 해당 디렉터리에 위치한다.
 
 
 아래부터는 프로젝트 초기화 시 생성되지 않으며 필요에 따라 직접 생성해주어야 하는 디렉터리이다.
@@ -86,7 +86,6 @@ export default {
 }
 </script>
 ``` 
-해당 디렉터리의 객체들은 비동기 데이터 처리(async, await)를 사용할 수 없다.
 
 
 + **store** : VUEX 컴포넌트를 위한 디렉토리. index.js 를 통해 클래식 vuex를 사용할 지, module 타입의 vuex를 사용할 지 선택할 수 있다. 블로그에선 vuex를 사용할 일이 아직 없기에 비워뒀다.

@@ -114,10 +114,22 @@ module.exports = {
 + https://www.redhat.com/ko/topics/devops/what-is-ci-cd
 
 ##### DevOps
-+ https://aws.amazon.com/ko/devops/what-is-devops/
++ https://velog.io/@exploit017/2020-%EB%8D%B0%EB%B8%8C%EC%98%B5%EC%8A%A4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%A1%9C%EB%93%9C%EB%A7%B5
 
 ##### DB 쿼리 최적화에 대한 간단한 팁들
 + https://mangkyu.tistory.com/52
 
 ##### Splash Screen
 + https://hearit.tistory.com/21
+
+##### Nuxt에서 SOE, payload 등, 아직 갈 길이 굉장히 먼 것 같다. 아래 블로그 링크는 도움이 된다기보단 알아야할 키워드가 많아서 저장한다.
++ https://jangwonseok.me/logs/118
+
+##### Nuxt 최적화
++ https://vueschool.io/articles/vuejs-tutorials/nuxt-ssr-optimizing-tips/
+
+##### 상상 범주 내에선 다 되는 CSS 에디터
++ https://animista.net/
+
+##### 반응형 웹 확인할 때 유용할 도구
++ https://grapesjs.com/

@@ -35,8 +35,8 @@ npx create-nuxt-app slugdemo
 
 <script>
 export default {
-	//nuxt에선 asyncData 속성을 정의해 nuxt로부터 params를 전달받을 수 있다.
-	//params의 slug 속성을 참조하면 현재 동적으로 매핑된 경로를 받아올 수 있다.
+	//pages 디렉터리의 컴포넌트들은 asyncData의 params로 서버자원 일부에 접근할 수 있다.
+	//params의 slug 속성을 참조하면 현재 slug 경로를 받아올 수 있다.
 	async asyncData({params}){
 		const someText = params.slug;
 		return {

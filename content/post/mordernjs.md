@@ -5,7 +5,8 @@ published: '2021-04-09'
 hidden: 'false'
 ---
 ## 모던 자바스크립트 학습
-https://learnjs.vlpt.us/
++ https://learnjs.vlpt.us/
+
 참고 블로그를 보며 모던 자바스크립트에 대해 간단히 정리하고자 한다.
 #### Truthy, Falsy와 단축 평가 논리 계산법
 Javascript에는 undefine, null, 0, '' NaN 등 다양한 부정의 값이 존재한다. 이는 ```===```를 통해 처리하면 정확한 대상을 지정해야하지만 논리 연산자로 다음과 같이 다루면 전부 false 처리 된다.
