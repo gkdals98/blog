@@ -16,7 +16,7 @@ yarn add node-sass
 
 #### 최초 예제 코드
 우선 최초 예제의 코드는 블로그의 것을 그대로 가져온다. Button과 App, 그리고 그를 위한 각각의 scss파일을 아래와 같이 생성하자.
-***Button.js***
+**Button.js**
 ```javascript
 import React from 'react';
 import './Button.scss';
@@ -28,7 +28,7 @@ function Button ({children}) {
 }
 export default Button;
 ```
-***Button.scss***
+**Button.scss**
 ```css
 $blue : #228be6;
 
@@ -57,7 +57,7 @@ $blue : #228be6;
 	}
 }
 ```
-***App.js***
+**App.js**
 ```javascript
 import React from 'react';
 import Button from './Button';
@@ -75,7 +75,7 @@ function App() {
 
 export default App;
 ```
-***App.scss***
+**App.scss**
 ```css
 .App {
   width: 512px;

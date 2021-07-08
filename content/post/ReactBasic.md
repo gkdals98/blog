@@ -199,7 +199,7 @@ export default App;
 
 아래는 자식 컴포넌트인 SimpleChild가 name을 전달받기 위한 문법이다. 함수형 컴포넌트의 전달인자로 props를 주고, JSX 내에선 props로 부터 변수 명을 참조한다.
 
-+ ***SimpleChild.js***
+***SimpleChild.js***
 ```javascript
 import React from 'react';
 
@@ -216,7 +216,7 @@ export default SimpleChilde;
 
 props를 여러 개 전달하고자 할 때, 비구조화 할당 문법을 사용하면 위 코드를 조금 더 알기 쉽게 만들 수 있다. 아래는 그 예시이다.
 
-+ ***App.js***
+***App.js***
 ```javascript
 import React from 'react';
 import SimpleChild from 'SimpleChild';
@@ -231,7 +231,7 @@ export default App;
 ```
 위와 같이 여러개의 props가 존재할 경우, 비구조화 할당 문법을 사용하면 아래와 같이 받을 수 있다. vue 사용자로서 햇갈리면 안되는건 inline Style 사용할 때 들어간 중괄호 두 개는 더블 머스테시 태그가 아니라는 점. 바닐라 javascript 코딩에서 원래 inline 스타일 지정을 어떻게 했는지, 그리고 react가 JSX상에 코드를 넣을 때 어떻게 했는지를 떠올려보면 왜 저렇게 됐는지 대충 알 것이다.
 
-+ ***SimpleChild***
+***SimpleChild***
 ```javascript
 import React from 'react';
 
@@ -263,7 +263,7 @@ export default SimpleChild;
 ```
 props에 default 값을 지정해줄 수도 있다. 아래와 같이 컴포넌트의 속성으로 defaultProps를 정의하면 된다. 해당 컴포넌트에 name을 전달하지 않으면 default 값이 출력된다.
 
-+ ***SimpleChild***
+***SimpleChild***
 ```javascript
 import React from 'react';
 

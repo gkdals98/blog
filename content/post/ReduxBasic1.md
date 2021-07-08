@@ -63,7 +63,7 @@ yarn add react-redux
 이번에도 Velog를 참조하며 정리해보자.
 
 1. Redux 모듈 - 액션 타입, 액션 생성 함수, 리듀서를 포함하는 자바스크립트. 액션 생성 함수와 리듀서를 export하여 밖에서 ```reducer(stateChange())``` 의 형태로 사용할 수 있도록 구현한다. ***Store는 Redux 모듈 내에 정의되지 않는다.*** 종합적으로 아래와 같은 구조이다.
-***counter.js***
+**counter.js**
 ```javascript
 //action의 type string
 const SET_DIFF = 'counter/SET_DIFF';
@@ -108,7 +108,7 @@ export default function counter (state = initialState, action) {
 2. modules 디렉터리 - actions, reducers 디렉터리를 포함하는 redux 모듈들을 정의하는 디렉터리. 다만 action과 reducer를 별도 정의하는 것은 관리상에 혼란을 줄 수 있어 요즘(2021년 즈음)은 위 예시ㅘ 같이 reducer와 action을 하나의 js 파일에 정의하는 것을 권장한다.
 
 3. 루트 리듀서 - 상기 Redux 모듈을 하나로 묶어 한 개의 Reducer로 만들어준다. redux로 부터 combineReducers를 import 받아온 뒤 전달인자로 합칠 리듀서들을 넘기면 된다. 넘긴 리듀서의 이름들은 그대로 store내의 각 리듀서로 관리되는 상태에 접근하기 위한 이름이 된다. 자세한 예시는 5에 있다. modules 내에 파일을 생성하며 이름은 index.js로 통일하는게 관례이다. 형태는 아래와 같다.
-***index.js***
+**index.js**
 ```javascript
 import {combineReducers} from 'redux';
 import counter from './counter';
@@ -205,7 +205,7 @@ export default myLogger;
 2. 위 코드의 return은 result이다. dispatch에 가야할 action을 중간에 낚아채 처리하는 구조이기에 재귀 함수 끝, dispatch로 부터 받은 state를 넘겨넘겨 밖으로 빼주어야한다. 최종적으론 가장 앞에서 처리되는 미들웨어가 최종 반영되어야 할 state값을 result로 return해줄 것이다.
 
 위 미들웨어를 redux 상에 적용하기 위해선 createStore에 applyMiddleware 를 통해 작성한 미들웨어를 넘겨주어야한다. 주체적인 방법은 아래와 같다.
-***~/index.js***
+**~/index.js**
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';

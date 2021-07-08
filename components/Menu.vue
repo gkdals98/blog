@@ -26,7 +26,7 @@
 <script>
 
 export default {
-  name : 'Menu',
+  	name : 'Menu',
 	props : ['postdata'],
 	data : function (){
 		return {
@@ -35,10 +35,12 @@ export default {
 			show_page : false
 		}
 	},
-  computed : {
+  	computed : {
 		depth1 : function(){
 			var li = [];
 			for(var i = 0; i < this.postdata.length; i++){
+				if(typeof this.postdata[i].tags == "undefined")continue;
+
 				if(!li.includes(this.postdata[i].tags[0]) && this.postdata[i].hidden !== "true"){
 					li.push(this.postdata[i].tags[0]);
 				}
@@ -48,6 +50,8 @@ export default {
 		depth2 : function(){
 			var li = [];
 			for(var i = 0; i < this.postdata.length; i++){
+				if(typeof this.postdata[i].tags == "undefined")continue;
+
 				if(this.current_depth1 == this.postdata[i].tags[0] &&
 					!li.includes(this.postdata[i].tags[1]) &&
 				 	this.postdata[i].hidden !== "true"){
@@ -62,6 +66,8 @@ export default {
 		Articles : function(){
 			var li = [];
 			for(var i = 0; i < this.postdata.length; i++){
+				if(typeof this.postdata[i].tags == "undefined")continue;
+
 				if(this.current_depth1 == this.postdata[i].tags[0] &&
 					this.current_depth2 == this.postdata[i].tags[1] &&
 					!li.includes(this.postdata[i])){
@@ -71,7 +77,7 @@ export default {
 			li.sort((a,b) => (a.published > b.published) ? -1 : 1)
 			return li;
 		}
-  },
+  	},
 	methods : {
 		item_selected : function(item){
 			if(this.current_depth1 == item){
@@ -92,7 +98,7 @@ export default {
 				this.current_depth2 = item;
 				this.show_page = true;
 			}
-	  },
+	  	},
 	},
 
 }

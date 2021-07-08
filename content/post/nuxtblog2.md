@@ -48,7 +48,7 @@ export default {
 ```
 이제 yarn dev로 nuxt app을 기동한 후, `localhost:3000/articles/아무string값` 을 주소에 입력해보자. `아무string값` 부분에 정말 아무 값이나 입력해도 화면에 해당 값이 출력되는 것을 볼 수 있을 것이다. params로 받아온 articles 이하의 동적 경로(slug)를 soemText 라는 변수로 받아 화면에 출력하도록 했기 때문이다. 위와 같이 nuxt에선 asyncData 속성을 정의하면 nuxt로부터 params를 받아와 현재 slug, 즉 동적 경로를 참조할 수 있다.
 
-_slug.vue와 같은 컴포넌트를 Dynamic Pages(직역하자면 동적 페이지)라고 한다. **Dynamic Page란**, 위와 같이 url로 동적인 값(slug)이 들어왔을 때 이 동적인 값을 처리하는 페이지이다. Dynamic Page를 만들기 위해서는 위와 같이 _slug.vue 파일을 pages 내의 원하는 경로에 생성해주어야한다. articles 디렉터리를 만들고 그 안에 Dynamic Page를 정의하였으니 이제 `articles/아무string값` 경로의 처리는 해당 Dynamic Page를 통해 이루어지게 된다. Nuxt는 _(언더바)로 시작하는 이름을 가진 vue 파일을 Dynamic Page로 인식하기에 꼭 이름이 _slug.vue일 필요는 없지만, 다른 이름을 사용한다면 굉장히 햇갈릴 것이다.
+`_slug.vue`와 같은 컴포넌트를 Dynamic Pages(직역하자면 동적 페이지)라고 한다. **Dynamic Page란**, 위와 같이 url로 동적인 값(slug)이 들어왔을 때 이 동적인 값을 처리하는 페이지이다. Dynamic Page를 만들기 위해서는 위와 같이 `_slug.vue` 파일을 pages 내의 원하는 경로에 생성해주어야한다. articles 디렉터리를 만들고 그 안에 Dynamic Page를 정의하였으니 이제 `articles/아무string값` 경로의 처리는 해당 Dynamic Page를 통해 이루어지게 된다. Nuxt는 _(언더바)로 시작하는 이름을 가진 vue 파일을 Dynamic Page로 인식하기에 꼭 이름이 _slug.vue일 필요는 없지만, 다른 이름을 사용한다면 굉장히 햇갈릴 것이다.
 
 그렇다면 지금같이 정적인 markdown 문서를 랜더링하고자 할 땐 이를 어떻게 활용하는가. 편한 구현을 위해 content 모듈이 필요하다. 아래와 같이 content 모듈을 추가해보자.
 
@@ -121,12 +121,13 @@ export default {
 위 예제에서 가져온 포스트들의 제목을 모아 메뉴를 만들려면 어떻게 해야할까. 읽어온 markdown을 파싱해 제목을 찾는 것 보다는 추가로 제목 속성을 정의해 주는 것이 좋을 것이다. 또 포스트의 테그, 작성 날짜 등의 속성도 정의할 수 있으면 편할 거라는 생각이 든다. content 모듈은 이를 위해 markdown object를 읽어올 때 참조할 속성을 markdown 내에 정의하는 방법을 만들었다. 위에서 만든 sample.md 문서의 시작부분에 아래와 같이 ```---```로 시작 및 끝나는 부분을 넣고 그 안에 정보를 작성하면 된다.
 
 + sample.md
-```markdown
+```
 ---
 title: 첫 포스트
 tags: ['vue', 'nuxt']
 published: '2020-11-20'
 ---
+
 ## Hello! 첫 포스트에요.
 
 첫 포스트입니다.

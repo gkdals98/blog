@@ -171,7 +171,7 @@ export default Users;
 #### 커스텀 Hook을 만들어 위 Reducer 사용부를 재사용하기
 위 통신 과정을 하나의 Hook으로 관리하기 위해 아래와 같은 코드를 구현하였다는데...
 
-+ ***useAsync.js***
+**useAsync.js**
 ```javascript
 import {useReducer, useEffect} from 'react';
 

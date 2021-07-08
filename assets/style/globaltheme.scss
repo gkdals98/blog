@@ -1,131 +1,99 @@
-//nuxt.config.js의 css 파트에서 import함
-.drag-false {
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-}
-
-.clk {
-	&:hover {
-		cursor: pointer;
-	}
-}
-
-.align-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 // Google Fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
 
 // OG CodePen styles
 body {
-  height: 100vh;
-  margin: 0;
-  display: grid;
-  place-items: center;
+	height: 100vh;
+	margin: 0;
+	font-size: 15px;
+	display: grid;
+	place-items: center;
 }
 
 // Challenge Styles
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+ 	box-sizing: border-box;
 }
 
 $measurement: 0.125em;
 
 .multi-button {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  button {
-    background: white;
-    border: $measurement solid;
-    cursor: pointer;
-    position: relative;
-    text-transform: uppercase;
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      transition: all 0.125s ease-in-out;
-    }
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
+	button {
+		background: white;
+		border: $measurement solid;
+		cursor: pointer;
+		position: relative;
+		text-transform: uppercase;
+		&:before,
+		&:after {
+		content: '';
+		position: absolute;
+		transition: all 0.125s ease-in-out;
+		}
 
-    &.cut {
-      background: none;
-      border-color: transparent;
-			color : #001285;
-	    font: 600 0.7rem/1.25 'Montserrat', sans-serif;
-	    letter-spacing: $measurement;
-	    margin: 0.3rem;
-	    padding: 0.5em 0.75em;
-      &:before,
-      &:after {
-        transition: all 0.175s ease-in-out;
-      }
-      &:before {
-        background: black;
-        border: 0px dashed #001285;;
-        left: $measurement * -1;
-        top: $measurement * -1;
-        right: $measurement * -1;
-        bottom: $measurement * -1;
-        z-index: -1;
-      }
-      &:hover:before,
-      &:focus:before {
-        background: white;
-        border-width: $measurement;
-      }
-      &:after {
-        background: white;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: -1;
-      }
-    }
+		&.copy {
+			font: 600 0.9rem/1.25 'Montserrat', sans-serif;
+			letter-spacing: $measurement;
+			margin: 0.5rem;
+			padding: 0.5em 0.75em;
+		&:after {
+			border: $measurement dashed black;
+			bottom: $measurement * -1;
+			left: $measurement * -1;
+			right: $measurement * -1;
+			top: $measurement * -1;
+			z-index: -1;
+		}
+		&:hover:after,
+		&:focus:after {
+			bottom: $measurement * -3;
+			left: $measurement;
+			right: $measurement * -3;
+			top: $measurement;
+		}
+		}
 
-    &.copy {
-	    font: 600 0.9rem/1.25 'Montserrat', sans-serif;
-	    letter-spacing: $measurement;
-	    margin: 0.5rem;
-	    padding: 0.5em 0.75em;
-      &:after {
-        border: $measurement dashed black;
-        bottom: $measurement * -1;
-        left: $measurement * -1;
-        right: $measurement * -1;
-        top: $measurement * -1;
-        z-index: -1;
-      }
-      &:hover:after,
-      &:focus:after {
-        bottom: $measurement * -3;
-        left: $measurement;
-        right: $measurement * -3;
-        top: $measurement;
-      }
-    }
-  }
-}
-
-h1{
-	font-size: 3.5em;
-	line-height: 1.8em;
-}
-
-.date{
-	font-size: 1.2em;
-	font-weight: bold;
-	margin-left: 1.5em;
-	margin-bottom: 0.3em;
+		&.cut {
+			background: none;
+			border-color: transparent;
+			color : #30633F;
+			font: 600 0.7rem/1.25 'Montserrat', sans-serif;
+			letter-spacing: $measurement;
+			margin: 0.3rem;
+			padding: 0.5em 0.75em;
+			&:before,
+			&:after {
+				transition: all 0.175s ease-in-out;
+			}
+			&:before {
+				background: black;
+				border: 0px dashed #30633F;
+				left: $measurement * -1;
+				top: $measurement * -1;
+				right: $measurement * -1;
+				bottom: $measurement * -1;
+				z-index: -1;
+			}
+			&:hover:before,
+			&:focus:before {
+				background: white;
+				border-width: $measurement;
+			}
+			&:after {
+				background: white;
+				color : #47a864;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: 0;
+				z-index: -1;
+			}
+		}
+	}
 }
 
 
@@ -133,6 +101,8 @@ h1{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 45vw;
+	min-width: 55em;
 
 	.title-bar{
 		font-family: pinkblue;
@@ -140,75 +110,101 @@ h1{
 	}
 	hr{
 		style: 0.2em solid;
-		min-width: 50em;
+		width: 100%;
 	}
 	.layout-line{
 		border-style: solid;
-		min-width: 50em;
+		width: 100%;
 		border-radius: 0.3em;
 	}
 }
 
 #post{
-		width: 45vw;
-		min-width: 55em;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin-bottom: 2em;
-		padding-bottom: 2em;
-		border-style: solid;
-		border-width: 0 0 0.2em 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-style: solid;
+	border-width: 0 0 0.2em 0;
+	
+	
+	h1{
+		font-size: 3.5em;
+		line-height: 1.2em;
+	}
 
-		h2{
-			color : #001285;
-			line-height: 2.5em;
-			margin: 0.3em;
-			font-size: 1.7em;
+	h2{
+		color : #001285;
+		line-height: 2.5em;
+		margin: 0.3em;
+		font-size: 1.7em;
+	}
+	h4{
+		line-height: 1.5em;
+		font-size: 1.5em;
+		margin: 1em 0.5em 0 0.3em;
+		text-decoration: underline;
+		text-underline-position: under;
+		&:before {
+			content: '# ';
+			color:#30633F;
 		}
-		h4{
-			line-height: 1.5em;
-			font-size: 1.5em;
-			margin: 1em 0.5em 0 0.3em;
-			text-decoration: underline;
-			&:before {
-				content: '# ';
-			}
+	}
+	h5{
+		line-height: 1.3em;
+		font-size: 1.1em;
+		margin: 1em 0.5em 0 0.3em;
+		&:before {
+			content: '> ';
+			color:#47a864;
 		}
-		p{
-			line-height: 1.7em;
-			font-family: spoqahansanr;
-			margin: 1em 0.2em 1em 0.2em;
-			+ p{
-				margin-top: 1.2em;
-			}
-		}
-		ul{
-			margin-left: 1em;
-			padding: 0.7em;
-		}
-		li{
-			margin-top: 0.7em;
-			+ li{
-				margin-top: 1.2em;
-			}
-			line-height: 1.6em;
-			font-family: spoqahansanr;
-		}
+	}
 
-		strong{
-			color : #33237D;
-		}
+	.date{
+		font-size: 1.2em;
+		font-weight: bold;
+		margin-left: 1.5em;
+		margin-bottom: 0.3em;
+		color : #30633F;
+	}
 
-
-		.code{
-			font-family: Lato;
+	p{
+		line-height: 1.7em;
+		font-family: spoqahansanr;
+		margin: 1em 0.2em 1em 0.2em;
+		+ p{
+			margin-top: 1.2em;
 		}
+	}
+	ul{
+		margin-left: 1em;
+		padding: 0.7em;
+	}
+	li{
+		margin-top: 0.7em;
+		+ li{
+			margin-top: 1.2em;
+		}
+		line-height: 1.6em;
+		font-family: spoqahansanr;
+	}
+	strong{
+		color : #30633F;
+	}
+
+	code{
+		font-family: Lato;
+		border-radius: 15%;
+	}
+
+	.nuxt-content{
+		white-space:normal;
+		word-break:keep-all;
+	}
 }
 
-@media (max-width: 767px){
-
-}
 .depth{
 	display: flex;
 	flex-direction: row;
@@ -231,7 +227,61 @@ table {
 	}
 }
 
-//.article .article-entry h1:hover:before, .article .article-entry h2:hover:before, .article .article-entry h2:hover:before, .article .article-entry h4:hover:before, .article .article-entry h5:hover:before, .article .article-entry h6:hover:before {
-//	content: '#';
-//	position: absolute;
-//	right: 100%; }
+$mobile-width: 760px;
+$mobile-min-width: 470px;
+
+@media (max-width: 767px){
+	body{
+		font-size: 10px;
+	}
+	.form{
+		width: mobile-width;
+		min-width: mobile-min-width;
+		
+		.title-bar{
+			font-family: pinkblue;
+			font-size: 3em;
+		}
+		hr{
+			width: mobile-width;
+			min-width: mobile-min-width;
+		}
+		.layout-line{
+			border-style: solid;
+			width: mobile-width;
+			min-width: mobile-min-width;
+			border-radius: 0.3em;
+		}
+	
+		#post{
+			width: mobile-width;
+			min-width: mobile-min-width;
+		}
+		article{
+			width:mobile-width;
+			min-width: mobile-min-width;
+		}
+	}
+}
+
+////Util CSS
+.drag-false {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.clk {
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.align-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}

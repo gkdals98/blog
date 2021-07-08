@@ -6,11 +6,6 @@ hidden: 'true'
 ---
 ## 반응형 웹 디자인
 현대에는 모바일, 타블렛 PC, 데스크탑 등 환경에 따라 해상도가 나뉘는 경우가 많다. 그리고 반응형 웹디자인이란, 모니터 해상도에 따라 다른 UI를 적용하는 것을 의미한다. 구체적으론 해상도에 따라 완전히 다른 페이지로 라우팅하는 방식과 다른 css를 적용하는 방식 두 가지가 있다. 이번엔 후자에 대해 메모하고 넘어가고자 한다. 가장 기본이 되는 meta-viewport 및 media 사용법에 대해 정리해본 뒤 vue, 그리고 최근 공부하고있는 react에서의 반응형 웹 구성에 대해 작성할 생각이다.
-+ 참고 - https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag
-+ 참고 - https://www.samsungsds.com/kr/insights/Responsive_web_1.html?referrer=https://takeknowledge.tistory.com/113
-+ 참고 - https://www.codingfactory.net/10534
-+ 참고 - https://velog.io/@pyo-sh/React-Responsive
-+ 참고 - https://eunyoe.tistory.com/entry/CSS-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9-%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4%EB%B3%84-%ED%95%B4%EC%83%81%EB%8F%84-%EB%B0%98%EC%9D%91%ED%98%95-%EB%B6%84%EA%B8%B0%EC%A0%90-%EB%A6%AC%EC%8A%A4%ED%8A%B8
 
 #### meta viewport
 우선 모바일 환경에서 통용되는 viewport의 개념을 알아야한다. 웹 디자인에서 해상도 문제가 본격적으로 발생한 건 스마트폰의 등장 이후였다. 가장 처음 발생한 문제는 화면의 물리적 사이즈 문제로, 데스크탑을 상정하고 만들어진 기존의 웹페이지들은 당시 가로 320px였던 모바일 환경에서 한 화면에 담기지 못하고 초과돼 버렸다. 애플은 이런 문제를 해결하기 위해 가상의 화면 사이즈인 viewport 개념을 도입했다. 그리고 이 viewport의 기본 width는 980px로 설정되었다. 실제 화면의 사이즈 및 픽셀 수에 상관없이 모바일 웹 브라우저가 자신의 width를 980px라고 가정하고 웹페이지를 랜더링하도록 한 것이다. 이 이후 별도 설정이 없다면 모바일 브라우저는 자신의 가로 사이즈를 980px로 가정하고 페이지를 랜더링하게 되었다. 만약 웹페이지를 디자인할 때 모바일 브라우저의 기본 viewport width인 980px를 쓰지 않고 자체 정의한 viewport사이즈를 쓰게 하고싶다면 아래와 같이 작성하면 된다. 몇 가지 핵심적인 다른 값들도 있지만 이해를 위해 생략했다.
@@ -57,3 +52,10 @@ media 태그는 각 브라우저 사이즈에 대해 다른 스타일을 지정�
 #### react-responsive
 
 https://www.codingfactory.net/10534
+
+#### 참고
++ 참고 - https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag
++ 참고 - https://www.samsungsds.com/kr/insights/Responsive_web_1.html?referrer=https://takeknowledge.tistory.com/113
++ 참고 - https://www.codingfactory.net/10534
++ 참고 - https://velog.io/@pyo-sh/React-Responsive
++ 참고 - https://eunyoe.tistory.com/entry/CSS-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9B%B9-%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4%EB%B3%84-%ED%95%B4%EC%83%81%EB%8F%84-%EB%B0%98%EC%9D%91%ED%98%95-%EB%B6%84%EA%B8%B0%EC%A0%90-%EB%A6%AC%EC%8A%A4%ED%8A%B8

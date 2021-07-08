@@ -1,6 +1,6 @@
 ---
-title: SSR, SPA, Static 배포
-tags: ['Frontend', 'Nust']
+title: Nuxt의 SSR에 대한 고찰
+tags: ['Frontend', 'Nuxt']
 published: '2021-07-07'
 hidden: 'false'
 ---
@@ -17,11 +17,8 @@ hidden: 'false'
 + components 디렉터리 및 layout 디렉터리의 컴포넌트에서 asyncData 실행이 안되는 이유가 하이드레이션에 의한 것이 맞는지를 확인한다.
 
 
-이 포스트보다는 아래의 참고 포스트들을 읽는 것이 더 이해하기 쉽고 정확하다. 다만 내 study를 위해 기록차원에서 적어보려 한다.
-+ https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=buskerlic&logNo=221435561090
-+ https://khwan.kr/blog/vue/2020-03-02-nuxt-spa-ssr/
-+ 특히 잘 정리된 글 - https://maxkim-j.github.io/posts/nuxt-ssr
-+ nuxt 최적화를 다루며 아래 내용들을 기본 전제로 깔고 가는 글 - https://vueschool.io/articles/vuejs-tutorials/nuxt-ssr-optimizing-tips/
+이 포스트보다는 아래의 참고 포스트를 읽는 것이 더 이해하기 쉽고 정확하다. 다만 내 study를 위해 기록차원에서 적어보려 한다.
++ https://maxkim-j.github.io/posts/nuxt-ssr
 
 추가로 SSR 프론트를 만들었다 치고, 그래서 서버와의 통신을 어떻게 할 지에 대한 고민도 하였는데 이는 nuxt proxy와 nuxt api 통신, jam stack 구조의 이해 등으로 나누어 다룰 예정이다.
 
@@ -36,7 +33,7 @@ hidden: 'false'
 + 단점 - 일반적인 경우, 각각의 Page에 대한 접근 요청마다 Client는 Page를 새로 로드해야한다. 이로인해 Page 이동 간 화면의 깜빡임이 발생하게 된다.
 
 #### 3. 새로운 SSR(Server Side Rendering)의 개념과 Nuxt
-결론적으론 CSR과 SSR은 모두 장단점이 있다. 다만 두 개념의 구조는 흑과 백처럼 양립할 수 없는 것이 아니며 한 페이지 내에서 혼용이 가능하다. 이에 SSR에는 프리 랜더링과 하이드레이션이란 두 가지 개념이 등장한다.
+결론적으론 CSR과 SSR은 모두 장단점이 있다. 다만 두 개념의 구조는 SSR에선 흑과 백처럼 양립할 수 없는 것이 아니며 혼용이 가능하다. 이에 SSR에는 프리 랜더링과 하이드레이션이란 두 가지 개념이 등장한다.
 + **프리 랜더링**은 React나 Vue로 만들어진 CSR 페이지에 위 크롤링의 단점을 극복하기 위해 어느정도 기본이 갖추어진 Html 페이지를 전송하는 것을 의미한다. 또 프리 랜더링은 라우팅이 발생할 시엔 작은 html 컴포넌트를 전달받아 페이지를 다시 그린다. 즉, SSR이다. 이를 위해 Nuxt 등의 SSR 특화 라이브러리는 Build 결과물로 javascript 외에도 작은 서버를 산출하며 이 서버는 페이지 라우팅 시 요청에 맞는 페이지 컴포넌트를 프리랜더링해 브라우저로 전달하는 역할을 한다.
 + **하이드레이션**은 사전적으론 '수용액 속에서 용해된 용질 분자나 이온을 물 분자가 둘러싸고 상호작용하면서 마치 하나의 분자처럼 행동하게 되는 현상'을 말한다. 꽤 어려운 단어인데 SSR에선 프리랜더링을 마친 Html이 Javascript를 이용해 마치 SPA와도 같이 동작하는 것을 의미한다. 이를 통해 SSR 페이지도 SPA와도 같은 반응성을 얻을 수 있다.
 
@@ -45,7 +42,7 @@ hidden: 'false'
 #### 4. nuxt app build
 이제 CSR, SSR 그리고 프리 랜더링과 하이드레이션을 알았으니 Nuxt에서 이것들이 어떻게 적용되는지 다시 보아야할 차래이다. 추가로 아주 살짝 다른 이야기인 SSG에 대해서도 다뤄보자.
 
-**CSR** 프로젝트를 생성 및 빌드하고 싶을 땐
+##### CSR
 + nuxt.config.js를 아래와 같이 설정하면 된다.
 
 **nuxt.config.js**
@@ -62,14 +59,15 @@ export default {
 + 배포는 서버의 라우팅 경로에 해당 정적 산출물을 옮기면 끝난다.
 
 
-**SSR** 프로젝트를 생성 및 빌드하고 싶을 땐 
+##### SSR
 + nuxt.config.js의 ssr, mode 설정을 지워버리면 된다.(즉 default이다.) 
 + build시엔 package.json에서 `nuxt build`에 해당하는 script를 수행하면 된다.
 + 산출물은 .nuxt/dist 경로에 client, server 두 개의 폴더로 생성되며 서비스를 위해 최적화 및 번들링을 마친 javascript와 server측 구성요소가 들어있다. 이는 이 산출물로 호스팅을 할 시 node.js 서버가 필요함을 의미한다.
 + 공식문서에도 올라와있는 가장 심플한 배포 방법은 프로젝트를 호스팅할 서버에 올려 nuxt build 한 후에 nuxt start를 하는 것이다. 다만 서버가 산출물에 포함되는 만큼, 환경과 프로젝트 구조에 따라 배포 방식이 극과 극으로 갈리는 것 같다. 아마 nuxt proxy를 다룰 때 즈음 한 번 더 이야기를 하게될 것 같다.
 
 
-**SSG**는 위에선 다루지 않았던 개념인데 Static Site Generate의 약어로 정적 사이트 생성을 의미한다. SPA나 현대적인 SSR이 아닌 보편적이고 가장 단순한 형태의 SSR 산출물이 나온다.
+##### SSG
++ SSG는 위에선 다루지 않았던 개념인데 Static Site Generate의 약어로 정적 사이트 생성을 의미한다. 말 그대로 Nuxt가 정적 html의 생성에만 관여한다. SSG로 정적 사이트를 gen하면 SPA나 현대적인 SSR이 아닌 보편적이고 가장 단순한 형태의 SSR 산출물이 나온다.
 + nuxt.config.js를 아래와 같이 설정하면 된다.
 **nuxt.config.js**
 ```javascript
@@ -81,14 +79,14 @@ export default {
 ```
 + build시엔 위와 같이 설정했다면 `nuxt generate`가 실행된다.
 + 산출물은 dist 경로에 생성된다.
-+ 배포는 SPA와 마찬가지로 서버 호스팅 경로에 올리면 된다. 또 이러한 정적 웹사이트 생성에 한해 nuxt, next를 위한 vercel, netlify 등의 좋은 무료 호스팅 서비스가 있는데 이 블로그도 vercel을 사용해 SSG로 배포되고 있다.
++ 배포는 SPA와 마찬가지로 서버 호스팅 경로에 올리면 된다. 또 이러한 정적 웹사이트 생성에 한해 vercel, netlify 등의 좋은 무료 호스팅 서비스를 사용할 수 있는데 이 블로그도 vercel을 사용해 SSG로 배포되고 있다.
 
-#### 5. components, layout 디렉터리의 비동기 데이터처리
+#### 5. components, layout 디렉터리에서 asyncData 호출
 이제 이 포스트를 작성하게 된 계기만 남았다. components, layout 디렉터리에서 비동기 데이터 처리를 할 수 없는 것은 이 디렉터리의 컴포넌트들이 CSR로 렌더링되기 때문일까? 거의 확실한거지 완벽한 결론을 얻은 것은 아니지만 어쨌건 **결론은 맞다.** 아래는 공식문서이다.
 
 + https://nuxtjs.org/docs/2.x/features/data-fetching#async-data-in-components
 
-asyncData 메서드는 서버의 자원을 참조해 SSR을 지원하는 메서드인데 위 하이드레이션의 관점에서 접근해보자면 SSR로 랜더링되는 요소는 ***Pages*** 디렉터리 뿐이다. 즉, client에서 랜더링되는 기타 디렉터리에서는 asyncData로 서버자원에 접근을 시도해도 서버에 뭐가있는지 알 길이 없다. 이에 이런 디렉터리에서 server측에 데이터를 요청할 수 있도록 아래와 같은 fetch Hook이 제공된다.
+asyncData는 서버의 자원을 참조해 SSR을 지원하기 위한 속성이며, 위 하이드레이션의 관점에서 접근해보자면 Nuxt에서 SSR로 랜더링되는 요소는 ***Pages*** 디렉터리 뿐이다. SSR로 Nuxt를 빌드한 뒤 각 라우팅 경로에 매핑되는 프리 렌더링 html 산출물이 무엇을 기준으로 만들어지는지를 보면 된다. 즉, 기타 directory의 컴포넌트는 client sdie에서 랜더링되며, 때문에 asyncData로 서버자원에 접근을 시도해도 서버에 뭐가있는지 알 길이 없다. 이에 Nuxt에선 SSR이 아닌 디렉터리에서 server측에 데이터를 요청할 수 있도록 아래와 같은 fetch Hook 모듈이 제공된다.
 
 **공식 문서 예제**
 ```html
@@ -114,5 +112,5 @@ asyncData 메서드는 서버의 자원을 참조해 SSR을 지원하는 메서�
 </script>
 ```
 
-다만 딱 봐도 알 수 있듯 Client에 로드된 이후의 동작으로 SSR로 프리로드 되어 나오는 출력이 아니기에 약간의 딜레이가 있을 수 있다.
+다만 딱 봐도 알 수 있듯 이는 Client에 로드된 이후 서버에 데이터를 요청하는 구문이며 컴포넌트가 SSR로 프리 렌더링 되어 나오는 것이 아님을 유의하자.
 

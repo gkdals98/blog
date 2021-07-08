@@ -27,6 +27,8 @@ Nuxt는 vuejs 프로젝트에서 하나하나 설정해줘야했던 layout, page
 + **pages** : Nuxt가 routing 경로로 사용되는 디렉토리. Nuxt는 pages 디렉터리 밑의 폴더 및 파일 명을 routing 경로로 사용한다. 예를 들어 pages 밑에 user 디렉터리를 만들고 info.vue 파일을 생성했다면 그것만으로 ```localhost:3000/user/info``` 경로를 통해 info.vue 페이지로 접근할 수 있게 된다. 또한 pages 디렉터리의 컴포넌트들은 SSR 구성요소에 해당하기에 asyncData 메서드를 사용해 서버 자원에 접근할 수 있다. 이에 대해선 공식문서를 참조하자.
 
 + **components** : 각 page에서 사용할 vue 컴포넌트들을 정의하는 디렉토리. nuxt config 상에 아래 옵션을 추가하면 components 디렉터리 하위의 component들이 자동으로 import 된다.
+
+**nuxt.config.js**
 ```javascript
 export default {
 	//중략 
@@ -45,7 +47,7 @@ export default {
 
 + **layouts** : 각 페이지에서 사용할 레이아웃을 정의하는 디렉토리. 예제로 layouts 디렉터리 아래에 ```blog.vue``` 레이아웃을 아래와 같이 작성하자.
 
- + **blog.vue**
+**blog.vue**
 ```html
 <template>
 	<div>
@@ -64,7 +66,7 @@ export default {
 
 여기서 Nuxt 태그가 해당 레이아웃을 사용하는 페이지가 들어갈 곳이다. 이 레이아웃을 적용할 페이지 컴포넌트에는 아래와 같이 layout 속성을 주면 된다. pages 디렉터리 밑에 index.js를 아래와 같이 수정하고 ***dev 서버가 기동 중이였다면 dev 서버를 재기동한 후*** localhost:3000으로 접속해보자. 적용된 레이아웃을 볼 수 있다.
 
-+ **index.js**
+**index.js**
 ```html
 <template>
 	<div>
@@ -109,7 +111,7 @@ export default {
 
 alias는 특정 경로를 alias로 단축해 지정할 수 있는 설정이다. 공통으로 쓰는 style 디렉터리 등에 접근할 때 '../../../../style' 과 같은 코드가 반복되면 읽기도 힘들고 리펙토링 시 디렉터리 구조가 바뀌게 되면 수정사항 또한 많아진다. 아래와 같이 path 모듈로부터 resolve를 import 받아와 alias 속성을 정의해보자.
 
-+ **nuxt.config.js**
+**nuxt.config.js**
 ```javascript
 import { resolve } from 'path'
 exrpot default {

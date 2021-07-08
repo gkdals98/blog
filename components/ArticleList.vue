@@ -48,7 +48,6 @@ export default {
       height: 1.3em;
     	text-decoration: none;
   		font-size: 1em;
-  		width: 35em;
   		display: flex;
   		justify-content: space-between;
 		  font-family: spoqahansanr;
