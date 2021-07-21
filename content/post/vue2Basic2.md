@@ -2,7 +2,7 @@
 title: Vue - 2. 컴포넌트, 컴포넌트 내부의 데이터
 tags: ['Frontend', 'Vue']
 published: '2021-07-08'
-hidden: 'true'
+hidden: 'false'
 ---
 ## Vue 2.x 컴포넌트, 컴포넌트 내부의 데이터
 이번엔 vue 2.x 컴포넌트의 기본 속성 및 가장 간단한 데이터 표현을 위한 몇 가지 속성을 다루어보려한다. 시작 전에, 생성된 project의 components/HelloWorld.vue 파일의 template 내용을 다 지우고 아래와 같이만 남기자. App.vue에 선언된 Logo.vue도 거슬린다면 지워도 무방하다.

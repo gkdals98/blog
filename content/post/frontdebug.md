@@ -1,6 +1,6 @@
 ---
 title: Frontend Debug Log
-tags: ['Frontend', 'basic']
+tags: ['Frontend', 'Basic']
 published: '2021-07-08'
 hidden: 'false'
 ---
