@@ -1,7 +1,7 @@
 ---
 title: KVM 기초
 tags: ['Infra', 'tools']
-published: '2021-02-02'
+published: '2021-08-07'
 hidden: 'true'
 ---
 

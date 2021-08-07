@@ -1,8 +1,8 @@
 ---
 title: TypeScript 정리 6 - 클래스
 tags: ['Frontend', 'Basic']
-published: '2021-05-04'
-hidden: 'true'
+published: '2021-08-07'
+hidden: 'false'
 ---
 ## TypeScript의 Class
 전 포스트에 이어 공식 docs를 보며 study를 진행해보겠다.
@@ -153,5 +153,43 @@ console.log(grid1.calculateDistanceFromOrigin({x: 10, y: 10}));
 console.log(grid2.calculateDistanceFromOrigin({x: 10, y: 10}));
 console.log(Grid.origin);
 
+}
+```
+
+#### 추상 클래스 (abstract)
+다른 객체지향 언어에서 그러하듯, 공통 기능들을 미리 구현해 놓은 클래스이다. 자주 있는 비유로, 자동차 객체와 오토바이 객체를 구현한다고 치면 '엑셀과 브레이크, 기어업, 기어다운' 등의 공통 기능을 포함하는 탈 것 클래스를 정의한 뒤, 이를 상속하는 것이 좋다는 이야기이다. 이는 오토바이, 자동차의 구현상의 편의 뿐만 아니라 오토바이와 자동차를 탈 것으로 묶어 처리하는데에도 도움이 된다. 또 좌회전, 우회전과 같이 자동차와 오토바이 둘 모두에 반드시 있어야하나 구현은 다르게 되어야하는 기능이 있다면 내부에 abstract 메서드로 이를 정의해 놓을 수 있다. 이렇게되면 탈 것을 상속받는 자동차, 오토바이는 abstract로 정의된 좌회전, 우회전을 내부적으로 반드시 구현하여야 한다. 이는 인터페이스와 마찬가지로 상속하는 클래스의 구현에 대한 룰을 제시하는 역할을 한다. TypeScript에서의 abstract 클래스와 그 내부의 abstract 메서드의 정의는 아래와 같이 abstract 키워드를 써서 할 수 있다.
+```typescript
+abstract class Vehicle {
+	constructor (public speed: number, public acceleration: number, 
+		public braking: number){	
+	}
+	speed : number;
+	acceleration : number;
+	braking : number;
+	accelerator () : void {
+		speed = speed + acceleration;
+	}
+	break () : void {
+		speed = speed - braking;
+	}
+	abstract trunLeft() : void;
+	abstract trunRight() : void;
+}
+
+//상속 시, 아래와 같이 abstract로 정의되어있던 function들을 반드시 정의해주어야함.
+class Car extends Vehicle {
+	constructor (public speed: number, public acceleration: number, 
+		public braking: number){
+		super();
+		this.speed = speed;
+		this.acceleration = acceleration;
+		this.braking = braking;
+	}
+	trunLeft() : void {
+		console.log('Handle Left');
+	}
+	trunRight() : void {
+		console.log('Handle Right');
+	}
 }
 ```
