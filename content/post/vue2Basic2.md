@@ -217,5 +217,5 @@ var vm = new Vue({
   }
 })
 ```
-얼핏봐선 위에서 본 computed나 methods와 같은 구조로 보이지만, 정의된 속성 명들을 보면 변화를 탐지할 data에 무명 함수로 call백을 걸어놓은 형태임을 알 수 있다. Data의 firstName의 값이 바뀌면 firstName에 할당된 무명 함수가 callback으로 호출되는 형식이다.
+얼핏봐선 위에서 본 computed나 methods와 같은 구조로 보이지만, 정의된 속성 명들을 보면 변화를 탐지할 data에 무명 함수로 callback을 걸어놓은 형태임을 알 수 있다. Data의 firstName의 값이 바뀌면 firstName에 할당된 무명 함수가 callback으로 호출되는 형식이다.
 
