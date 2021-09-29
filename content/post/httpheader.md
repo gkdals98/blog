@@ -50,7 +50,7 @@ Content-Type: application/x-www-form-urlencoded
 /*
 json 형태의 데이터를 전송한다. 요즘은 json 기반으로 data를 주고받는 일이 많기에 자주 사용하게된다.
 */
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 ```
 
 #### 참조
