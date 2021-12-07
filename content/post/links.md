@@ -1,8 +1,8 @@
 ---
 title: 참조용 링크들
 tags: ['Etc', 'Article']
-published: '2021-04-13'
-hidden: 'true'
+published: '2021-12-07'
+hidden: 'false'
 ---
 ## 참조할 링크들
 ##### Node js 의 디자인 패턴들
@@ -14,7 +14,7 @@ hidden: 'true'
 ##### Backend로 express를 사용하는 경우의 React 연동법 (nest에 맞게 변경)
 + https://singa-korean.tistory.com/46
 
-##### 일단 nest 풀스택 구축 방법
+##### nest 풀스택 구축 방법
 + https://becomereal.tistory.com/56
 
 ##### DB 엔진 순위
@@ -35,7 +35,7 @@ hidden: 'true'
 ##### npx로 nest를 초기화하고 싶은 경우
 + https://fors.tistory.com/606
 
-단문이라 그냥 글로 써보자면 아래와 같다.
+단문이라 그냥 글로 써보자면 아래와 같다. 다만 알면 알수록 이렇게 하면 안되는건 맞다.
 ```
 npx @nestjs/cli new <project name>
 npx @nestjs/cli generate controller <controller name>
@@ -133,3 +133,9 @@ module.exports = {
 
 ##### 반응형 웹 확인할 때 유용할 도구
 + https://grapesjs.com/
+
+##### 외부 기기에서 localhost로 간편하게 접근하도록 도와주는 ngrok
++ https://ngrok.com/
+
+##### froala, 퍼블리싱 도구
++ https://froala.com/wysiwyg-editor/
